@@ -97,7 +97,7 @@ class APP {
         }
         require_once $controlFile;
         $file = ucfirst($file);
-        $object = new $file();
+        $object = new $file($param);
         if (!method_exists($object, $action)) {
             exit("Method '$file::$action' not exists!");
         }
@@ -110,19 +110,23 @@ class APP {
      * 前台路由转发 ...
      */
     protected static function _initRoute() {
-        $params = array('path'=>'index', 'file'=>'index', 'action' => 'main');
-        if (preg_match("/\/([^\/]+)\/([^\/]+)\/([^\/\?]+)/", REQUEST_URI, $matches)) {print_r($matches);
-            $params['entry'] = $matches[1];
-            $params['file'] = $matches[2];
+        $params = array('file'=>'index', 'action'=>'main', 'param' =>'');
+        if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
+            $params['file'] = $matches[1];
             $params['action'] = $matches[3];
-        } elseif(preg_match("/[(index\.php)(index)]/", REQUEST_URI)) {echo '***';
-            $params['entry'] = 'index';
-            $params['file'] = 'index';
-            $params['action'] = 'main';
-        }else{
-
+            $params['param'] = $matches[5];
         }
-        exit;
+    	$param = array();
+    	$params['param'] = explode('-', $params['param']);
+    	if(count($params['param']) % 2 != 0){
+    		array_pop($params['param']);
+    	}
+        foreach ($params['param'] as $k => $p){
+        	if($k%2 == 0){
+        		$param[$p] = $params['param'][$k+1];
+        	}
+        }
+        $params['param'] = $param;
         return $params;
     }
 
