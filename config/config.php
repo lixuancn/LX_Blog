@@ -14,7 +14,7 @@ define('PROJECT_NAME', 'weixin');
 define('SERVICE_STOP', false);
 
 //启用调试信息，1是开启
-define('DEBUG', 0);
+define('DEBUG', 1);
 
 //WEB服务器部署环境：开发、线上
 define('WEB_SERVER', 'develop'); //'develop', 'online'
@@ -57,7 +57,7 @@ define('CONFIG_PATH', ROOT_PATH . 'config/'); //配置文件路径
 define('APIS_PATH', ROOT_PATH . 'apis/');
 define('SYSTEM_PATH', ROOT_PATH . 'core/'); //系统核心绝对路径
 define('TEMPLATE_PATH', ROOT_PATH . 'templates/'); //模版目录
-define('STATIC_PATH', ROOT_PATH . 'themes/'); //皮肤目录
+define('STATIC_PATH', WEB_ROOT . 'themes/'); //皮肤目录
 define('CLASSES_PATH', ROOT_PATH . 'classes/'); //公用类目录
 
 define('MODEL_PATH', CLASSES_PATH . 'model/'); //模型绝对路径

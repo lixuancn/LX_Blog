@@ -11,7 +11,7 @@ class Index{
      * @descrpition 首页
      */
     public function main(){
-        echo 'Hello world';
+        View::showFrontTpl('index');
     }
 }
 

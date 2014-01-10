@@ -44,7 +44,7 @@ class APP {
 
 		//开启PHP调试功能
 		DEBUG ? error_reporting(E_ALL & ~E_STRICT) : error_reporting(0);
-		
+
 		//设置时区
 		date_default_timezone_set(TIMEZONE);
 	}
@@ -115,11 +115,14 @@ class APP {
             $params['entry'] = $matches[1];
             $params['file'] = $matches[2];
             $params['action'] = $matches[3];
-        } elseif(preg_match("/index\.php/", REQUEST_URI)) {echo 2;
+        } elseif(preg_match("/[(index\.php)(index)]/", REQUEST_URI)) {echo '***';
             $params['entry'] = 'index';
             $params['file'] = 'index';
             $params['action'] = 'main';
+        }else{
+
         }
+        exit;
         return $params;
     }
 
