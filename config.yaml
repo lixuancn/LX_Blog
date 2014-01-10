@@ -1,0 +1,11 @@
+---
+name: 9173weixin
+version: 1
+...
+
+cron:
+
+
+handle:
+ - rewrite: if(path ~ "^admin/(.*)$"  && !is_file() && !is_dir()) goto "admin.php"
+ - rewrite: if(path ~ "^queue/(.*)$"  && !is_file() && !is_dir()) goto "queue.php"
