@@ -1,4 +1,8 @@
-.text-align {
+body {	
+  padding-top: 20px;
+}
+
+.center {
     display: table;
 	width: auto;
 	margin-left: auto;
@@ -7,4 +11,79 @@
 
 .blank-line {
 	height:20px;
+}
+
+.div-margin {
+	margin-right: 27px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+.index-title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #6633FF;
+}
+
+
+
+
+
+.jumbotron {
+  position: relative;
+  text-align: center;
+}
+.jumbotron h1 {
+  margin-bottom: 9px;
+  font-size: 70px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+@media (max-width: 480px) {
+	.jumbotron h1,
+	.jumbotron p {
+   		text-align: center;
+    	margin-right: 0;
+	}
+	.jumbotron h1 {
+    	font-size: 45px;
+    	margin-right: 0;
+  	}
+  	.jumbotron p {
+	    margin-right: 0;
+	    margin-left: 0;
+	    font-size: 18px;
+	    line-height: 24px;
+  	}
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+	.jumbotron h1 {
+    	font-size: 54px;
+	}
+	.jumbotron p {
+	    margin-right: 0;
+	    margin-left: 0;
+	}
+}  
+  
+@media (min-width: 768px) and (max-width: 980px) {
+	.jumbotron h1 {
+    	font-size: 72px;
+	}
 }

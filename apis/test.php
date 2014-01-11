@@ -6,7 +6,7 @@
  * Mail lixuan868686@163.com
  */
 class test{
-    public function test1(){
-        echo 'Hello World';
+    public function test(){
+        View::showFrontTpl('test');
     }
 }

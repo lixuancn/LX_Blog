@@ -27,6 +27,7 @@ class Index{
      */
     public function main(){
     	//获取分类
+    	$menuList = array();
 //    	$menuList = MenuBusiness::getMenuList();
     	
     	View::assign('menuList', $menuList);
