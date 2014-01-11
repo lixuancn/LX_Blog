@@ -26,6 +26,10 @@ class Index{
      * @descrpition 首页
      */
     public function main(){
+    	//获取分类
+//    	$menuList = MenuBusiness::getMenuList();
+    	
+    	View::assign('menuList', $menuList);
         View::showFrontTpl('index');
     }
 }

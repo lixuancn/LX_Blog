@@ -1,0 +1,10 @@
+.text-align {
+    display: table;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.blank-line {
+	height:20px;
+}
