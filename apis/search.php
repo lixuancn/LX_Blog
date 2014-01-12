@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页
+ * 站内搜索页面
  * Class Article
  * Created by Lane.
  * Author: lane
@@ -8,7 +8,7 @@
  * Date: 14-1-10
  * Time: 下午4:22
  */
-class Index extends Controller{
+class Search extends Controller{
 	/**
 	 * 构造函数
 	 */
@@ -16,13 +16,16 @@ class Index extends Controller{
 		parent::__construct($param);
 	}
 	
-    /**
-     * @descrpition 首页
+	/**
+     * @descrpition 搜索
      */
     public function main(){
-  		
-//    	View::assign('menuList', $menuList);
-        View::showFrontTpl('index');
+    	if(isset($this->param['keywords'])){
+    		$keywords = $this->param['keywords'];
+    		View::assign('keywords', $keywords);
+    	}
+    	
+    	
+        View::showFrontTpl('search');
     }
 }
-

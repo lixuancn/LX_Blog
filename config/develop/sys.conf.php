@@ -7,10 +7,10 @@
  * Time: 下午4:44
  */
 //后台访问域名
-define('ADMIN_URL', 'http://weixin.9173.com/admin');
+define('ADMIN_URL', 'http://localhost:3004/admin.php');
 
-//游戏域名
-define('GAME_DOMAIN', 'weixin.9173.com');
+//域名
+define('GAME_DOMAIN', 'localhost:3004');
 
 //游戏地址
 define('GAME_URL', 'http://' . GAME_DOMAIN . '/');

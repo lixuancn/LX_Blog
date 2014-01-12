@@ -53,8 +53,10 @@ class APP {
 	 * 初始化引入文件 ...
 	 */
 	protected static function _initIncludedFile() {
-		//控制器基本类
+		//前台控制器基本类
 		require_once 'controller.class.php';
+		//后台控制器基本类
+		require_once 'admincontroller.class.php';
 		//数据模型基本类
 		require_once 'dbmodel.class.php';
 		require_once 'kvmodel.class.php';
@@ -112,10 +114,15 @@ class APP {
     protected static function _initRoute() {
         $params = array('file'=>'index', 'action'=>'main', 'param' =>'');
         if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
-            $params['file'] = $matches[1];
-            $params['action'] = $matches[3];
-            $params['param'] = $matches[5];
+            $params['file'] = $matches[1] ? $matches[1] : 'index';
+            $params['action'] = $matches[3] ? $matches[3] : 'main';
+            $params['param'] = $matches[5] ? $matches[5] : 'param';
         }
+    	//处理参数 - 如果是GET提交的
+        if(!empty($params['param'][0]) && $params['param'][0] == '?'){
+        	$params['param'] = substr($params['param'], 1);
+        }
+        
     	$param = array();
     	$params['param'] = explode('-', $params['param']);
     	if(count($params['param']) % 2 != 0){
@@ -126,6 +133,8 @@ class APP {
         		$param[$p] = $params['param'][$k+1];
         	}
         }
+    	
+        $param = array_merge($param, $_GET);
         $params['param'] = $param;
         return $params;
     }

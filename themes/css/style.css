@@ -34,56 +34,60 @@ h5 {
 	color: #6633FF;
 }
 
+/* This is a LOGO Begin---------- */
 
-
-
-
-.jumbotron {
+.logo {
   position: relative;
   text-align: center;
 }
-.jumbotron h1 {
+.logo h1 {
   margin-bottom: 9px;
   font-size: 70px;
   font-weight: bold;
   letter-spacing: -1px;
   line-height: 1;
 }
-.jumbotron p {
+.logo p {
   margin-bottom: 18px;
   font-weight: 300;
 }
 
 @media (max-width: 480px) {
-	.jumbotron h1,
-	.jumbotron p {
+	.logo h1,
+	.logo p {
    		text-align: center;
-    	margin-right: 0;
+    	margin-right: 0px;
 	}
-	.jumbotron h1 {
+	.logo h1 {
     	font-size: 45px;
-    	margin-right: 0;
+    	margin-right: 0px;
   	}
-  	.jumbotron p {
-	    margin-right: 0;
-	    margin-left: 0;
+  	.logo p {
+	    margin-right: 0px;
+	    margin-left: 0px;
 	    font-size: 18px;
 	    line-height: 24px;
   	}
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
-	.jumbotron h1 {
+	.logo h1 {
     	font-size: 54px;
 	}
-	.jumbotron p {
-	    margin-right: 0;
-	    margin-left: 0;
+	.logo p {
+	    margin-right: 0px;
+	    margin-left: 0px;
 	}
 }  
   
 @media (min-width: 768px) and (max-width: 980px) {
-	.jumbotron h1 {
+	.logo h1 {
     	font-size: 72px;
 	}
+}
+
+/* This is a LOGO End----------*/
+
+.search {
+    margin: 3px;
 }

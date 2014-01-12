@@ -25,18 +25,30 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="./index.html">Lane</a>
+            <a class="brand" href="<?php echo GAME_URL?>" title="Lane PHP Blog">Lane</a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="">
-                        <a href="./index.html" title="Bootstrap中文版首页">首页</a>
+                    <li class="active">
+                        <a href="<?php echo GAME_URL?>" title="李轩PHP博客">首页</a>
                     </li>
-                    <li class="">
-                    <a href="./scaffolding.html">框架</a>
+                    <li>
+                        <a href="">PHP</a>
+                    </li>
+                    <li>
+                        <a href="">Mysql</a>
+                    </li>
+                    <li>
+                        <a href="">Linux</a>
+                    </li>
+                    <li>
+                        <a href="">资源下载</a>
                     </li>
                     <li class="divider-vertical"></li>
-                    <li class="">
-                        <a href="./scaffolding.html">框架</a>
+                    <li>
+                    <form class="form-search search" action="<?php echo GAME_URL?>search/main/" method="get">
+                        <input type="text" class="input-large search-query" name="keywords" value="<?php if(isset($keywords)){echo $keywords;}?>">
+                        <button type="submit" class="btn btn-primary">搜索</button>
+                    </form>
                     </li>
                 </ul>
             </div>
@@ -44,3 +56,7 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
     </div>
 </div>
 <div class="blank-line"></div>
+<div class="logo">
+    <h1>Lane<small>Blog</small></h1>
+    <p>蝼蚁虽小，也有梦想</p>
+</div>
