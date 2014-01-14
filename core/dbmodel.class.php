@@ -1,9 +1,11 @@
 <?php
 /**
  * 数据模型基本类.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-6-21 
- * @version $Id: dbmodel.class.php 1863 2013-12-16 07:51:10Z lixuan $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class DbModel {

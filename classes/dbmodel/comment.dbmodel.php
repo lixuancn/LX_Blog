@@ -1,37 +1,35 @@
 <?php
 /**
  *
- * 文章model层
+ * 评论model层
  *
- * Created by Lane.
- * @Class ArticleDbModel
+ * @Class CommentDbModel
+ * @Created by Lane.
  * @Author: lane
  * @Mail lixuan868686@163.com
  * @Date: 14-1-10
  * @Time: 下午4:22
  */
-class ArticleDbModel extends DbModel{
+class CommentDbModel extends DbModel{
 
-    const MC_ARTICLE_INFO = 'mc_article_info_';
+    const MC_COMMENT_INFO = 'mc_comment_info_';
 
-    const MC_ARTICLE_LIST = 'mc_article_list';
+    const MC_COMMENT_LIST = 'mc_comment_list';
 
-    const MC_ARTICLE_MENU = 'mc_article_menu_';
+    const MC_COMMENT_NEW_LIST = 'mc_comment_new_list';
 
-    const MC_ARTICLE_NEW_LIST = 'mc_article_new_list';
+    const MC_COMMENT_AID = 'mc_comment_aid_';
 
-    const MC_ARTICLE_HOT_LIST = 'mc_article_hot_list';
+    const MC_COMMENT_NEW = 'mc_comment_new_';
 
-    const MC_ARTICLE_HOT = 'mc_article_hot_';
-
-    protected $_tableName = 'info_article';
+    protected $_tableName = 'info_comment';
 
     /**
      * @descrpition 添加数据
      * @param $data
      */
     public function add($fields){
-//        Mcache::delete(self::MC_ARTICLE_LIST);
+//        Mcache::delete(self::MC_COMMENT_LIST);
         return $this->insertOne($this->_tableName, $fields);
     }
 
@@ -42,7 +40,7 @@ class ArticleDbModel extends DbModel{
      * @return bool
      */
     public function edit($id, $fields){
-//        Mcache::delete(self::MC_ARTICLE_LIST);
+//        Mcache::delete(self::MC_COMMENT_LIST);
         $where = "`id` = '".$id."'";
         return $this->update($this->_tableName, $fields, $where);
     }
@@ -53,8 +51,8 @@ class ArticleDbModel extends DbModel{
      * @return bool
      */
     public function del($id){
-//        Mcache::delete(self::MC_ARTICLE_LIST);
-//        Mcache::delete(self::MC_ARTICLE_INFO . $id);
+//        Mcache::delete(self::MC_COMMENT_LIST);
+//        Mcache::delete(self::MC_COMMENT_INFO . $id);
         $where = "`id` = '".$id."'";
         return $this->deleteOne($this->_tableName, $id);
     }
@@ -66,7 +64,7 @@ class ArticleDbModel extends DbModel{
      * @return bool|multitype
      */
     public function get($id, $real=false){
-//        $data = Mcache::get(self::MC_ARTICLE_INFO . $id);
+//        $data = Mcache::get(self::MC_COMMENT_INFO . $id);
 //        if(!$data || $real){
         $data = $this->getReal($id);
 //        }
@@ -78,7 +76,7 @@ class ArticleDbModel extends DbModel{
         $fields = '*';
         $data = $this->selectOne($this->_tableName, $where, $fields);
         if($data){
-//            Mcache::set(self::MC_ARTICLE_INFO . $id, $data);
+//            Mcache::set(self::MC_COMMENT_INFO . $id, $data);
         }
         return $data;
     }
@@ -89,21 +87,21 @@ class ArticleDbModel extends DbModel{
      * @param bool $real
      * @return bool|multitype
      */
-    public function getByMid($mid, $page, $real=false){
-//        $data = Mcache::get(self::MC_ARTICLE_MENU . $mid . '_' . $page);
+    public function getByAid($aid, $real=false){
+//        $data = Mcache::get(self::MC_COMMENT_AID . $aid);
 //        if(!$data || $real){
-        $data = $this->getByMidReal($mid, $page);
+        $data = $this->getByAidReal($aid);
 //        }
         return $data;
     }
 
-    public function getByMidReal($mid, $page){
-        $where = "`mid` = '".$mid."'";
+    public function getByAidReal($aid){
+        $where = "`aid` = '".$aid."'";
         $fields = '*';
         $order = '`ctime` DESC';
-        $data = $this->selectPageList($this->_tableName, $where, $page, ParamConstant::PARAM_PAGE_SIZE, $fields, $order);
+        $data = $this->selectList($this->_tableName, $where, $fields, $order);
         if($data){
-//            Mcache::set(self::MC_ARTICLE_MENU . $mid . '_' . $page, $data);
+//            Mcache::set(self::MC_COMMENT_AID . $aid, $data);
         }
         return $data;
     }
@@ -114,7 +112,7 @@ class ArticleDbModel extends DbModel{
      * @return Ambigous|bool
      */
     public function getList($real=false) {
-//        $data = Mcache::get(self::MC_ARTICLE_LIST);
+//        $data = Mcache::get(self::MC_COMMENT_LIST);
 //        if ($real || !$data){
         $data = $this->getListReal();
 //        }
@@ -127,18 +125,18 @@ class ArticleDbModel extends DbModel{
         $order = '`ctime` DESC';
         $data = $this->selectList($this->_tableName, $where, $fields, $order);
         if ($data) {
-//            Mcache::set(self::MC_ARTICLE_LIST, $data);
+//            Mcache::set(self::MC_COMMENT_LIST, $data);
         }
         return $data;
     }
 
     /**
-     * @descrpition 获取最新列表
+     * @descrpition 获取最新
      * @param bool $real
      * @return Ambigous|bool
      */
     public function getNewList($real=false){
-//        $data = Mcache::get(self::MC_ARTICLE_NEW_LIST);
+//        $data = Mcache::get(self::MC_COMMENT_NEW_LIST);
 //        if ($real || !$data){
         $data = $this->getNewListReal();
 //        }
@@ -149,63 +147,37 @@ class ArticleDbModel extends DbModel{
         $where = 1;
         $fields = '*';
         $order = '`ctime` DESC';
-        $limit = '0, 10';
-        $sql = 'SELECT ' . $fields . ' FROM ' . $this->_tableName . ' WHERE ' . $where . ' ORDER BY ' . $order . ' LIMIT ' . $limit;
-        $data = $this->customSelect($sql);
-        if ($data) {
-//            Mcache::set(self::MC_ARTICLE_NEW_LIST, $data);
-        }
-        return $data;
-    }
-
-    /**
-     * @descrpition 获取最热列表
-     * @param bool $real
-     * @return Ambigous|bool
-     */
-    public function getHotList($real=false){
-//        $data = Mcache::get(self::MC_ARTICLE_HOT_LIST);
-//        if ($real || !$data){
-        $data = $this->getHotListReal();
-//        }
-        return $data;
-    }
-
-    public function getHotListReal() {
-        $where = 1;
-        $fields = '*';
-        $order = '`clicks` DESC';
         $limit = '0, 5';
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->_tableName . ' WHERE ' . $where . ' ORDER BY ' . $order . ' LIMIT ' . $limit;
         $data = $this->customSelect($sql);
         if ($data) {
-//            Mcache::set(self::MC_ARTICLE_HOT_LIST, $data);
+//            Mcache::set(self::MC_COMMENT_NEW_LIST, $data);
         }
         return $data;
     }
 
     /**
-     * @descrpition 获取最热列表ByMid
+     * @descrpition 获取最新ByMid
      * @param bool $real
      * @return Ambigous|bool
      */
-    public function getHotListByMid($mid, $real=false){
-//        $data = Mcache::get(self::MC_ARTICLE_HOT . $mid);
+    public function getNewListByMid($mid, $real=false){
+//        $data = Mcache::get(self::MC_COMMENT_NEW . $mid);
 //        if ($real || !$data){
-        $data = $this->getHotListByMidReal($mid);
+        $data = $this->getNewListByMidReal($mid);
 //        }
         return $data;
     }
 
-    public function getHotListByMidReal($mid) {
+    public function getNewListByMidReal($mid) {
         $where = "`mid` = '" . $mid . "'";
         $fields = '*';
-        $order = '`clicks` DESC';
+        $order = '`ctime` DESC';
         $limit = '0, 5';
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->_tableName . ' WHERE ' . $where . ' ORDER BY ' . $order . ' LIMIT ' . $limit;
         $data = $this->customSelect($sql);
         if ($data) {
-//            Mcache::set(self::MC_ARTICLE_HOT . $mid, $data);
+//            Mcache::set(self::MC_COMMENT_NEW . $mid, $data);
         }
         return $data;
     }
@@ -231,10 +203,9 @@ class ArticleDbModel extends DbModel{
     public function cleanMc(){
         $list = $this->getList(true);
         foreach( $list as $value ){
-//            Mcache::delete(self::MC_ARTICLE_INFO . $value['id']);
+//            Mcache::delete(self::MC_COMMENT_INFO . $value['id']);
         }
-//        Mcache::delete(self::MC_ARTICLE_NEW_LIST);
-//        Mcache::delete(self::MC_ARTICLE_LIST);
+//        Mcache::delete(self::MC_COMMENT_LIST);
         return $list;
     }
 }

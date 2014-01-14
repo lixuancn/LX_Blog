@@ -1,9 +1,14 @@
 <?php
 /**
- * Description CURL工具
- * Class GmToolsBusiness
+ *
+ * CURL工具
+ *
+ * Class CurlBusiness
  * Created by Lane.
- * Mail lixuan868686@163.com
+ * @Author: lane
+ * @Mail: lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 class CurlBusiness {
     /**

@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: lane
- * Date: 13-12-21
- * Time: 下午10:59
+ * Created by Lane.
+ * @Class NeedConstant
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 class NeedConstant{
 

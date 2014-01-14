@@ -1,9 +1,11 @@
 <?php
 /**
  * 框架初始化文件.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-6-28 
- * @version $Id: core.php 1731 2013-12-05 10:53:56Z manling $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class APP {
@@ -116,7 +118,7 @@ class APP {
         if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
             $params['file'] = $matches[1] ? $matches[1] : 'index';
             $params['action'] = $matches[3] ? $matches[3] : 'main';
-            $params['param'] = $matches[5] ? $matches[5] : 'param';
+            $params['param'] = $matches[5] ? $matches[5] : '';
         }
     	//处理参数 - 如果是GET提交的
         if(!empty($params['param'][0]) && $params['param'][0] == '?'){
@@ -133,8 +135,9 @@ class APP {
         		$param[$p] = $params['param'][$k+1];
         	}
         }
-    	
+
         $param = array_merge($param, $_GET);
+        $param = array_merge($param, $_POST);
         $params['param'] = $param;
         return $params;
     }

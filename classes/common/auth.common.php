@@ -1,9 +1,12 @@
 <?php
 /**
  * 用户权限验证.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-9-8 
- * @version $Id: auth.common.php 802 2013-09-22 02:46:09Z manling $
+ * Created by Lane.
+ * @Class AuthCommon
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
  
 class AuthCommon{

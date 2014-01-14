@@ -1,9 +1,11 @@
 <?php
 /**
  * Mysql 数据库操作封装类.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-6-20 
- * @version $Id: mysql.class.php 2 2013-06-05 10:21:56Z manling $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class Mysql  {

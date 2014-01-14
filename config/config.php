@@ -1,10 +1,11 @@
 <?php
 /**
  * 系统主配置文件.
- * Created by PhpStorm.
- * User: lane
- * Date: 14-1-5
- * Time: 下午4:44
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 //系统名称
 define('WEB_NAME', 'Lane 博客');
@@ -31,12 +32,6 @@ define('GZIP_COMPRESS', 0);
 //启用后台操作日志
 define('ENABLE_ADMIN_LOG', 1);
 
-//微信公众平台相关
-define("TOKEN", "game9173"); //微信TOKEN
-define("WECHAT_ACCESS_TOKEN_TIME", 7200);
-define("WECHAT_APPID", 'wx5d57f64bb4804d90');
-define("WECHAT_APPSECRET", '4b1fa6d9442351ec9268eff05e38f521');
-
 //快捷键设置
 define("BACK_TOP", "0"); //返回顶层
 
@@ -46,6 +41,9 @@ define('COOKIE_PRE', PROJECT_NAME . '_'); //cookie 前缀
 define('COOKIE_PATH', '/'); //cookie 作用路径
 define('SESSION_PRE', PROJECT_NAME . '_'); //session 前缀
 
+define('SEO_TITLE', 'PHP博客_PHP分享_PHP资源'); //首页标题
+define('SEO_KEYWORDS', 'PHP博客,PHP分享,PHP资源'); //首页关键词
+define('SEO_DESCRIPTION', '欢迎来到Lane的博客。这是关于PHP博客的主题,这里有PHP分享和PHP资源下载。'); //首页描述
 
 /**
  * 前台目录设置

@@ -1,7 +1,7 @@
 <?php
 /**
  * 站内搜索页面
- * Class Article
+ * Class Search
  * Created by Lane.
  * Author: lane
  * Mail lixuan868686@163.com

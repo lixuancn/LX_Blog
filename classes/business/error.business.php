@@ -1,10 +1,14 @@
 <?php
 /**
+ *
  * 错误处理类
- * Created by PhpStorm.
- * User: lane
- * Date: 13-12-19
- * Time: 下午3:45
+ *
+ * Created by Lane.
+ * @Class ErrorBusiness
+ * @Author: lane
+ * @Mail: lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 class ErrorBusiness{
     /**

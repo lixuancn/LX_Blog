@@ -1,10 +1,11 @@
 <?php
 /**
  * 框架初始化文件.
- * Created by PhpStorm.
- * User: lane
- * Date: 14-1-2
- * Time: 下午3:52
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 //定义页面编码UTF-8
 header('Content-type: text/html; charset=UTF-8');

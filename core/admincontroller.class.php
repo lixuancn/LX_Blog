@@ -1,10 +1,11 @@
 <?php
 /**
  * 管理后台控制器
- * Created by PhpStorm.
- * User: lane
- * Date: 14-1-10
- * Time: 下午4:22
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class AdminController {

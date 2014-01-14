@@ -1,29 +1,29 @@
 <?php
 /**
  *
- * 分类菜单
+ * 友情链接model层
  *
  * Created by Lane.
- * @Class MenuDbModel
+ * @Class FriendLinkDbModel
  * @Author: lane
  * @Mail: lixuan868686@163.com
- * @Date: 14-1-10
- * @Time: 下午4:22
+ * @Date: ${DATE}
+ * @Time: ${TIME}
  */
-class MenuDbModel extends DbModel{
+class FriendLinkDbModel extends DbModel{
 
-    const MC_MENU_INFO = 'mc_menu_info_';
+    const MC_FRIEND_LINK_INFO = 'mc_friend_link_info_';
 
-    const MC_MENU_LIST = 'mc_menu_list';
+    const MC_FRIEND_LINK_LIST = 'mc_friend_link_list';
 
-    protected $_tableName = 'info_menu';
+    protected $_tableName = 'info_friend_link';
 
     /**
      * @descrpition 添加数据
-     * @param $fields
+     * @param $data
      */
     public function add($fields){
-//        Mcache::delete(self::MC_MENU_LIST);
+//        Mcache::delete(self::MC_FRIEND_LINK_LIST);
         return $this->insertOne($this->_tableName, $fields);
     }
 
@@ -34,8 +34,7 @@ class MenuDbModel extends DbModel{
      * @return bool
      */
     public function edit($id, $fields){
-//        Mcache::delete(self::MC_MENU_INFO . $id);
-//        Mcache::delete(self::MC_MENU_LIST);
+//        Mcache::delete(self::MC_FRIEND_LINK_LIST);
         $where = "`id` = '".$id."'";
         return $this->update($this->_tableName, $fields, $where);
     }
@@ -46,8 +45,8 @@ class MenuDbModel extends DbModel{
      * @return bool
      */
     public function del($id){
-//        Mcache::delete(self::MC_MENU_LIST);
-//        Mcache::delete(self::MC_MENU_INFO . $id);
+//        Mcache::delete(self::MC_FRIEND_LINK_LIST);
+//        Mcache::delete(self::MC_FRIEND_LINK_INFO . $id);
         $where = "`id` = '".$id."'";
         return $this->deleteOne($this->_tableName, $id);
     }
@@ -59,7 +58,7 @@ class MenuDbModel extends DbModel{
      * @return bool|multitype
      */
     public function get($id, $real=false){
-//        $data = Mcache::get(self::MC_MENU_INFO . $id);
+//        $data = Mcache::get(self::MC_FRIEND_LINK_INFO . $id);
 //        if(!$data || $real){
         $data = $this->getReal($id);
 //        }
@@ -71,7 +70,7 @@ class MenuDbModel extends DbModel{
         $fields = '*';
         $data = $this->selectOne($this->_tableName, $where, $fields);
         if($data){
-//            Mcache::set(self::MC_MENU_INFO . $id, $data);
+//            Mcache::set(self::MC_FRIEND_LINK_INFO . $id, $data);
         }
         return $data;
     }
@@ -82,7 +81,7 @@ class MenuDbModel extends DbModel{
      * @return Ambigous|bool
      */
     public function getList($real=false) {
-//        $data = Mcache::get(self::MC_MENU_LIST);
+//        $data = Mcache::get(self::MC_FRIEND_LINK_LIST);
 //        if ($real || !$data){
         $data = $this->getListReal();
 //        }
@@ -95,7 +94,7 @@ class MenuDbModel extends DbModel{
         $order = '`id` ASC';
         $data = $this->selectList($this->_tableName, $where, $fields, $order);
         if ($data) {
-//            Mcache::set(self::MC_MENU_LIST, $data);
+//            Mcache::set(self::MC_FRIEND_LINK_LIST, $data);
         }
         return $data;
     }
@@ -121,10 +120,10 @@ class MenuDbModel extends DbModel{
     public function cleanMc(){
         $list = $this->getList(true);
         foreach( $list as $value ){
-//            Mcache::delete(self::MC_MENU_INFO . $value['id']);
-//            Mcache::delete(self::MC_MENU_KEY . $value['project_id']);
+//            Mcache::delete(self::MC_FRIEND_LINK_INFO . $value['id']);
         }
-//        Mcache::delete(self::MC_MENU_LIST);
+//        Mcache::delete(self::MC_FRIEND_LINK_NEW_LIST);
+//        Mcache::delete(self::MC_FRIEND_LINK_LIST);
         return $list;
     }
 }

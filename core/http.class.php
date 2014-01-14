@@ -1,9 +1,11 @@
 <?php
 /**
  * Http协议处理类.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-6-29 
- * @version $Id: http.class.php 257 2013-08-06 06:02:01Z manling $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 /**

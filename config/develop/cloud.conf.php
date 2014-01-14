@@ -24,7 +24,7 @@ define('REDIS_AUTH', 'hello.redis');
 define('REDIS_PRE', PROJECT_NAME . '_' . WEB_SERVER . '_');
 
 //数据库配置定义
-define('DEFAULT_DB', '9173weixin');
+define('DEFAULT_DB', 'blog');
 
 //主从类数据库配置信息
 $DATABASE = array(

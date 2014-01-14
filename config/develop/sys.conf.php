@@ -7,10 +7,10 @@
  * Time: 下午4:44
  */
 //后台访问域名
-define('ADMIN_URL', 'http://localhost:3004/admin.php');
+define('ADMIN_URL', 'http://www.lane.com/admin.php');
 
 //域名
-define('GAME_DOMAIN', 'localhost:3004');
+define('GAME_DOMAIN', 'www.lane.com');
 
 //游戏地址
 define('GAME_URL', 'http://' . GAME_DOMAIN . '/');

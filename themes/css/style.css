@@ -91,3 +91,7 @@ h5 {
 .search {
     margin: 3px;
 }
+
+blockquote p {
+    font-size: 13px;
+}

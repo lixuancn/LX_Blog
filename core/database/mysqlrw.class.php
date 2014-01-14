@@ -1,9 +1,11 @@
 <?php
 /**
  * Mysql 主从数据库操作封装类.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-6-20 
- * @version $Id: mysqlrw.class.php 1792 2013-12-11 03:12:45Z manling $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class Mysqlrw{

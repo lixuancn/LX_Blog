@@ -1,9 +1,11 @@
 <?php
 /**
  * 视图类.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-06-28 
- * @version $Id: view.class.php 1739 2013-12-06 03:38:12Z manling $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class View {

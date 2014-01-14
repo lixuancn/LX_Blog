@@ -1,26 +1,26 @@
 <?php
 /**
  *
- * 分类菜单
- *
+ * 友情链接
+ * 
  * Created by Lane.
- * @Class MenuBusiness
+ * @Class FriendLinkBusiness
  * @Author: lane
  * @Mail: lixuan868686@163.com
- * @Date: 14-1-10
- * @Time: 下午4:22
+ * @Date: ${DATE}
+ * @Time: ${TIME}
  */
-class MenuBusiness{
+class FriendLinkBusiness{
 
     private static $dbModelObj;
 
     /**
      * 返回对象 ...
-     * @return MenuDbModel
+     * @return FriendLinkDbModel
      */
     public static function getInstance() {
         if (is_null(self::$dbModelObj) || !isset(self::$dbModelObj)) {
-            self::$dbModelObj = new MenuDbModel();
+            self::$dbModelObj = new FriendLinkDbModel();
         }
         return self::$dbModelObj;
     }
@@ -29,7 +29,7 @@ class MenuBusiness{
      * @descrpition 添加数据
      * @param $fields
      */
-    public static function setMenu($fields){
+    public static function setFriendLink($fields){
         return self::getInstance()->add($fields);
     }
 
@@ -38,7 +38,7 @@ class MenuBusiness{
      * @param $id
      * @param $fields
      */
-    public static function editMenu($id, $fields){
+    public static function editFriendLink($id, $fields){
         return self::getInstance()->edit($id, $fields);
     }
 
@@ -46,7 +46,7 @@ class MenuBusiness{
      * @descrpition 删除数据
      * @param $fields
      */
-    public static function delMenu($id){
+    public static function delFriendLink($id){
         return self::getInstance()->del($id);
     }
 
@@ -54,7 +54,7 @@ class MenuBusiness{
      * @descrpition 通过ID获取
      * @param $id
      */
-    public static function getMenu($id){
+    public static function getFriendLink($id){
         return self::getInstance()->get($id);
     }
 
@@ -62,7 +62,8 @@ class MenuBusiness{
      * @descrpition 获取列表
      * @param $id
      */
-    public static function getMenuList(){
+    public static function getFriendLinkList(){
         return self::getInstance()->getList();
     }
+
 }

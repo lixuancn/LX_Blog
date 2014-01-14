@@ -4,8 +4,9 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><?php echo WEB_NAME?></title>
-    <meta name="description" content="<?php echo WEB_NAME?>">
+    <title><?php echo isset($seo_title) ? $seo_title : SEO_TITLE; ?> - <?php echo WEB_NAME?></title>
+    <meta name="keywords" content="<?php echo isset($seo_keywords) ? $seo_keywords : SEO_KEYWORDS;?>">
+    <meta name="description" content="<?php echo isset($seo_description) ? $seo_description : SEO_DESCRIPTION;?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="<?php echo CSS_DIR?>bootstrap.css" rel="stylesheet">
     <link href="<?php echo CSS_DIR?>bootstrap-responsive.css" rel="stylesheet">
@@ -28,21 +29,14 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
             <a class="brand" href="<?php echo GAME_URL?>" title="Lane PHP Blog">Lane</a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active">
+                    <li <?php if($actionMenuId == 0){echo ' class="active"';}?>>
                         <a href="<?php echo GAME_URL?>" title="李轩PHP博客">首页</a>
                     </li>
-                    <li>
-                        <a href="">PHP</a>
+                    <?php foreach($menuList as $menu){ ?>
+                    <li <?php if($actionMenuId == $menu['id']){echo ' class="active"';}?>>
+                        <a href="<?php echo GAME_URL?>menu/main/mid-<?php echo $menu['id'];?>"><?php echo $menu['name'];?></a>
                     </li>
-                    <li>
-                        <a href="">Mysql</a>
-                    </li>
-                    <li>
-                        <a href="">Linux</a>
-                    </li>
-                    <li>
-                        <a href="">资源下载</a>
-                    </li>
+                    <?php } ?>
                     <li class="divider-vertical"></li>
                     <li>
                     <form class="form-search search" action="<?php echo GAME_URL?>search/main/" method="get">

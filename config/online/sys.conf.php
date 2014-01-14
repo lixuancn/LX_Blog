@@ -7,10 +7,10 @@
  * Time: 下午4:44
  */
 //后台访问域名
-define('ADMIN_URL', 'http://9173weixin.sinaapp.com/admin');
+define('ADMIN_URL', 'http://www.lanecn.com/admin');
 
 //游戏域名
-define('GAME_DOMAIN', '9173weixin.sinaapp.com');
+define('GAME_DOMAIN', 'www.lanecn.com');
 
 //游戏地址
 define('GAME_URL', 'http://' . GAME_DOMAIN . '/');
@@ -22,7 +22,7 @@ define('QUEUE_URL', 'http://' . GAME_DOMAIN . '/queue.php');
 define('SAE_DOMEN_NAME', 'stor');
 
 //stor地址
-define('STOR_URL', 'http://cdn.weisanguo.cn/jianghu/');
+define('STOR_URL', '');
 
 //测试相关, 发布时修改
 define('TEST_KID', 10001);

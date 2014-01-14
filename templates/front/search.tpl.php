@@ -6,9 +6,11 @@ include 'header.tpl.php';
         <div class="span8">
             <div class="row-fluid">
         		<div class="span12 page-header">
+                    </blockquote>
 					<p class="index-title">深入理解PHP之数组(遍历顺序)</p>
         			<p>2014-01-12 00:22:15，Power By 李轩</p>
         			<p>Tag1，Tag2，Tag3</p>
+                    </blockquote>
         			<p>这个是我上周末在”阿里PHP技术沙龙”临时分享的一个主题的PPT, 主要是介绍一下Zend Optimizer Plus(简称O+).</p>
         			<p>O+是由Zend公司开发的一个PHP性能提升工具, 在PHP5.5开始, 已经随着PHP的源代码一起发布了, 并且也改名为:Opcache.</p>
         		</div>

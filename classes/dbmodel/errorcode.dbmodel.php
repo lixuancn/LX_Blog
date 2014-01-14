@@ -1,10 +1,14 @@
 <?php
 /**
+ *
  * 错误码类.
- * Created by PhpStorm.
- * User: lane
- * Date: 13-12-21
- * Time: 下午11:20
+ *
+ * Created by Lane.
+ * @Class: ErrorCodeDbModel
+ * @Author: lane
+ * @Mail: lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 class ErrorCodeDbModel extends DbModel {
     const MC_ERROR_CODE_LIST = 'info_error_code_list';

@@ -1,26 +1,25 @@
 <?php
 /**
- *
- * 文章管理
+ * 评论管理
  *
  * Created by Lane.
- * @Class ArticleBusiness
+ * @Class CommentBusiness
  * @Author: lane
  * @Mail: lixuan868686@163.com
- * @Date: 14-1-10
- * @Time: 下午4:22
+ * @Date: ${DATE}
+ * @Time: ${TIME}
  */
-class ArticleBusiness{
+class CommentBusiness{
 
     private static $dbModelObj;
 
     /**
      * 返回对象 ...
-     * @return ArticleDbModel
+     * @return CommentDbModel
      */
     public static function getInstance() {
         if (is_null(self::$dbModelObj) || !isset(self::$dbModelObj)) {
-            self::$dbModelObj = new ArticleDbModel();
+            self::$dbModelObj = new CommentDbModel();
         }
         return self::$dbModelObj;
     }
@@ -29,7 +28,7 @@ class ArticleBusiness{
      * @descrpition 添加数据
      * @param $fields
      */
-    public static function setArticle($fields){
+    public static function setComment($fields){
         return self::getInstance()->add($fields);
     }
 
@@ -38,7 +37,7 @@ class ArticleBusiness{
      * @param $id
      * @param $fields
      */
-    public static function editArticle($id, $fields){
+    public static function editComment($id, $fields){
         return self::getInstance()->edit($id, $fields);
     }
 
@@ -46,7 +45,7 @@ class ArticleBusiness{
      * @descrpition 删除数据
      * @param $fields
      */
-    public static function delArticle($id){
+    public static function delComment($id){
         return self::getInstance()->del($id);
     }
 
@@ -54,7 +53,7 @@ class ArticleBusiness{
      * @descrpition 通过ID获取
      * @param $id
      */
-    public static function getArticle($id){
+    public static function getComment($id){
         return self::getInstance()->get($id);
     }
 
@@ -62,15 +61,15 @@ class ArticleBusiness{
      * @descrpition 通过MID获取
      * @param $id
      */
-    public static function getArticleByMid($mid, $page){
-        return self::getInstance()->getByMid($mid, $page);
+    public static function getCommentByAid($aid){
+        return self::getInstance()->getByAid($aid);
     }
 
     /**
      * @descrpition 获取列表
      * @param $id
      */
-    public static function getArticleList(){
+    public static function getCommentList(){
         return self::getInstance()->getList();
     }
 
@@ -83,20 +82,11 @@ class ArticleBusiness{
     }
 
     /**
-     * @descrpition 获取最热列表
+     * @descrpition 获取最新列表
      * @return Ambigous|bool
      */
-    public static function getHotList(){
-        return self::getInstance()->getHotList();
+    public static function getNewListByMid($mid){
+        return self::getInstance()->getNewListByMid($mid);
     }
-
-    /**
-     * @descrpition 获取最热列表
-     * @return Ambigous|bool
-     */
-    public static function getHotListByMid($mid){
-        return self::getInstance()->getHotListByMid($mid);
-    }
-
 
 }

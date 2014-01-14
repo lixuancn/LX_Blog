@@ -1,9 +1,12 @@
 <?php
 /**
  * 返回FLASH提示信息类.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2012-8-27
- * @version $Id: msg.common.php 1616 2013-11-28 11:46:36Z manling $
+ * Created by Lane.
+ * @Class MsgCommon
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class MsgCommon {

@@ -1,9 +1,11 @@
 <?php
 /**
  * 用户自定义配置参数.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2011-5-11 
- * @version $Id: user.conf.php 1 2013-05-30 06:40:35Z manling $
+ * @Created by Lane.
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 //用户组的系统标识

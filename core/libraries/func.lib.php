@@ -266,6 +266,19 @@ class Func {
 		$b = mb_strlen($str, 'utf-8');
 		return ($a+$b)/2;
 	}
+
+    /**
+     * @descrpition 数组的KEY变更为项中的ID
+     * @param $arr
+     * @return array
+     */
+    public static function arrayKey($arr){
+        $data = array();
+        foreach ($arr as $a){
+            $data[$a['id']] = $a;
+        }
+        return $data;
+    }
 }
 
 ?>

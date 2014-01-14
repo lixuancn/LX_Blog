@@ -1,6 +1,6 @@
 <?php
 /**
- * 本地开发服务器配置文件.
+ * SAE服务器配置文件.
  * Created by PhpStorm.
  * User: lane
  * Date: 14-1-5

@@ -1,10 +1,13 @@
 <?php
 /**
  * 用户当前步骤定义.执行之前
- * Created by PhpStorm.
- * User: lane
- * Date: 13-12-20
- * Time: 下午1:50
+ *
+ * Created by Lane.
+ * @Class StepConstant
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 class StepConstant{
 

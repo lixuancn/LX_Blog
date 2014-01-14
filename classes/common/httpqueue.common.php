@@ -1,9 +1,12 @@
 <?php
 /**
  * 公共统计队列.
- * @author: LaoYang <weiming2@staff.sina.com.cn>
- * @date: 2012-9-1
- * @version $Id: httpqueue.common.php 1145 2013-10-24 09:46:29Z manling $
+ * Created by Lane.
+ * @Class HttpQueueCommon
+ * @Author: lane
+ * @Mail lixuan868686@163.com
+ * @Date: 14-1-10
+ * @Time: 下午4:22
  */
 
 class HttpQueueCommon {
