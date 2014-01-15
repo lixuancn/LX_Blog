@@ -16,20 +16,19 @@ include 'header.tpl.php';
         	</div>
             <div class="blank-line"></div>
             <?php foreach($commentList as $comment){?>
-            <div class="row-fluid">
-                <div class="span12">
-                    <blockquote>
-                        <p class="index-title"><?php echo $comment['title'];?></p>
-                        <p>Date: <?php echo $comment['ctime'];?> Power By <?php echo $comment['author']?></p>
-                    </blockquote>
-                    <p><?php echo $comment['content'];?></p>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <blockquote>
+                            <p>Reply: <?php echo $comment['nickname']?> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
+                        </blockquote>
+                        <p><?php echo $comment['content'];?></p>
+                    </div>
                 </div>
-            </div>
-            <?php}?>
+            <?php }?>
             <div class="blank-line"></div>
-        	<form class="form-horizontal" action="<?php echo GAME_URL?>article/addcommit/" method="post">
+        	<form class="form-horizontal" action="<?php echo GAME_URL?>article/addcomment/" method="post">
         	    <fieldset>
-                    <legend>Reply Or Commint</legend>
+                    <legend>Add Comment</legend>
                     <div class="control-group">
 		                <label class="control-label" for="input01">Name OR Nickname:</label>
 		                <div class="controls">

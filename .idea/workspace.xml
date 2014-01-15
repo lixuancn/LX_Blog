@@ -35,17 +35,18 @@
       <file leaf-file-name="article.tpl.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/front/article.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="793" selection-end="1304" vertical-scroll-proportion="0.36385256" vertical-offset="0" max-vertical-offset="1908">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="article.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apis/article.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="8" selection-start="1008" selection-end="1008" vertical-scroll-proportion="-5.259259" vertical-offset="382" max-vertical-offset="1512">
-              <folding />
+            <state line="24" column="26" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.5136742" vertical-offset="0" max-vertical-offset="1890">
+              <folding>
+                <marker date="1389783862506" expanded="true" signature="1418:3131" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="1442:3131" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="3055:3131" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="3429:3702" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="3465:3702" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="3502:3702" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="3859:4072" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="3896:4072" placeholder="..." />
+                <marker date="1389783862506" expanded="true" signature="4357:4473" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -371,15 +372,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apis/article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="8" selection-start="1008" selection-end="1008" vertical-scroll-proportion="-5.259259" vertical-offset="382" max-vertical-offset="1512">
+        <state line="60" column="30" selection-start="1897" selection-end="1907" vertical-scroll-proportion="0.49414518" vertical-offset="658" max-vertical-offset="1512">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/article.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="793" selection-end="1304" vertical-scroll-proportion="0.36385256" vertical-offset="0" max-vertical-offset="1908">
-          <folding />
+        <state line="24" column="26" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.5136742" vertical-offset="0" max-vertical-offset="1890">
+          <folding>
+            <marker date="1389783862506" expanded="true" signature="1418:3131" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="1442:3131" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="3055:3131" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="3429:3702" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="3465:3702" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="3502:3702" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="3859:4072" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="3896:4072" placeholder="..." />
+            <marker date="1389783862506" expanded="true" signature="4357:4473" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

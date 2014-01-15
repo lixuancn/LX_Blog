@@ -58,7 +58,7 @@ class Article extends Controller{
     /**
      * @descrpition 添加评论
      */
-    public function addcommit(){
+    public function addcomment(){
         //判断验证码
         $captcha = Request::getSession('captcha');
         if($captcha != strtolower($this->param['captcha'])){
