@@ -15,13 +15,25 @@ include 'header.tpl.php';
                 </div>
         	</div>
             <div class="blank-line"></div>
+            <?php foreach($commentList as $comment){?>
+            <div class="row-fluid">
+                <div class="span12">
+                    <blockquote>
+                        <p class="index-title"><?php echo $comment['title'];?></p>
+                        <p>Date: <?php echo $comment['ctime'];?> Power By <?php echo $comment['author']?></p>
+                    </blockquote>
+                    <p><?php echo $comment['content'];?></p>
+                </div>
+            </div>
+            <?php}?>
+            <div class="blank-line"></div>
         	<form class="form-horizontal" action="<?php echo GAME_URL?>article/addcommit/" method="post">
         	    <fieldset>
                     <legend>Reply Or Commint</legend>
                     <div class="control-group">
 		                <label class="control-label" for="input01">Name OR Nickname:</label>
 		                <div class="controls">
-		                    <input type="text" class="input-large search-query" name="name">
+		                    <input type="text" class="input-large search-query" name="nickname">
 		                </div>
 		            </div>
                     <div class="control-group">
@@ -39,7 +51,7 @@ include 'header.tpl.php';
 		            <div class="control-group">
 		                <label class="control-label" for="input01">Comment:</label>
 		                <div class="controls">
-		                    <textarea class="input-large search-query" rows="3" name="comment"></textarea>
+		                    <textarea class="input-large search-query" rows="3" name="content"></textarea>
 		                </div>
 		            </div>
 		            <div class="control-group">

@@ -17,6 +17,7 @@ class MsgConstant{
     //-------用户输入相关--1001到1100------
     const ERROR_INPUT_ERROR = 1001; //输入有误，请重新输入
     const ERROR_UNKNOW_TYPE = 1002; //收到了未知类型的消息
+    const ERROR_CAPTCHA_ERROR = 1003; //验证码错误
 
     //-------远程调用相关--1201到1300------
     const ERROR_REMOTE_SERVER_NOT_RESPOND = 1201; //远程服务器未响应
