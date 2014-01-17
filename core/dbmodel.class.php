@@ -388,18 +388,36 @@ class DbModel {
 	 */
 	function getPageNav($total, $page, $pagesize = 20) {
 		$url = Request::getFullPath();
-		$url = preg_replace("/([&]*page=[0-9]*)/i", "", $url);
-
-		$s = strpos($url, '?') === FALSE ? '?' : '&';
+		$url = preg_replace("/([-]*page-[0-9]*)/i", "", $url);
+        $postfix = '';
+        if(preg_match("/(.*)\?(.*)/", $url, $matchs)){
+            $url = $matchs['1'];
+            $postfix = '?'.$matchs['2'];
+        }
+		$s = strpos($url, '-') === FALSE ? '' : '-';
 		$pages = ceil($total/$pagesize);
 		$page = min($pages,$page);
 		$prepg = $page-1;
 		$nextpg = $page == $pages ? 0 : ($page+1);
 		if($total < 1) return FALSE;
-		$pagenav = "总数<b>$total</b> ";
-		$pagenav .= $prepg ? "<a href='$url{$s}page=1'>第一页</a> <a href='$url{$s}page=$prepg'>上一页</a> " : "第一页  上一页 ";
-		$pagenav .= $nextpg ? "<a href='$url{$s}page=$nextpg'>下一页</a> <a href='$url{$s}page=$pages'>尾页</a> " : "下一页  尾页 ";
-		$pagenav .= "页码: <b><font color=red>$page</font>/$pages</b> <input type='text' name='page' id='page' size='2' onKeyDown=\"if(event.keyCode==13) {window.location='{$url}{$s}page='+this.value; return false;}\"> <input type='button' value='GO' onclick=\"window.location='{$url}{$s}page='+document.getElementById('page').value\">";
+
+
+
+		$pagenav = '<li class="disabled"><a>总数：' . $total . ' 页码：' . $page . '/' . $pages . '</a></li>';
+		$pagenav .= $prepg ? "<li><a href='$url{$s}page-1{$postfix}'>首页</a></li>" : '<li><a href="">首页</a></li>';
+        for($i=-2; $i<=2; $i++){
+            $pageTmp = $page+$i;
+            if($pageTmp < 1 || $pageTmp > $pages){
+                continue;
+            }
+            if($i != 0){
+                $pagenav .= "<li><a href='$url{$s}page-$pageTmp{$postfix}'>$pageTmp</a></li>";
+            }else if($i == 0){
+                $pagenav .= "<li class='active'><a href='$url{$s}page-$pageTmp{$postfix}'>$pageTmp</a></li>";
+            }
+        }
+		$pagenav .= $nextpg ? "<li><a href='$url{$s}page-$pages{$postfix}'>尾页</a></li>" : '<li><a href="">尾页</a></li>';
+
 		return $pagenav;
 	}
 	

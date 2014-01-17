@@ -98,5 +98,16 @@ class ArticleBusiness{
         return self::getInstance()->getHotListByMid($mid);
     }
 
+    /**
+     * @descrpition 搜索
+     * @param $keyword
+     * @param $page
+     * @return Ambigous
+     */
+    public static function search($keyword, $page){
+        return self::getInstance()->search($keyword, $page);
+    }
+
+
 
 }

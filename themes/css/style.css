@@ -34,6 +34,10 @@ h5 {
 	color: #6633FF;
 }
 
+.align-center {
+    text-align: center;
+}
+
 /* This is a LOGO Begin---------- */
 
 .logo {
@@ -90,6 +94,10 @@ h5 {
 
 .search {
     margin: 3px;
+}
+
+.search input {
+    height: 25px;
 }
 
 blockquote p {

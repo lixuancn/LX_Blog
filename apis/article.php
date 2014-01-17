@@ -65,7 +65,9 @@ class Article extends Controller{
             return MsgCommon::returnErrMsg(MsgConstant::ERROR_CAPTCHA_ERROR, '验证码错误');
         }
         $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
-
+        if(empty($this->param['aid']) || empty($this->param['mid']) || empty($this->param['nickname']) || empty($this->param['email']) || empty($this->param['content'])){
+            return MsgCommon::returnErrMsg(MsgConstant::ERROR_REQUIRED_FIELDS, '必填项未填写全');
+        }
         $fields = array();
         $fields['aid'] = $this->param['aid'];
         $fields['mid'] = $this->param['mid'];
@@ -75,5 +77,6 @@ class Article extends Controller{
         $fields['ctime'] = time();
         $fields['content'] = $this->param['content'];
         CommentBusiness::setComment($fields);
+        View::showMessage($jumpUrl, '成功！');
     }
 }

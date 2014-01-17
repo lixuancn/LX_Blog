@@ -19,7 +19,7 @@ include 'header.tpl.php';
                 <div class="row-fluid">
                     <div class="span12">
                         <blockquote>
-                            <p>Reply: <?php echo $comment['nickname']?> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
+                            <p>Reply: <a rel="nofollow" href="<?php echo $comment['website'];?>"><?php echo $comment['nickname'];?></a> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
                         </blockquote>
                         <p><?php echo $comment['content'];?></p>
                     </div>
@@ -56,7 +56,7 @@ include 'header.tpl.php';
 		            <div class="control-group">
 		                <label class="control-label" for="input01">Captcha:</label>
 		                <div class="controls">
-		                    <input type="text" class="input-large search-query" name="captcha">
+		                    <input type="text" class="input-small search-query" name="captcha"><img src="<?php echo GAME_URL?>extend/captcha" onclick="this.src='<?php echo GAME_URL?>extend/captcha/id-'+new Date().getTime()">
 		                </div>
 		            </div>
         	    <div class="form-actions">
@@ -92,8 +92,6 @@ include 'header.tpl.php';
             </div>
         </div>
     </div>
-    
-    
 </div>
 <?php
 include 'footer.tpl.php';

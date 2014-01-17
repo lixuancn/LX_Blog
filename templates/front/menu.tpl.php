@@ -21,14 +21,7 @@ include 'header.tpl.php';
                 <div class="span12">
                     <div class="pagination">
                         <ul>
-                            <li><a href="#">前一页</a></li>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">后一页</a></li>
+                            <?php echo $pageNav;?>
                         </ul>
                     </div>
                 </div>

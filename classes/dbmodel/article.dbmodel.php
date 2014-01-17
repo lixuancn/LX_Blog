@@ -210,6 +210,14 @@ class ArticleDbModel extends DbModel{
         return $data;
     }
 
+    public function search($keyowrd, $page=1){
+        $where = "`title` LIKE '%" . $keyowrd . "%'";
+        $fields = '*';
+        $order = '`id` DESC';
+        return $this->selectPageList($this->_tableName, $where, $page, ParamConstant::PARAM_PAGE_SIZE, $fields, $order);
+
+    }
+
     /**
      * @descrpition 静态数据
      * @return array

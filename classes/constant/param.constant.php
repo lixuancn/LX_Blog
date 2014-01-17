@@ -12,5 +12,6 @@
  */
 class ParamConstant{
 
-    const PARAM_PAGE_SIZE = 20; //分页时每页多少条
+    const PARAM_PAGE_SIZE = 1; //分页时每页多少条
+    
 }

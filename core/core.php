@@ -107,7 +107,7 @@ class APP {
         }
 
         $results = $object->$action();
-//		View::showJson($results);
+		print_r($results);
     }
 
     /**
@@ -120,12 +120,13 @@ class APP {
             $params['action'] = $matches[3] ? $matches[3] : 'main';
             $params['param'] = $matches[5] ? $matches[5] : '';
         }
-    	//处理参数 - 如果是GET提交的
-        if(!empty($params['param'][0]) && $params['param'][0] == '?'){
-        	$params['param'] = substr($params['param'], 1);
-        }
+
         
-    	$param = array();
+//        if(!empty($params['param'][0]) && $params['param'][0] == '?'){
+//            $params['param'] = substr($params['param'], 1);
+//        }
+
+        $param = array();
     	$params['param'] = explode('-', $params['param']);
     	if(count($params['param']) % 2 != 0){
     		array_pop($params['param']);

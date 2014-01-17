@@ -24,8 +24,43 @@ class Search extends Controller{
     		$keywords = $this->param['keywords'];
     		View::assign('keywords', $keywords);
     	}
-    	
-    	
+        $page = 1;
+        if(isset($this->param['page'])){
+            $page = $this->param['page'];
+        }
+        //获取文章列表
+        $articleList = ArticleBusiness::search($keywords, $page);
+        $pageNav = $articleList['page_nav'];
+        $articleList = $articleList['data'];
+        foreach ($articleList as $k => $article){
+            //整理数据
+            $articleList[$k]['author'] = htmlspecialchars_decode($article['author']);
+            $articleList[$k]['title'] = htmlspecialchars_decode($article['title']);
+            $articleList[$k]['description'] = htmlspecialchars_decode($article['description']);
+            $articleList[$k]['ctime'] = date('Y-m-d H:i:s', $article['ctime']);
+
+            $articleList[$k]['tag'] = explode('|', $article['tag']);
+
+            if(empty($article['description'])){
+                $articleList[$k]['description'] = mb_substr($article['content'], 0, 300, 'UTF-8');
+            }else{
+                $articleList[$k]['description'] = mb_substr($article['description'], 0, 300, 'UTF-8');
+            }
+        }
+        //获取最热门文章
+        $articleHotList = ArticleBusiness::getHotList();
+        foreach($articleHotList as $k=>$article){
+            $articleHotList[$k]['title'] = mb_substr($article['title'], 0, 30, 'UTF-8') . '...';
+        }
+        //获取最新评论
+        $commentNewList = CommentBusiness::getNewList();
+        foreach($commentNewList as $k=>$comment){
+            $commentNewList[$k]['content'] = mb_substr($comment['content'], 0, 30, 'UTF-8') . '...';
+        }
+        View::assign('articleHotList', $articleHotList);
+        View::assign('commentNewList', $commentNewList);
+        View::assign('pageNav', $pageNav);
+        View::assign('articleList', $articleList);
         View::showFrontTpl('search');
     }
 }
