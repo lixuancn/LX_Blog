@@ -390,9 +390,11 @@ class DbModel {
 		$url = Request::getFullPath();
 		$url = preg_replace("/([-]*page-[0-9]*)/i", "", $url);
         $postfix = '';
-        if(preg_match("/(.*)\?(.*)/", $url, $matchs)){
-            $url = $matchs['1'];
-            $postfix = '?'.$matchs['2'];
+
+        $strpos = strpos($url, '?');
+        if($strpos !== false){
+            $postfix = substr($url, $strpos);
+            $url = substr($url, 0, $strpos);
         }
 		$s = strpos($url, '-') === FALSE ? '' : '-';
 		$pages = ceil($total/$pagesize);

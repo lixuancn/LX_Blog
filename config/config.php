@@ -9,7 +9,7 @@
  */
 //系统名称
 define('WEB_NAME', 'Lane 博客');
-define('PROJECT_NAME', 'weixin');
+define('PROJECT_NAME', 'LaneBlog');
 
 //总开关, false为正常运营, true为停服维护中
 define('SERVICE_STOP', false);
@@ -29,11 +29,8 @@ define('TIMEZONE', 'Etc/GMT-8');
 //启用GIP
 define('GZIP_COMPRESS', 0);
 
-//启用后台操作日志
-define('ENABLE_ADMIN_LOG', 1);
-
-//快捷键设置
-define("BACK_TOP", "0"); //返回顶层
+//密码干扰
+define("PASSWORD_INTERFERE", "Lane"); //用于密码加密时
 
 //Cookie、Session配置
 define('COOKIE_DOMAIN', ''); //cookie 作用域

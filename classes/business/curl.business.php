@@ -27,9 +27,9 @@ class CurlBusiness {
         $param = empty($param) ? array() : $param;
         $curlObj = new Curl();
         if ($method == 'get') {
-            $ret = $curlObj->httpGet($queryUrl, '', $param);
+            $ret = $curlObj->httpGet($queryUrl, GAME_URL, $param);
         } elseif($method == 'post') {
-            $ret = $curlObj->httpPost($queryUrl, '', $param);
+            $ret = $curlObj->httpPost($queryUrl, GAME_URL, $param);
         }
         if(!empty($ret)){
             return json_decode($ret, true);

@@ -49,7 +49,7 @@ class MenuDbModel extends DbModel{
 //        Mcache::delete(self::MC_MENU_LIST);
 //        Mcache::delete(self::MC_MENU_INFO . $id);
         $where = "`id` = '".$id."'";
-        return $this->deleteOne($this->_tableName, $id);
+        return $this->deleteOne($this->_tableName, $where);
     }
 
     /**
