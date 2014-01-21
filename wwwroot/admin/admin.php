@@ -11,6 +11,7 @@ class Admin extends AdminController {
     protected $sessionId = 'admin_user_login';
 
 	public function __construct() {
+        parent::__construct();
 		$this->adminUserObj = new AdminUserModel();
 	}
 	
@@ -18,6 +19,7 @@ class Admin extends AdminController {
 	 * 管理员分页列表...
 	 */
 	public function lists() {
+        parent::__construct();
 		$adminUserList = $this->adminUserObj->getList();
 	    View::assign('adminUserList', $adminUserList);
 		View::showAdminTpl('admin_list');
@@ -51,7 +53,7 @@ class Admin extends AdminController {
             }
         }
         //显示表单页
-        View::showAdminTpl('admin_add');
+        View::showAdminTpl('admin_user_add');
 	}
 	
 	/**
@@ -84,7 +86,7 @@ class Admin extends AdminController {
                 View::showErrorMessage($jumpurl, '修改管理员失败!');
             }
         }
-		View::showAdminTpl('admin_edit');
+		View::showAdminTpl('admin_user_edit');
 	}
 	
 	/**

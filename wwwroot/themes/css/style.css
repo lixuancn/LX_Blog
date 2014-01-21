@@ -1,140 +1,105 @@
-/*********************
-	HTML Elements
-*********************/
-*{
-	margin:0;
-	padding:0;
-}
-body{
-	font-size: 12px;
-	font-family:Arial, Tahoma, Verdana;
-	background-color:#F7F6F0;
-}
-a, a:visited{
-	text-decoration:none;
-}
-img{
-	border:0;
-	margin:1px;
-}
-p{
-	padding:3px;
-}
-h2{
-
-}
-input{
-	padding:2px;
-}
-select{
-	padding:2px;
-}
-/*********************
-	Structure
-*********************/
-#container{
-	width:100%;
-	margin-left:auto;
-	margin-right:auto;
-}
-#box h3{
-	padding:5px;
-	font-size:14px;
-}
-/*********************
-		Home
-*********************/
-#content{
-	width:96%;
-	float:left;
-	margin-top:10px;
-	padding:10px;
-}
-.margin-left{
-	margin-left:5px;
-}
-/*********************
-		Forms
-*********************/
-form{
-	padding:10px;
-	margin:0 auto;
-}
-form#form fieldset {
-	display:block;
-	padding:5px 10px 5px 10px;
-	line-height:20px;
-	margin-bottom:10px;
+body {
+    padding-top: 20px;
 }
 
-form#form legend {
-	font-size:12px;
-	font-weight:bold;
-	margin-bottom:5px;
-	padding:3px 8px;
+.center {
+    display: table;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
-form#form label {
-	clear:left;
-	display:block;
-	float:left;
-	width:100px;
-	text-align:right;
-	padding-right:10px;
-	margin-bottom:5px;
-}
-form#form input {
-	padding:3px;
-	margin-bottom:5px;
-}
-form#form select {
-}
-form#form textarea {
-	width:400px;
-	height:100px;
-	padding:5px;
-	overflow:auto;
-	font-size:12px;
-}
-form#form option {
-	background:#FFF;
-}
-form#form optgroup option {
 
+.blank-line {
+    height:20px;
 }
-form#form #button1, form#form #button2 {
-	padding:3px 8px;
-	cursor:pointer;
-	margin-left:8px;
-	font-weight:bold;
-}
-form#form #button1:hover, form#form #button2:hover {
-	background-position:center left;
-}
-form#search {	
-	padding:3px;
-	margin:0 auto;
-}
-form#listform {
-	padding:0px;
-}
-/*********************
-		Tables
-*********************/
-table{
-	margin:5px;
-	border-collapse: collapse;
-	table-layout:automatic;
-	width:98%;
-}
-td, th{
-	padding: 2px;
-} 
-thead{
 
+.div-margin {
+    margin-right: 27px;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
-/*********************
-		Page Nav 
-*********************/
-#pager {
-	padding: 2px 5px;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.index-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6633FF;
+}
+
+.align-center {
+    text-align: center;
+}
+
+/* This is a LOGO Begin---------- */
+
+.logo {
+    position: relative;
+    text-align: center;
+}
+.logo h1 {
+    margin-bottom: 9px;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+.logo p {
+    margin-bottom: 18px;
+    font-weight: 300;
+}
+
+@media (max-width: 480px) {
+    .logo h1,
+    .logo p {
+        text-align: center;
+        margin-right: 0px;
+    }
+    .logo h1 {
+        font-size: 45px;
+        margin-right: 0px;
+    }
+    .logo p {
+        margin-right: 0px;
+        margin-left: 0px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .logo h1 {
+        font-size: 54px;
+    }
+    .logo p {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+    .logo h1 {
+        font-size: 72px;
+    }
+}
+
+/* This is a LOGO End----------*/
+
+.search {
+    margin: 3px;
+}
+
+.search input {
+    height: 25px;
+}
+
+blockquote p {
+    font-size: 13px;
 }

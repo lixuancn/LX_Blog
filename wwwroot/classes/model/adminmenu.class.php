@@ -1,11 +1,12 @@
 <?php
 /**
- * 管理员相关
- * @Class AdminUserDbModel
+ * 后台分类菜单
+ * Created by Lane.
+ * @Class AdminMenuModel
  * @Author: lane
  * @Mail: lixuan868686@163.com
  */
-class AdminUserModel extends DbModel{
+class AdminMenuModel extends DbModel{
 
     protected $_tableName = 'admin_menu';
 
@@ -51,15 +52,15 @@ class AdminUserModel extends DbModel{
     }
 
     /**
-     * @descrpition 获取单条记录
-     * @param int $id
+     * @descrpition 获取列表
      * @param bool $real
-     * @return bool|multitype
+     * @return Ambigous|bool
      */
-    public function getByUsername($username){
-        $where = "`username` = '".$username."'";
+    public function getList() {
+        $where = 1;
         $fields = '*';
-        return $this->selectOne($this->_tableName, $where, $fields);
+        $order = '`id` ASC';
+        return $this->selectList($this->_tableName, $where, $fields, $order);
     }
 
     /**
@@ -67,8 +68,8 @@ class AdminUserModel extends DbModel{
      * @param bool $real
      * @return Ambigous|bool
      */
-    public function getList() {
-        $where = 1;
+    public function getListByPid($pid=0) {
+        $where = "`pid` = '".$pid."'";
         $fields = '*';
         $order = '`id` ASC';
         return $this->selectList($this->_tableName, $where, $fields, $order);

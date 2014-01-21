@@ -49,6 +49,7 @@ function __autoload($className) {
 	}
 
     //引入后台Class目录文件
+    $className = strtolower($className);
     if (preg_match("/(model)$/i", $className, $matches)) {
         $className = strtolower(str_replace(array(ucfirst($matches[1]), strtolower($matches['1'])), '',$className));
         $filename = ADMIN_CLASSES_PATH . strtolower($matches['1']) . "/" . $className . ".class.php";

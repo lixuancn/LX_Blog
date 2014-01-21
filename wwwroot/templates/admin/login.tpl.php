@@ -1,50 +1,98 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title><?php echo WEB_NAME?> - 后台管理系统</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="<?php echo ADMIN_CSS_DIR?>login-box.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo ADMIN_JS_DIR?>jquery-1.5.1.min.js"></script>
-</head>
+<?php
+include 'header.tpl.php';
+?>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+            <div class="row-fluid">
+                <div class="span12">
+                    <blockquote>
+                        <p class="index-title"><a href="<?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
+                        <p>Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></p>
+                        <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo $tag;}?></p>
+                    </blockquote>
+                    <p><?php echo $article['content'];?></p>
+                </div>
+        	</div>
+            <div class="blank-line"></div>
+            <?php foreach($commentList as $comment){?>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <blockquote>
+                            <p>Reply: <a rel="nofollow" href="<?php echo $comment['website'];?>"><?php echo $comment['nickname'];?></a> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
+                        </blockquote>
+                        <p><?php echo $comment['content'];?></p>
+                    </div>
+                </div>
+            <?php }?>
+            <div class="blank-line"></div>
+        	<form class="form-horizontal" action="<?php echo GAME_URL?>article/addcomment/" method="post">
+        	    <fieldset>
+                    <legend>Add Comment</legend>
+                    <div class="control-group">
+		                <label class="control-label" for="input01">Name OR Nickname:</label>
+		                <div class="controls">
+		                    <input type="text" class="input-large search-query" name="nickname">
+		                </div>
+		            </div>
+                    <div class="control-group">
+		                <label class="control-label" for="input01">E-mail Address::</label>
+		                <div class="controls">
+		                    <input type="text" class="input-large search-query" name="email">
+		                </div>
+		            </div>
+		            <div class="control-group">
+		                <label class="control-label" for="input01">Website:</label>
+		                <div class="controls">
+		                    <input type="text" class="input-large search-query" name="website">
+		                </div>
+		            </div>
+		            <div class="control-group">
+		                <label class="control-label" for="input01">Comment:</label>
+		                <div class="controls">
+		                    <textarea class="input-large search-query" rows="3" name="content"></textarea>
+		                </div>
+		            </div>
+		            <div class="control-group">
+		                <label class="control-label" for="input01">Captcha:</label>
+		                <div class="controls">
+		                    <input type="text" class="input-small search-query" name="captcha"><img src="<?php echo GAME_URL?>extend/captcha" onclick="this.src='<?php echo GAME_URL?>extend/captcha/id-'+new Date().getTime()">
+		                </div>
+		            </div>
+        	    <div class="form-actions">
+                    <input type="hidden" name="aid" value="<?echo $article['id'];?>">
+                    <input type="hidden" name="mid" value="<?echo $article['mid'];?>">
+		            <button type="submit" class="btn btn-primary">保存更改</button>
+		            <button class="btn">取消</button>
+		        </div>
+            </form>
+        </div>
 
-<body>
-<div id="content">
-	<div id="login-box">
-	<form id="login-form" method="post" action="/<?php echo $path?>/<?php echo $file?>/<?php echo $action?>" name="login">
-		<h2><?php echo WEB_NAME?> - 管理后台</h2>
-		<br />
-		<div id="login-box-name" style="margin-top:20px;">用户名:</div>
-		<div id="login-box-field" style="margin-top:20px;"><input id="username" name="username" class="form-login" title="Username" value="<?php echo $username?>" size="30" /></div>
-		<div id="login-box-name">密码:</div>
-		<div id="login-box-field"><input id="passwd" name="passwd" type="password" class="form-login" title="passwd" value="<?php echo $passwd?>" size="30" /></div>
-
-		<br />
-		<span class="login-box-options"><input type="checkbox" name="rememberme" value="1" <?php echo empty($rememberKey)?'':'checked="checked"'?>/> Remember Me </span>
-		<br />
-		<br />
-		<img id="login-button" src="<?php echo ADMIN_IMAGE_DIR?>login-btn.png" width="103" height="42" style="margin-left:90px;" />
-		<input type="hidden" name="dosubmit" value=" 登 录 " />
-	</form>
-	</div>
-	<div id="footer"><p style="color:#ffffff;text-align:center;">Powered by <a href="" target="_blank"><b>Lane</b></a>&nbsp;&copy;&nbsp;2014&nbsp;</p></div>
+        <div class="span4">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3>分类热门的文章</h3>
+                    <?php foreach($articleHotList as $article){ ?>
+                        <p><a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
+                    <?php }?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3>分类最新的评论</h3>
+                    <?php foreach($commentNewList as $comment){ ?>
+                        <p><a rel="nofollow" href="<?php echo $comment['website'];?>"><?php echo $comment['nickname'];?></a> On <a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $comment['aid'];?>"><?php echo $comment['content'];?></a></p>
+                    <?php }?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3>本分类的Tag</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<script type="text/javascript">
-$().ready(function() {
-	$("#login-button").click(function(){
-		if ($("#username").val() == '' ) {
-			alert('请输入用户名！');
-			$("#username").focus();
-		} else if ($("#passwd").val() == '') {
-			alert('请输入密码！');
-			$("#passwd").focus();
-		} else {
-			var flag = window.confirm('你确定要进入<?php echo WEB_NAME?>后台吗');
-			if (flag) {
-				$("#login-form").submit();
-			}
-		}
-	});
-});
-</script>
-</body>
-</html>
+<?php
+include 'footer.tpl.php';
+?>
