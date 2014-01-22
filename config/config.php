@@ -8,7 +8,7 @@
  * @Time: 下午4:22
  */
 //系统名称
-define('WEB_NAME', 'Lane 博客');
+define('WEB_NAME', 'Lane Blog');
 define('PROJECT_NAME', 'LaneBlog');
 
 //总开关, false为正常运营, true为停服维护中
@@ -16,6 +16,9 @@ define('SERVICE_STOP', false);
 
 //启用调试信息，1是开启
 define('DEBUG', 1);
+
+//是否打印Mysql错误信息
+define('PRINT_MYSQL_ERROR', 1);
 
 //WEB服务器部署环境：开发、线上
 define('WEB_SERVER', 'develop'); //'develop', 'online'

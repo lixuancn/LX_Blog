@@ -30,41 +30,42 @@ include 'header.tpl.php';
         	    <fieldset>
                     <legend>Add Comment</legend>
                     <div class="control-group">
-		                <label class="control-label" for="input01">Name OR Nickname:</label>
+		                <label class="control-label" for="input01">Name OR Nickname: </label>
 		                <div class="controls">
 		                    <input type="text" class="input-large search-query" name="nickname">
 		                </div>
 		            </div>
                     <div class="control-group">
-		                <label class="control-label" for="input01">E-mail Address::</label>
+		                <label class="control-label" for="input01">E-mail Address: </label>
 		                <div class="controls">
 		                    <input type="text" class="input-large search-query" name="email">
 		                </div>
 		            </div>
 		            <div class="control-group">
-		                <label class="control-label" for="input01">Website:</label>
+		                <label class="control-label" for="input01">Website: </label>
 		                <div class="controls">
 		                    <input type="text" class="input-large search-query" name="website">
 		                </div>
 		            </div>
 		            <div class="control-group">
-		                <label class="control-label" for="input01">Comment:</label>
+		                <label class="control-label" for="input01">Comment: </label>
 		                <div class="controls">
 		                    <textarea class="input-large search-query" rows="3" name="content"></textarea>
 		                </div>
 		            </div>
 		            <div class="control-group">
-		                <label class="control-label" for="input01">Captcha:</label>
+		                <label class="control-label" for="input01">Captcha: </label>
 		                <div class="controls">
 		                    <input type="text" class="input-small search-query" name="captcha"><img src="<?php echo GAME_URL?>extend/captcha" onclick="this.src='<?php echo GAME_URL?>extend/captcha/id-'+new Date().getTime()">
 		                </div>
 		            </div>
-        	    <div class="form-actions">
-                    <input type="hidden" name="aid" value="<?echo $article['id'];?>">
-                    <input type="hidden" name="mid" value="<?echo $article['mid'];?>">
-		            <button type="submit" class="btn btn-primary">保存更改</button>
-		            <button class="btn">取消</button>
-		        </div>
+                    <div class="form-actions">
+                        <input type="hidden" name="aid" value="<?echo $article['id'];?>">
+                        <input type="hidden" name="mid" value="<?echo $article['mid'];?>">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                        <button type="reset" class="btn">取消</button>
+                    </div>
+                </fieldset>
             </form>
         </div>
 

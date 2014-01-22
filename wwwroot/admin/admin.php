@@ -10,8 +10,8 @@ class Admin extends AdminController {
 
     protected $sessionId = 'admin_user_login';
 
-	public function __construct() {
-        parent::__construct();
+	public function __construct($param) {
+        parent::__construct($param);
 		$this->adminUserObj = new AdminUserModel();
 	}
 	
@@ -19,7 +19,6 @@ class Admin extends AdminController {
 	 * 管理员分页列表...
 	 */
 	public function lists() {
-        parent::__construct();
 		$adminUserList = $this->adminUserObj->getList();
 	    View::assign('adminUserList', $adminUserList);
 		View::showAdminTpl('admin_list');
@@ -31,7 +30,7 @@ class Admin extends AdminController {
 	public function add() {
         //表单提交处理
         if (Request::getRequest('dosubmit', 'str')) {
-            $jumpurl = '/admin.php/admin/lists';
+            $jumpurl = '/admin.php/admin/add';
             $username = Request::getRequest('username', 'str');
             $password = Request::getRequest('password', 'str');
             $password1 = Request::getRequest('password1', 'str');
@@ -44,27 +43,27 @@ class Admin extends AdminController {
             }
             $fields = array();
             $fields['username'] = $username;
-            $fields['password'] = md5($username.PASSWORD_INTERFERE.$password);
+            $fields['password'] = strtolower(md5($username.PASSWORD_INTERFERE.$password));
             $result = $this->adminUserObj->add($fields);
             if ($result === true) {
                 View::showMessage($jumpurl, '添加管理员成功!');
             } else {
-                View::showErrorMessage($jumpurl, '添加管理员失败!');
+                View::showErrorMessage($jumpurl, '用户名已经存在');
             }
         }
         //显示表单页
-        View::showAdminTpl('admin_user_add');
+        View::showAdminTpl('admin_add');
 	}
 	
 	/**
 	 * 编辑管理员 ...
 	 */
 	public function edit() {
-        $jumpurl = '/admin.php/admin/lists';
-        $id = Request::getRequest('id', 'str');
+        $id = $this->param['id'];
+        $jumpurl = '/admin.php/admin/edit/id-'.$id;
         $adminUser = $this->adminUserObj->get($id);
         if (empty($adminUser)) {
-            View::showErrorMessage($jumpurl, '该管理员不存在!');
+            View::showErrorMessage('/admin.php/admin/lists', '该管理员不存在!');
         }
         //表单提交处理
         if (Request::getRequest('dosubmit', 'str')) {
@@ -78,15 +77,16 @@ class Admin extends AdminController {
                 View::showErrorMessage($jumpurl, '密码不正确!');
             }
             $fields = array();
-            $fields['password'] = md5($adminUser['username'].PASSWORD_INTERFERE.$password);
-            $result = $this->adminUserObj->add($fields);
+            $fields['password'] = strtolower(md5($adminUser['username'].PASSWORD_INTERFERE.$password));
+            $result = $this->adminUserObj->edit($id, $fields);
             if ($result) {
                 View::showMessage($jumpurl, '修改管理员成功!');
             } else {
                 View::showErrorMessage($jumpurl, '修改管理员失败!');
             }
         }
-		View::showAdminTpl('admin_user_edit');
+        View::assign('adminUser', $adminUser);
+		View::showAdminTpl('admin_edit');
 	}
 	
 	/**
@@ -94,11 +94,10 @@ class Admin extends AdminController {
 	 */
 	public function delete() {
         $jumpurl = '/admin.php/admin/lists';
-        $id = Request::getRequest('id', 'str');
+        $id = $this->param['id'];
 		if (!$id) {
 			View::showErrorMessage($jumpurl, '管理员ID不能为空!');
 		}
-		
 		if ($this->adminUserObj->del($id)) {
 			View::showMessage($jumpurl, "删除管理员成功!");
 		} else {
@@ -113,7 +112,7 @@ class Admin extends AdminController {
     public function login() {
         $loginInfo = Request::getSession($this->sessionId);
         if (!empty($loginInfo) && !empty($loginInfo['username']) && !empty($loginInfo['id'])) {
-            View::showMessage('/admin.php/admin/list', '已经登录!');
+            View::showMessage('/admin.php/index/main', '已经登录!');
         }
 
         //表单提交处理
@@ -122,12 +121,13 @@ class Admin extends AdminController {
             $password = Request::getRequest('password', 'str');
             $password = md5($username.PASSWORD_INTERFERE.$password);
             $result = $this->adminUserObj->getByUsername($username);
+
             if (isset($result) && $result['password'] == $password) {
                 $session = array();
                 $session['id'] = $result['id'];
                 $session['username'] = $result['username'];
                 Response::setSession($this->sessionId, $session);
-                View::showMessage('/admin.php/frame/index', '登录后台成功!');
+                View::jsJump('/admin.php/index/main');
             } else {
                 View::showErrorMessage('/admin.php/admin/login', '登录后台失败!');
             }
@@ -138,7 +138,7 @@ class Admin extends AdminController {
     /**
      * 后台登出 ...
      */
-    public function logout() {
+    public function loginout() {
         Response::delSession($this->sessionId);
         View::showMessage('/admin.php/admin/login', "退出后台成功!");
     }

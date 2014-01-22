@@ -135,17 +135,22 @@ class Mysqlrw{
 		}
 		
 		if (!$query) {
-			$errno = $this->errno();
-			if($errno == 0){//如果是error 0 再重试一次
-				$query = @mysql_query($sql, $this->conn);
-				if(!$query){
-					$this->halt('Mysql query error:' . $sql);
-				}
-			}else{
-				$this->halt('Mysql query error:' . $sql);
-			}
+			if(PRINT_MYSQL_ERROR){
+                $errno = $this->errno();
+                if($errno == 0){//如果是error 0 再重试一次
+                    $query = @mysql_query($sql, $this->conn);
+                    if(!$query){
+                        $this->halt('Mysql query error:' . $sql);
+                    }
+                }else{
+                    $this->halt('Mysql query error:' . $sql);
+                }
+            }
+            return false;
 		}
 		//echo "<br/>".$this->get_host_info()."<br/>";
+
+
 		return $query;
 	}
 	
@@ -206,7 +211,7 @@ class Mysqlrw{
 				<b>Error</b>: $dberror<br>
 				<b>Errno.</b>: $dberrno<br>
 				</div>";
-		exit();
+//		exit();
 		//throw new DBException($msg);
 	}
 }

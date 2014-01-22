@@ -7,7 +7,7 @@
  */
 class AdminUserModel extends DbModel{
 
-    protected $_tableName = 'admin_menu';
+    protected $_tableName = 'admin_user';
 
     /**
      * @descrpition 添加数据

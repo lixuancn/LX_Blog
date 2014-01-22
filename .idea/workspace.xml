@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="188ab0c1-e543-4af9-a8e8-ce582e93d64e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/img/favicon.ico" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/front/header.tpl.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/front/index.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/img/favicon.ico" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/templates/front/head.tpl.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.php" afterPath="$PROJECT_DIR$/core/core.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apis/index.php" afterPath="$PROJECT_DIR$/apis/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.php" afterPath="$PROJECT_DIR$/config/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.php" afterPath="$PROJECT_DIR$/core/core.php" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,37 +32,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wwwroot/admin/admin.php">
+      <file leaf-file-name="admin_edit.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/admin_edit.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="19" selection-start="246" selection-end="246" vertical-scroll-proportion="-6.6666665" vertical-offset="54" max-vertical-offset="2718">
+            <state line="18" column="89" selection-start="997" selection-end="997" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="828">
+              <folding>
+                <marker date="1390394804131" expanded="true" signature="414:450" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_add.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/admin_add.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="49" selection-start="1697" selection-end="1697" vertical-scroll-proportion="-20.666666" vertical-offset="0" max-vertical-offset="828">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admincontroller.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/admincontroller.class.php">
+      <file leaf-file-name="core.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/core.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="25" selection-start="660" selection-end="660" vertical-scroll-proportion="-18.0" vertical-offset="0" max-vertical-offset="756">
+            <state line="139" column="45" selection-start="3620" selection-end="3620" vertical-scroll-proportion="0.13166855" vertical-offset="2260" max-vertical-offset="3798">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/index.tpl.php">
+      <file leaf-file-name="admin_list.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/admin_list.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="22" selection-start="4648" selection-end="4648" vertical-scroll-proportion="-31.814816" vertical-offset="761" max-vertical-offset="1854">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.tpl.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/header.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="58" selection-start="1872" selection-end="1876" vertical-scroll-proportion="0.6935301" vertical-offset="73" max-vertical-offset="1548">
+            <state line="22" column="155" selection-start="981" selection-end="981" vertical-scroll-proportion="-14.666667" vertical-offset="0" max-vertical-offset="684">
               <folding />
             </state>
           </provider>
@@ -86,22 +88,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config/config.php" />
-        <option value="$PROJECT_DIR$/wwwroot/admin/login.php" />
-        <option value="$PROJECT_DIR$/wwwroot/classes/model/adminuser.dbmodel.php" />
-        <option value="$PROJECT_DIR$/core/core.php" />
-        <option value="$PROJECT_DIR$/wwwroot/classes/model/menu.dbmodel.php" />
-        <option value="$PROJECT_DIR$/wwwroot/classes/model/adminuser.class.php" />
-        <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/wwwroot/templates/admin/index.tpl.php" />
-        <option value="$PROJECT_DIR$/wwwroot/templates/admin/login.tpl.php" />
-        <option value="$PROJECT_DIR$/wwwroot/themes/css/style.css" />
-        <option value="$PROJECT_DIR$/wwwroot/classes/model/adminmenu.dbmodel.php" />
-        <option value="$PROJECT_DIR$/wwwroot/templates/admin/header.tpl.php" />
-        <option value="$PROJECT_DIR$/wwwroot/admin/admin.php" />
-        <option value="$PROJECT_DIR$/core/init.php" />
-        <option value="$PROJECT_DIR$/wwwroot/classes/model/adminmenu.class.php" />
         <option value="$PROJECT_DIR$/core/admincontroller.class.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/index.tpl.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/admin_user_list.php" />
+        <option value="$PROJECT_DIR$/wwwroot/admin/index.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/header.tpl.php" />
+        <option value="$PROJECT_DIR$/config/develop/sys.conf.php" />
+        <option value="$PROJECT_DIR$/config/online/sys.conf.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/admin_edit.tpl.php" />
+        <option value="$PROJECT_DIR$/templates/front/article.tpl.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/admin_add.tpl.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/login.tpl.php" />
+        <option value="$PROJECT_DIR$/wwwroot/templates/admin/admin_list.tpl.php" />
+        <option value="$PROJECT_DIR$/core/database/mysqlrw.class.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
+        <option value="$PROJECT_DIR$/wwwroot/admin/admin.php" />
+        <option value="$PROJECT_DIR$/core/core.php" />
       </list>
     </option>
   </component>
@@ -138,6 +140,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,6 +230,28 @@
               <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wwwroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -242,27 +267,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="fileTemplates" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jianghu" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jianghu-admin/templates/admin/activity_list.tpl.php" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/wwwroot/templates/admin" />
+      <recent name="$PROJECT_DIR$/wwwroot/admin" />
+      <recent name="$PROJECT_DIR$/apis" />
       <recent name="$PROJECT_DIR$/wwwroot/classes/model" />
       <recent name="$PROJECT_DIR$/classes/dbmodel" />
-      <recent name="$PROJECT_DIR$/wwwroot/themes" />
-      <recent name="$PROJECT_DIR$/classes/constant" />
     </key>
   </component>
   <component name="RunManager">
@@ -317,7 +369,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1638207" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16542156" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -346,9 +398,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17395945" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -365,114 +417,119 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/css/style.css">
+    <entry file="file://$PROJECT_DIR$/../jianghu-admin/templates/admin/activity_list.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="0" selection-end="1341" vertical-scroll-proportion="0.3171806" vertical-offset="0" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wwwroot/themes/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="1" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0" vertical-offset="1072" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/business/article.business.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2124">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/index.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="19" selection-start="25" selection-end="25" vertical-scroll-proportion="0.020737328" vertical-offset="0" max-vertical-offset="1422">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/header.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="88" selection-start="1335" selection-end="1411" vertical-scroll-proportion="0.35641316" vertical-offset="190" max-vertical-offset="1098">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/libraries/func.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="274" column="27" selection-start="6814" selection-end="6814" vertical-scroll-proportion="0.7200461" vertical-offset="4217" max-vertical-offset="5112">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="135" selection-end="135" vertical-scroll-proportion="0.18388195" vertical-offset="0" max-vertical-offset="881">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apis/article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="172" selection-end="172" vertical-scroll-proportion="0.2247446" vertical-offset="0" max-vertical-offset="1566">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wwwroot/classes/model/adminuser.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="68" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.6220204" vertical-offset="550" max-vertical-offset="1458">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="895">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/init.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="8" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.7150965" vertical-offset="216" max-vertical-offset="1296">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wwwroot/admin/admin.php">
+    <entry file="file://$PROJECT_DIR$/apis/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="19" selection-start="246" selection-end="246" vertical-scroll-proportion="-6.6666665" vertical-offset="54" max-vertical-offset="2718">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/admincontroller.class.php">
+    <entry file="file://$PROJECT_DIR$/wwwroot/themes/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="25" selection-start="660" selection-end="660" vertical-scroll-proportion="-18.0" vertical-offset="0" max-vertical-offset="756">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/index.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="22" selection-start="4648" selection-end="4648" vertical-scroll-proportion="-31.814816" vertical-offset="761" max-vertical-offset="1854">
+        <state line="2001" column="0" selection-start="38286" selection-end="38286" vertical-scroll-proportion="0.3329609" vertical-offset="35720" max-vertical-offset="71928">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/login.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="17" selection-start="23" selection-end="23" vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="1854">
+        <state line="46" column="45" selection-start="2280" selection-end="2280" vertical-scroll-proportion="0.6935301" vertical-offset="217" max-vertical-offset="1098">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wwwroot/classes/model/adminmenu.class.php">
+    <entry file="file://$PROJECT_DIR$/templates/front/article.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="36" selection-start="1572" selection-end="1572" vertical-scroll-proportion="0.877412" vertical-offset="505" max-vertical-offset="1476">
+        <state line="65" column="45" selection-start="3556" selection-end="3569" vertical-scroll-proportion="0.5564516" vertical-offset="687" max-vertical-offset="1872">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/header.tpl.php">
+    <entry file="file://$PROJECT_DIR$/core/dbmodel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="58" selection-start="1872" selection-end="1876" vertical-scroll-proportion="0.6935301" vertical-offset="73" max-vertical-offset="1548">
+        <state line="258" column="33" selection-start="7034" selection-end="7034" vertical-scroll-proportion="-19.851852" vertical-offset="3982" max-vertical-offset="7902">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/admin_list.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="155" selection-start="981" selection-end="981" vertical-scroll-proportion="-14.666667" vertical-offset="0" max-vertical-offset="684">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wwwroot/classes/model/adminuser.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="29" selection-start="306" selection-end="306" vertical-scroll-proportion="0.32690126" vertical-offset="0" max-vertical-offset="1458">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/database/mysqlrw.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="28" selection-start="4529" selection-end="4529" vertical-scroll-proportion="1.8785471" vertical-offset="1819" max-vertical-offset="3888">
+          <folding>
+            <marker date="1390395656691" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1390395656691" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/admincontroller.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="35" selection-start="411" selection-end="411" vertical-scroll-proportion="0.4290579" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="29" selection-start="347" selection-end="348" vertical-scroll-proportion="0.26560727" vertical-offset="0" max-vertical-offset="1944">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wwwroot/admin/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="9" selection-start="3102" selection-end="3102" vertical-scroll-proportion="-0.06242906" vertical-offset="1837" max-vertical-offset="2718">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/admin_edit.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="89" selection-start="997" selection-end="997" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="828">
+          <folding>
+            <marker date="1390394804131" expanded="true" signature="414:450" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wwwroot/templates/admin/admin_add.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="49" selection-start="1697" selection-end="1697" vertical-scroll-proportion="-20.666666" vertical-offset="0" max-vertical-offset="828">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="45" selection-start="3620" selection-end="3620" vertical-scroll-proportion="0.13166855" vertical-offset="2260" max-vertical-offset="3798">
           <folding />
         </state>
       </provider>

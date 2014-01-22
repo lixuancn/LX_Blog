@@ -7,7 +7,7 @@
  * Time: 下午4:44
  */
 //后台访问域名
-define('ADMIN_URL', 'http://www.lanecn.com/admin');
+define('ADMIN_URL', 'http://www.lanecn.com/admin.php/');
 
 //游戏域名
 define('GAME_DOMAIN', 'www.lanecn.com');

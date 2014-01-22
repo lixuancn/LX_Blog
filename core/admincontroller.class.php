@@ -30,14 +30,22 @@ class AdminController {
         $this->param = $param;
         //分类菜单相关
         $adminMenuObi = new AdminMenuModel();
-        $this->menuList = $adminMenuObi->getListByPid();
+        $this->menuList = $adminMenuObi->getList();
         $this->menuList = Func::arrayKey($this->menuList);
-        $actionMenuId = 0;
-        if(isset($param['mid']) && isset($this->menuList[$param['mid']])){
-            $actionMenuId = $param['mid'];
+        $menuList = array();
+        foreach($this->menuList as $menu){
+            if(isset($this->menuList[$menu['pid']])){
+                $this->menuList[$menu['pid']]['son'][] = &$this->menuList[$menu['id']];
+            }else{
+                $menuList[] = &$this->menuList[$menu['id']];
+            }
         }
-        View::assign('actionMenuId', $actionMenuId);
-        View::assign('menuList', $this->menuList);
+        $actionMenuPid = 0;
+        if(isset($param['mpid']) && isset($this->menuList[$param['mpid']])){
+            $actionMenuPid = $param['mpid'];
+        }
+        View::assign('actionMenuPid', $actionMenuPid);
+        View::assign('menuList', $menuList);
     }
 }
 

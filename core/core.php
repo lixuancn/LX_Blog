@@ -143,6 +143,40 @@ class APP {
         return $params;
     }
 
+    /**
+     * 后台路由转发 ...
+     */
+    protected static function _initAdminRoute() {
+        $params = array('entry'=>'admin.php', 'file'=>'index', 'action'=>'main', 'param' =>'');
+        if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
+            $params['entry'] = $matches[1] ? $matches[1] : 'admin.php';
+            $params['file'] = $matches[3] ? $matches[3] : 'index';
+            $params['action'] = $matches[5] ? $matches[5] : 'main';
+            $params['param'] = $matches[7] ? $matches[7] : '';
+        }
+        //把GET部分删掉，最后在合并
+        $strpos = strpos($params['param'], '?');
+        if($strpos !== false){
+            $params['param'] = substr($params['param'], 0, $strpos);
+        }
+        $param = array();
+        $params['param'] = explode('-', $params['param']);
+        if(count($params['param']) % 2 != 0){
+            array_pop($params['param']);
+        }
+        foreach ($params['param'] as $k => $p){
+            if($k%2 == 0){
+                $param[$p] = $params['param'][$k+1];
+            }
+        }
+
+        $param = array_merge($param, $_GET);
+        $param = array_merge($param, $_POST);
+        $params['param'] = $param;
+
+        return $params;
+    }
+
 	/**
 	 * 后台请求处理 ...
      * www目录下，处理网页需求
@@ -167,29 +201,12 @@ class APP {
         }
         //调用控制器
         require_once $controlFile;
-        $object = new $file();
+        $object = new $file($param);
         if (!method_exists($object, $action)) {
             exit("Method '$file::$action' not exists!");
         }
 
         $object->$action();
-    }
-
-    /**
-     * 后台路由转发 ...
-     */
-    protected static function _initAdminRoute() {
-        $params = array('path'=>'', 'file'=>'', 'action' => '');
-        if (preg_match("/\/([^\/]+)\/([^\/]+)\/([^\/\?]+)/",REQUEST_URI,$matches)) {
-            $params['entry'] = $matches[1];
-            $params['file'] = $matches[2];
-            $params['action'] = $matches[3];
-        } elseif(preg_match("/admin\.php/",REQUEST_URI)) {
-            $params['entry'] = 'admin';
-            $params['file'] = 'frame';
-            $params['action'] = 'index';
-        }
-        return $params;
     }
 }
 

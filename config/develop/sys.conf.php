@@ -7,7 +7,7 @@
  * Time: 下午4:44
  */
 //后台访问域名
-define('ADMIN_URL', 'http://www.lane.com/admin.php');
+define('ADMIN_URL', 'http://www.lane.com/admin.php/');
 
 //域名
 define('GAME_DOMAIN', 'www.lane.com');
