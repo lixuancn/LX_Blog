@@ -33,11 +33,11 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
             <a class="brand" href="<?php echo GAME_URL?>" title="Lane PHP Blog">Lane</a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li <?php if($actionMenuPid == 0){echo ' class="active"';}?>>
+                    <li class="active">
                         <a href="<?php echo ADMIN_URL?>" title="管理后台">后台首页</a>
                     </li>
                     <?php foreach($menuList as $key=>$menu){ ?>
-                    <li class="dropdown <?php if($actionMenuPid == $menu['id']){echo ' active';}?>">
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown"><?php echo $menu['name'];?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <?php foreach($menu['son'] as $son){?>

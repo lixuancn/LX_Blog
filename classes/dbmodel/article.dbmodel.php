@@ -129,6 +129,14 @@ class ArticleDbModel extends DbModel{
         if ($data) {
 //            Mcache::set(self::MC_ARTICLE_LIST, $data);
         }
+
+        $where = "`mid` = '".$mid."'";
+        $fields = '*';
+        $order = '`ctime` DESC';
+        $data = $this->selectPageList($this->_tableName, $where, $page, ParamConstant::PARAM_PAGE_SIZE, $fields, $order);
+        if($data){
+//            Mcache::set(self::MC_ARTICLE_MENU . $mid . '_' . $page, $data);
+        }
         return $data;
     }
 

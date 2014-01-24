@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014-01-20 11:54:59
+-- 生成日期: 2014-01-24 10:53:04
 -- 服务器版本: 5.5.34-0ubuntu0.13.10.1
 -- PHP 版本: 5.5.3-1ubuntu2
 
@@ -23,6 +23,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `admin_menu`
+--
+
+CREATE TABLE IF NOT EXISTS `admin_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL COMMENT '父类ID。0是顶级分类',
+  `name` varchar(50) NOT NULL COMMENT '分类名称',
+  `in_out` tinyint(4) NOT NULL COMMENT '1是站内链接，2是出站链接',
+  `url` varchar(100) NOT NULL COMMENT '出站链接地址，in_out为2是生效',
+  `class` varchar(50) NOT NULL COMMENT '站内链接，类名',
+  `action` varchar(50) NOT NULL COMMENT '站内链接，方法名',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='后台菜单分类' AUTO_INCREMENT=13 ;
+
+--
+-- 转存表中的数据 `admin_menu`
+--
+
+INSERT INTO `admin_menu` (`id`, `pid`, `name`, `in_out`, `url`, `class`, `action`) VALUES
+(1, 0, '后台分类', 1, '', '', ''),
+(2, 1, '添加分类', 1, '', 'adminmenu', 'add'),
+(3, 1, '分类列表', 1, '', 'adminmenu', 'lists'),
+(4, 0, '文章管理', 1, '', '', ''),
+(5, 4, '发表文章', 1, '', 'article', 'add'),
+(6, 4, '文章列表', 1, '', 'article', 'lists'),
+(7, 0, '管理员管理', 1, '', '', ''),
+(11, 10, '添加分类', 1, '', 'menu', 'add'),
+(8, 7, '添加管理员', 1, '', 'admin', 'add'),
+(9, 7, '管理员列表', 1, '', 'admin', 'lists'),
+(10, 0, '前台分类', 1, '', '', ''),
+(12, 10, '分类列表', 1, '', 'menu', 'lists');
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `admin_user`
 --
 
@@ -30,15 +65,16 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL COMMENT '用户名',
   `password` varchar(32) NOT NULL COMMENT '密码',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=2 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `admin_user`
 --
 
 INSERT INTO `admin_user` (`id`, `username`, `password`) VALUES
-(1, 'lixuan', '0155d4fcff178a094fdbe242a0034e71');
+(1, 'lixuan', 'bc76daa40e91dbcfada67c7b02b77c08');
 
 -- --------------------------------------------------------
 
@@ -139,15 +175,17 @@ CREATE TABLE IF NOT EXISTS `info_menu` (
   `seo_keywords` varchar(200) NOT NULL COMMENT 'SEO - 关键词',
   `in_out` tinyint(4) NOT NULL COMMENT '指向站内(1)或站外(2)',
   `pid` int(11) NOT NULL COMMENT '父类ID。0是顶级分类',
+  `url` varchar(100) NOT NULL COMMENT '出站链接地址，in_out为2是生效',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='菜单分类' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='菜单分类' AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `info_menu`
 --
 
-INSERT INTO `info_menu` (`id`, `name`, `seo_title`, `seo_description`, `seo_keywords`, `in_out`, `pid`) VALUES
-(1, '测试分类1', '测试title_测试title', '测试description,测试description,测试description', '测试title_测试title', 1, 0);
+INSERT INTO `info_menu` (`id`, `name`, `seo_title`, `seo_description`, `seo_keywords`, `in_out`, `pid`, `url`) VALUES
+(1, 'PHP', 'php_php博客_php研究', 'PHP的文章，资讯，和技术研究分享。', 'php,php博客,php研究', 1, 0, ''),
+(4, 'Mysql', 'Mysql_Mysql博客_Mysql分享', 'MYSQL的文章，资讯，和技术研究分享。', 'Mysql,Mysql博客,Mysql分享', 1, 0, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

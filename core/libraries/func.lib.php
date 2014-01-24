@@ -279,6 +279,21 @@ class Func {
         }
         return $data;
     }
+
+    /**
+     * @descrpition 无限分类的树形输出
+     */
+    public static function categoryTree($menuList){
+        $menuListTree = array();
+        foreach($menuList as $menu){
+            if(isset($menuList[$menu['pid']])){
+                $menuList[$menu['pid']]['son'][] = &$menuList[$menu['id']];
+            }else{
+                $menuListTree[] = &$menuList[$menu['id']];
+            }
+        }
+        return $menuListTree;
+    }
 }
 
 ?>

@@ -5,9 +5,9 @@ include 'header.tpl.php';
         <div class="row">
             <div class="span6 offset6">
                 <div class="page-header">
-                    <h3>Edit Administrator</h3>
+                    <h3>Edit Administration</h3>
                 </div>
-                <form class="form-horizontal" action="<?php echo ADMIN_URL?>admin/edit/id-<?php echo $adminUser['id'];?>" method="post">
+                <form class="form-horizontal" action="<?php echo ADMIN_URL?>admin/edit/" method="post">
                     <fieldset>
                         <div class="control-group">
                             <label class="control-label" for="input01">Username: </label>
@@ -28,6 +28,7 @@ include 'header.tpl.php';
                             </div>
                         </div>
                         <div class="form-actions">
+                            <input type="hidden" name="id" value="<?php echo $adminUser['id']?>">
                             <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Add Admin</button>
                             <button type="reset" class="btn">Cancel</button>
                         </div>

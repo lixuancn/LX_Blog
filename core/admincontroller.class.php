@@ -22,6 +22,17 @@ class AdminController {
     protected $menuList;
 
     /**
+     * 分类菜单列表 - 树形
+     * @var array
+     */
+    protected $menuListTree;
+
+    /**
+     * @var 分类MODEL层对象
+     */
+    protected $adminMenuObj;
+
+    /**
      *
      * 构造函数
      * @param $param 实例化时传入的参数
@@ -29,23 +40,11 @@ class AdminController {
     public function __construct($param=array()){
         $this->param = $param;
         //分类菜单相关
-        $adminMenuObi = new AdminMenuModel();
-        $this->menuList = $adminMenuObi->getList();
+        $this->adminMenuObi = new AdminMenuModel();
+        $this->menuList = $this->adminMenuObi->getList();
         $this->menuList = Func::arrayKey($this->menuList);
-        $menuList = array();
-        foreach($this->menuList as $menu){
-            if(isset($this->menuList[$menu['pid']])){
-                $this->menuList[$menu['pid']]['son'][] = &$this->menuList[$menu['id']];
-            }else{
-                $menuList[] = &$this->menuList[$menu['id']];
-            }
-        }
-        $actionMenuPid = 0;
-        if(isset($param['mpid']) && isset($this->menuList[$param['mpid']])){
-            $actionMenuPid = $param['mpid'];
-        }
-        View::assign('actionMenuPid', $actionMenuPid);
-        View::assign('menuList', $menuList);
+        $this->menuListTree = Func::categoryTree($this->menuList);
+        View::assign('menuList', $this->menuListTree);
     }
 }
 

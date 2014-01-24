@@ -1,66 +1,99 @@
 <?php
 /**
- * 菜单分类页
- * Class Menu
+ * 前台菜单分类管理
  * Created by Lane.
- * Author: lane
- * Mail lixuan868686@163.com
- * Date: 14-1-10
- * Time: 下午4:22
+ * @Class Menu
+ * @Author: lane
+ * @Mail: lixuan868686@163.com
  */
-class Menu extends Controller{
-	/**
-	 * 构造函数
-	 */
-	public function __construct($param=array()){
-		parent::__construct($param);
-	}
-	
-	/**
-	 * 分类页面
-	 */
-	public function main(){
-        //获取当前页码
-        $page = 1;
-        if(isset($this->param['page'])){
-            $page = $this->param['page'];
-        }
-        //获取分类Id
-        $mid = $this->param['mid'];
-        //获取该分类下的文章
-        $articleList = ArticleBusiness::getArticleByMid($mid, $page);
-        $pageNav = $articleList['page_nav'];
-        $articleList = $articleList['data'];
-        foreach ($articleList as $k => $article){
-            //整理数据
-            $articleList[$k]['author'] = htmlspecialchars_decode($article['author']);
-            $articleList[$k]['title'] = htmlspecialchars_decode($article['title']);
-            $articleList[$k]['description'] = htmlspecialchars_decode($article['description']);
-            $articleList[$k]['ctime'] = date('Y-m-d H:i:s', $article['ctime']);
-            $articleList[$k]['tag'] = explode('|', $article['tag']);
-            if(empty($article['description'])){
-                $articleList[$k]['description'] = mb_substr($article['content'], 0, 300, 'UTF-8');
+class Menu extends AdminController{
+    /**
+     * @descrpition 构造函数
+     */
+    public function __construct($param=array()){
+        parent::__construct($param);
+    }
+
+    /**
+     * @descrpition 列表
+     */
+    public function lists(){
+        $menuList = MenuBusiness::getMenuList();
+        $menuList = Func::arrayKey($menuList);
+        $blogMenuList = Func::categoryTree($menuList);
+        View::assign('blogMenuList', $blogMenuList);
+        View::showAdminTpl('menu_list');
+    }
+
+    /**
+     * @descrpition 添加
+     */
+    public function add(){
+        if(Request::getRequest('dosubmit', 'str')){
+            $jumpUrl = '/admin.php/menu/add/';
+            $fields = array();
+            $fields['name'] = Request::getRequest('name', 'str');
+            $fields['pid'] = Request::getRequest('pid', 'str');
+            $fields['in_out'] = Request::getRequest('in_out', 'str');
+            $fields['seo_title'] = Request::getRequest('seo_title', 'str');
+            $fields['seo_description'] = Request::getRequest('seo_description', 'str');
+            $fields['seo_keywords'] = Request::getRequest('seo_keywords', 'str');
+            $fields['url'] = Request::getRequest('url', 'str');
+            if(empty($fields['name'])){
+                View::showErrorMessage($jumpUrl, '未填写完成');
+            }
+            $result = MenuBusiness::setMenu($fields);
+            if($result){
+                View::showMessage('/admin.php/menu/lists', '添加成功');
             }else{
-                $articleList[$k]['description'] = mb_substr($article['description'], 0, 300, 'UTF-8');
+                View::showErrorMessage($jumpUrl, '添加失败');
             }
         }
+        $menuList = MenuBusiness::getMenuList();
+        $menuList = Func::arrayKey($menuList);
+        $blogMenuList = Func::categoryTree($menuList);
+        View::assign('blogMenuList', $blogMenuList);
+        View::showAdminTpl('menu_add');
+    }
 
-        //获取该分类下热门文章
-        $articleHotList = ArticleBusiness::getHotListByMid($mid);
-        foreach($articleHotList as $k=>$article){
-            $articleHotList[$k]['title'] = mb_substr($article['title'], 0, 30, 'UTF-8') . '...';
+    /**
+     * @descrpition 修改
+     */
+    public function edit(){
+        if(Request::getRequest('dosubmit', 'str')){
+            $jumpUrl = '/admin.php/menu/edit/id-'.$this->param['id'];
+            $fields = array();
+            $fields['name'] = Request::getRequest('name', 'str');
+            $fields['pid'] = Request::getRequest('pid', 'str');
+            $fields['in_out'] = Request::getRequest('in_out', 'str');
+            $fields['seo_title'] = Request::getRequest('seo_title', 'str');
+            $fields['seo_description'] = Request::getRequest('seo_description', 'str');
+            $fields['seo_keywords'] = Request::getRequest('seo_keywords', 'str');
+            $fields['url'] = Request::getRequest('url', 'str');
+            if(empty($fields['name'])){
+                View::showErrorMessage($jumpUrl, '未填写完成');
+            }
+            $result = MenuBusiness::editMenu($this->param['id'], $fields);
+            if($result){
+                View::showMessage('/admin.php/menu/lists', '添加成功');
+            }else{
+                View::showErrorMessage($jumpUrl, '添加失败');
+            }
         }
+        $menuList = MenuBusiness::getMenuList();
+        $menuList = Func::arrayKey($menuList);
+        $blogMenuList = Func::categoryTree($menuList);
+        $blogMenu = MenuBusiness::getMenu($this->param['id']);
+        View::assign('blogMenu', $blogMenu);
+        View::assign('blogMenuList', $blogMenuList);
+        View::showAdminTpl('menu_edit');
+    }
 
-        //获取该分类下最新评论
-        $commentNewList = CommentBusiness::getNewListByMid($mid);
-        foreach($commentNewList as $k=>$comment){
-            $commentNewList[$k]['content'] = mb_substr($comment['content'], 0, 30, 'UTF-8') . '...';
-        }
-
-        View::assign('commentNewList', $commentNewList);
-        View::assign('articleHotList', $articleHotList);
-        View::assign('pageNav', $pageNav);
-        View::assign('articleList', $articleList);
-		View::showFrontTpl('menu');
-	}
+    /**
+     * @descrpition 删除
+     */
+    public function delete(){
+        MenuBusiness::delMenu($this->param['id']);
+        View::showMessage('/admin.php/menu/lists', "删除分类成功!");
+    }
 }

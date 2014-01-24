@@ -7,7 +7,9 @@
  * @Mail: lixuan868686@163.com
  */
 class Index extends AdminController {
-
+    /**
+     * @descrpition 构造函数
+     */
 	public function __construct() {
         parent::__construct();
 	}

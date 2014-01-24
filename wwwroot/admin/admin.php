@@ -10,13 +10,15 @@ class Admin extends AdminController {
 
     protected $sessionId = 'admin_user_login';
 
+    protected $adminUserObj;
+
 	public function __construct($param) {
         parent::__construct($param);
 		$this->adminUserObj = new AdminUserModel();
 	}
 	
 	/**
-	 * 管理员分页列表...
+	 * @descrpition 管理员分页列表...
 	 */
 	public function lists() {
 		$adminUserList = $this->adminUserObj->getList();
@@ -25,7 +27,7 @@ class Admin extends AdminController {
 	}
 	
 	/**
-	 * 添加管理员...
+	 * @descrpition 添加管理员...
 	 */
 	public function add() {
         //表单提交处理
@@ -56,7 +58,7 @@ class Admin extends AdminController {
 	}
 	
 	/**
-	 * 编辑管理员 ...
+	 * @descrpition 编辑管理员 ...
 	 */
 	public function edit() {
         $id = $this->param['id'];
@@ -90,7 +92,7 @@ class Admin extends AdminController {
 	}
 	
 	/**
-	 * 删除管理员 ...
+	 * @descrpition 删除管理员 ...
 	 */
 	public function delete() {
         $jumpurl = '/admin.php/admin/lists';
@@ -107,7 +109,7 @@ class Admin extends AdminController {
 
 
     /**
-     * 后台登录 ...
+     * @descrpition 后台登录 ...
      */
     public function login() {
         $loginInfo = Request::getSession($this->sessionId);
@@ -136,7 +138,7 @@ class Admin extends AdminController {
     }
 
     /**
-     * 后台登出 ...
+     * @descrpition 后台登出 ...
      */
     public function loginout() {
         Response::delSession($this->sessionId);

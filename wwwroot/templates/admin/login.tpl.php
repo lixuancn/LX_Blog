@@ -29,7 +29,7 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
         <div class="span5 offset7">
             <form class="form-horizontal" action="<?php echo ADMIN_URL?>admin/login" method="post">
                 <fieldset>
-                    <legend>Welcome to <?php echo WEB_NAME?> Administrator Platform</legend>
+                    <legend>Welcome to <?php echo WEB_NAME?> Administration Platform</legend>
                     <div class="control-group">
                         <label class="control-label" for="input01">Username</label>
                         <div class="controls">
