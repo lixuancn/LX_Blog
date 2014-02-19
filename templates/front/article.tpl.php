@@ -11,7 +11,17 @@ include 'header.tpl.php';
                         <p>Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></p>
                         <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo $tag;}?></p>
                     </blockquote>
-                    <p><?php echo $article['content'];?></p>
+<pre style="background: #ffffff"><p><?php echo $article['content'];?><pre>ss</pre></p></pre>
+
+
+                    <pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;一天吃六个胶囊，一天三次、一次两个，没有吃掉多少铬。&lt;/p&gt;
+  &lt;small&gt;卫生部合理用药专家孙忠实&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
+
+
                 </div>
         	</div>
             <div class="blank-line"></div>

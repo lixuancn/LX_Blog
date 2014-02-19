@@ -1,0 +1,105 @@
+body {
+    padding-top: 20px;
+}
+
+.center {
+    display: table;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blank-line {
+    height:20px;
+}
+
+.div-margin {
+    margin-right: 27px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.index-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6633FF;
+}
+
+.align-center {
+    text-align: center;
+}
+
+/* This is a LOGO Begin---------- */
+
+.logo {
+    position: relative;
+    text-align: center;
+}
+.logo h1 {
+    margin-bottom: 9px;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+.logo p {
+    margin-bottom: 18px;
+    font-weight: 300;
+}
+
+@media (max-width: 480px) {
+    .logo h1,
+    .logo p {
+        text-align: center;
+        margin-right: 0px;
+    }
+    .logo h1 {
+        font-size: 45px;
+        margin-right: 0px;
+    }
+    .logo p {
+        margin-right: 0px;
+        margin-left: 0px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .logo h1 {
+        font-size: 54px;
+    }
+    .logo p {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+    .logo h1 {
+        font-size: 72px;
+    }
+}
+
+/* This is a LOGO End----------*/
+
+.search {
+    margin: 3px;
+}
+
+.search input {
+    height: 25px;
+}
+
+blockquote p {
+    font-size: 13px;
+}

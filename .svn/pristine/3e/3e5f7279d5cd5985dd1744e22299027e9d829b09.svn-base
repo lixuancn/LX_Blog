@@ -1,0 +1,9 @@
+---
+name: lanecn
+version: 1
+...
+
+cron:
+
+handle:
+ - rewrite: if(path ~ "^(.*)$"  && !is_file() && !is_dir()) goto "index.php%1"
