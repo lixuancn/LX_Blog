@@ -57,6 +57,18 @@ class Menu extends Controller{
             $commentNewList[$k]['content'] = mb_substr($comment['content'], 0, 30, 'UTF-8') . '...';
         }
 
+        //获取Tag
+        $tags = TagBusiness::getRandList(ParamConstant::PARAM_TAG_LIST_NUM);
+
+        //SEO的title，keywords，description
+        $seo_title = $this->menuList[$mid]['seo_title'];
+        $seo_description = $this->menuList[$mid]['seo_description'];
+        $seo_keywords = $this->menuList[$mid]['seo_keywords'];
+
+        View::assign('seo_title', $seo_title);
+        View::assign('seo_description', $seo_description);
+        View::assign('seo_keywords', $seo_keywords);
+        View::assign('tags', $tags);
         View::assign('commentNewList', $commentNewList);
         View::assign('articleHotList', $articleHotList);
         View::assign('pageNav', $pageNav);

@@ -22,7 +22,6 @@ class Search extends Controller{
     public function main(){
     	if(isset($this->param['keywords'])){
     		$keywords = $this->param['keywords'];
-            $keywords = urldecode($keywords);
     		View::assign('keywords', $keywords);
     	}
         $page = 1;
@@ -61,13 +60,6 @@ class Search extends Controller{
 
         //获取Tag
         $tags = TagBusiness::getRandList(ParamConstant::PARAM_TAG_LIST_NUM);
-
-        //SEO的title，keywords，description
-        $seo_title = $seo_keywords = $seo_description = $keywords.' 搜索';
-
-        View::assign('seo_title', $seo_title);
-        View::assign('seo_description', $seo_description);
-        View::assign('seo_keywords', $seo_keywords);
 
         View::assign('tags', $tags);
         View::assign('articleHotList', $articleHotList);

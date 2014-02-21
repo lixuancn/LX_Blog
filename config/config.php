@@ -21,10 +21,10 @@ define('DEBUG', 1);
 define('PRINT_MYSQL_ERROR', 1);
 
 //WEB服务器部署环境：开发、线上
-define('WEB_SERVER', 'develop'); //'develop', 'online'
+define('WEB_SERVER', 'online'); //'develop', 'online'
 
 //云计算开放平台：本地、新浪SAE
-define('CLOUD_PLATFORM', 'local'); //'local', 'sae'
+define('CLOUD_PLATFORM', 'sae'); //'local', 'sae'
 
 //时区设置
 define('TIMEZONE', 'Etc/GMT-8'); 

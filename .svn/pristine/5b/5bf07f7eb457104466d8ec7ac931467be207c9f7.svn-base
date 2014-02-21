@@ -55,14 +55,6 @@ class Article extends Controller{
         $article['content'] = preg_replace('/\[code\]/s', '<pre class="prettyprint linenums">', $article['content']);
         $article['content'] = preg_replace('/\[\/code\]/s', '</pre>', $article['content']);
 
-        //SEO的title，keywords，description
-        $seo_title = $article['seo_title'];
-        $seo_description = $article['seo_description'];
-        $seo_keywords = $article['seo_keywords'];
-
-        View::assign('seo_title', $seo_title);
-        View::assign('seo_description', $seo_description);
-        View::assign('seo_keywords', $seo_keywords);
         View::assign('tags', $tags);
         View::assign('commentList', $commentList);
         View::assign('commentNewList', $commentNewList);

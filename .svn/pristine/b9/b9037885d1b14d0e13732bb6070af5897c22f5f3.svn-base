@@ -55,15 +55,13 @@ class Article extends AdminController{
             $tags = explode('|', $fields['tag']);
             foreach($tags as $tag){
                 $tagInfo = TagBusiness::getTagByTag($tag);
-
                 if(!empty($tagInfo)){
                     $tagInfo['num']++;
                     TagBusiness::editTag($tagInfo['id'], $tagInfo);
                 }else{
-
-                    $tagFields['tag'] = $tag;
-                    $tagFields['num'] = 1;
-                    TagBusiness::setTag($tagFields);
+                    $fields['tag'] = $tag;
+                    $fields['num'] = 1;
+                    TagBusiness::setTag($fields);
                 }
             }
             $result = ArticleBusiness::setArticle($fields);
@@ -72,7 +70,6 @@ class Article extends AdminController{
             }else{
                 View::showErrorMessage($jumpUrl, '添加失败');
             }
-
         }
         $blogMenuList = MenuBusiness::getMenuList();
         $blogMenuList = Func::arrayKey($blogMenuList);

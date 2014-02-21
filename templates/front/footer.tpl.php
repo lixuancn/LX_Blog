@@ -6,6 +6,9 @@
     <div class="row-fluid">
         <div class="center">©2014 <a href="http://www.lanecn.com">www.lanecn.com</a> , All rights reserved. Power By <a href="http://www.lanecn.com">Li Xuan</a>.&nbsp;&nbsp;<a rel="nofollow" href="http://www.miitbeian.gov.cn/">京ICP备14005030号</a></div>
     </div>
+    <div class="row-fluid">
+        <div class="center"><img src="http://sae.sina.com.cn/?m=devcenter&catId=37"></div>
+    </div>
 </div>
 </body>
 </html>

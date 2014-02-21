@@ -55,24 +55,22 @@ class Article extends AdminController{
             $tags = explode('|', $fields['tag']);
             foreach($tags as $tag){
                 $tagInfo = TagBusiness::getTagByTag($tag);
-
                 if(!empty($tagInfo)){
                     $tagInfo['num']++;
                     TagBusiness::editTag($tagInfo['id'], $tagInfo);
                 }else{
-
-                    $tagFields['tag'] = $tag;
-                    $tagFields['num'] = 1;
-                    TagBusiness::setTag($tagFields);
+                    $fields['tag'] = $tag;
+                    $fields['num'] = 1;
+                    TagBusiness::setTag($fields);
                 }
             }
+            print_r($_POST);
             $result = ArticleBusiness::setArticle($fields);
             if($result){
                 View::showMessage('/admin.php/article/lists', '添加成功');
             }else{
                 View::showErrorMessage($jumpUrl, '添加失败');
             }
-
         }
         $blogMenuList = MenuBusiness::getMenuList();
         $blogMenuList = Func::arrayKey($blogMenuList);

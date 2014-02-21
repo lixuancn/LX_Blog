@@ -51,19 +51,18 @@ class Article extends AdminController{
             $fields['ctime'] = strtotime($fields['ctime']);
             $fields['mid'] = Request::getRequest('mid', 'str');
             $fields['content'] = Request::getRequest('content', 'str');
+            print_r($_POST);
             //将TAG记录进TAG表
             $tags = explode('|', $fields['tag']);
             foreach($tags as $tag){
                 $tagInfo = TagBusiness::getTagByTag($tag);
-
                 if(!empty($tagInfo)){
                     $tagInfo['num']++;
                     TagBusiness::editTag($tagInfo['id'], $tagInfo);
                 }else{
-
-                    $tagFields['tag'] = $tag;
-                    $tagFields['num'] = 1;
-                    TagBusiness::setTag($tagFields);
+                    $fields['tag'] = $tag;
+                    $fields['num'] = 1;
+                    TagBusiness::setTag($fields);
                 }
             }
             $result = ArticleBusiness::setArticle($fields);
@@ -72,7 +71,6 @@ class Article extends AdminController{
             }else{
                 View::showErrorMessage($jumpUrl, '添加失败');
             }
-
         }
         $blogMenuList = MenuBusiness::getMenuList();
         $blogMenuList = Func::arrayKey($blogMenuList);
