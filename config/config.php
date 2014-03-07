@@ -20,11 +20,19 @@ define('DEBUG', 1);
 //是否打印Mysql错误信息
 define('PRINT_MYSQL_ERROR', 1);
 
-//WEB服务器部署环境：开发、线上
-define('WEB_SERVER', 'online'); //'develop', 'online'
+if($_SERVER['SERVER_ADDR'] == '127.0.0.1' || $_SERVER['SERVER_ADDR'] == '192.168.1.1'){
+    //WEB服务器部署环境：开发、线上
+    define('WEB_SERVER', 'develop'); //'develop', 'online'
 
-//云计算开放平台：本地、新浪SAE
-define('CLOUD_PLATFORM', 'sae'); //'local', 'sae'
+    //云计算开放平台：本地、新浪SAE
+    define('CLOUD_PLATFORM', 'local'); //'local', 'sae'
+}else{
+    //WEB服务器部署环境：开发、线上
+    define('WEB_SERVER', 'online'); //'develop', 'online'
+
+    //云计算开放平台：本地、新浪SAE
+    define('CLOUD_PLATFORM', 'sae'); //'local', 'sae'
+}
 
 //时区设置
 define('TIMEZONE', 'Etc/GMT-8'); 
@@ -41,9 +49,9 @@ define('COOKIE_PRE', PROJECT_NAME . '_'); //cookie 前缀
 define('COOKIE_PATH', '/'); //cookie 作用路径
 define('SESSION_PRE', PROJECT_NAME . '_'); //session 前缀
 
-define('SEO_TITLE', 'PHP博客_PHP分享_PHP资源'); //首页标题
-define('SEO_KEYWORDS', 'PHP博客,PHP分享,PHP资源'); //首页关键词
-define('SEO_DESCRIPTION', '欢迎来到Lane的博客。这是关于PHP博客的主题,这里有PHP分享和PHP资源下载。'); //首页描述
+define('SEO_TITLE', 'PHP博客_PHP教程_PHP分享'); //首页标题
+define('SEO_KEYWORDS', 'PHP博客,PHP教程,PHP分享'); //首页关键词
+define('SEO_DESCRIPTION', '欢迎来到Lane的PHP博客。这是关于PHP博客，有大量的PHP教程和分享，以及PHP资源下载。根据PHP博客作者亲身经历所做的PHP教程。'); //首页描述
 
 /**
  * 前台目录设置

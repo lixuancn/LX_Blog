@@ -3,7 +3,7 @@ include 'header.tpl.php';
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="span6 offset6">
+        <div class="span6 offset4">
             <div class="page-header">
                 <h1>Welcome to Administration Platform</h1>
             </div>

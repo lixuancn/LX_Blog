@@ -3,7 +3,7 @@ include 'header.tpl.php';
 ?>
     <div class="container-fluid">
         <div class="row">
-            <div class="span8 offset5">
+            <div class="span8 offset3">
                 <div class="page-header">
                     <h3>Blog Menu List</h3>
                 </div>

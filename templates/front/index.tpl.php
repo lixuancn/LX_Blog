@@ -10,7 +10,7 @@ include 'header.tpl.php';
                     <blockquote>
                         <p class="index-title"><a href="<?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
                         <p>Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></p>
-                        <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo $tag;}?></p>
+                        <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo '<a href="'.GAME_URL.'search/main/keywords-'.$tag.'">'.$tag.'</a>';}?></p>
                     </blockquote>
                     <p><?php echo $article['description'];?></p>
                 </div>
@@ -46,7 +46,7 @@ include 'header.tpl.php';
         	<div class="row-fluid">
         		<div class="span12">
 					<h3>作者简介</h3>
-        			<p>Lane</p>
+        			<p>Lane：不是媒体，不为目的。只是，做自己的博客，写自己的故事。男，1991年生，现居住于大帝都。熟悉PHP，Mysql，Linux，设计模式以及数据结构。</p>
 				</div>
         	</div>
         </div>

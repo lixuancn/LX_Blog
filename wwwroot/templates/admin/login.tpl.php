@@ -26,7 +26,7 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
 <div class="blank-line"></div>
 <div class="container-fluid">
     <div class="row">
-        <div class="span5 offset7">
+        <div class="span6 offset4">
             <form class="form-horizontal" action="<?php echo ADMIN_URL?>admin/login" method="post">
                 <fieldset>
                     <legend>Welcome to <?php echo WEB_NAME?> Administration Platform</legend>
