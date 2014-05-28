@@ -33,7 +33,7 @@
 <div style="height:12px;"></div>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <h3>温馨提示：</h3>
             <table class="table table-striped table-bordered table-hover">
                 <tr>
