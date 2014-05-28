@@ -1,7 +1,7 @@
     RewriteEngine On
     RewriteBase /
     # Rewrite规则
-    RewriteCond $1 !^(index\.php|admin\.php|test.php|forum|plug|themes|wwwroot/themes|robots\.txt)
+    RewriteCond $1 !^(index\.php|admin\.php|test.php|forum|plug|themes|wwwroot|robots\.txt)
 
     RewriteRule ^(.*)$ index.php/$1 [L]
 
