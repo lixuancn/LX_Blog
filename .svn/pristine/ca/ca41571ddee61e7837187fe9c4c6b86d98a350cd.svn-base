@@ -1,6 +1,0 @@
-name: lanecn
-version: 1
-cron:
-handle:
-
-- rewrite: if( path !~ "index.php"|| path !~ "admin.php"||path !~ "themes" || path !~ "robots.txt" ) goto "index.php/%{QUERY_STRING}"
