@@ -16,7 +16,7 @@ include 'header.tpl.php';
                 <tbody>
                 <tr>
                     <td width="17%" >当前版本</td>
-                    <td width="83%"><strong>v1.1.0</strong></td>
+                    <td width="83%"><strong><?php echo LANE_BLOG_VERSION?></strong></td>
                 </tr>
                 <tr>
                     <td >版权声明</td>

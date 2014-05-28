@@ -12,6 +12,9 @@
 define('WEB_NAME', 'Lane Blog');
 define('PROJECT_NAME', 'LaneBlog');
 
+//当前版本
+define('LANE_BLOG_VERSION', 'v1.2.0');
+
 //总开关, false为正常运营, true为停服维护中
 define('SERVICE_STOP', false);
 
