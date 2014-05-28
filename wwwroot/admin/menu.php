@@ -5,6 +5,7 @@
  * @Class Menu
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class Menu extends AdminController{
     /**
@@ -40,13 +41,13 @@ class Menu extends AdminController{
             $fields['seo_keywords'] = Request::getRequest('seo_keywords', 'str');
             $fields['url'] = Request::getRequest('url', 'str');
             if(empty($fields['name'])){
-                View::showErrorMessage($jumpUrl, '未填写完成');
+                View::showAdminErrorMessage($jumpUrl, '未填写完成');
             }
             $result = MenuBusiness::setMenu($fields);
             if($result){
-                View::showMessage('/admin.php/menu/lists', '添加成功');
+                View::showAdminMessage('/admin.php/menu/lists', '添加成功');
             }else{
-                View::showErrorMessage($jumpUrl, '添加失败');
+                View::showAdminErrorMessage($jumpUrl, '添加失败');
             }
         }
         $menuList = MenuBusiness::getMenuList();
@@ -71,13 +72,13 @@ class Menu extends AdminController{
             $fields['seo_keywords'] = Request::getRequest('seo_keywords', 'str');
             $fields['url'] = Request::getRequest('url', 'str');
             if(empty($fields['name'])){
-                View::showErrorMessage($jumpUrl, '未填写完成');
+                View::showAdminErrorMessage($jumpUrl, '未填写完成');
             }
             $result = MenuBusiness::editMenu($this->param['id'], $fields);
             if($result){
-                View::showMessage('/admin.php/menu/lists', '添加成功');
+                View::showAdminMessage('/admin.php/menu/lists', '添加成功');
             }else{
-                View::showErrorMessage($jumpUrl, '添加失败');
+                View::showAdminErrorMessage($jumpUrl, '添加失败');
             }
         }
         $menuList = MenuBusiness::getMenuList();
@@ -94,6 +95,6 @@ class Menu extends AdminController{
      */
     public function delete(){
         MenuBusiness::delMenu($this->param['id']);
-        View::showMessage('/admin.php/menu/lists', "删除分类成功!");
+        View::showAdminMessage('/admin.php/menu/lists', "删除分类成功!");
     }
 }

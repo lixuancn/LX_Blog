@@ -5,6 +5,7 @@
  * @Class Admin
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class Admin extends AdminController {
 
@@ -38,19 +39,19 @@ class Admin extends AdminController {
             $password1 = Request::getRequest('password1', 'str');
             //验证提交信息
             if (empty($username) || empty($password) || empty($password1) ) {
-                View::showErrorMessage($jumpurl, '缺失参数!');
+                View::showAdminErrorMessage($jumpurl, '缺失参数!');
             }
             if ($password != $password1) {
-                View::showErrorMessage($jumpurl, '密码不正确!');
+                View::showAdminErrorMessage($jumpurl, '密码不正确!');
             }
             $fields = array();
             $fields['username'] = $username;
             $fields['password'] = strtolower(md5($username.PASSWORD_INTERFERE.$password));
             $result = $this->adminUserObj->add($fields);
             if ($result === true) {
-                View::showMessage($jumpurl, '添加管理员成功!');
+                View::showAdminMessage($jumpurl, '添加管理员成功!');
             } else {
-                View::showErrorMessage($jumpurl, '用户名已经存在');
+                View::showAdminErrorMessage($jumpurl, '用户名已经存在');
             }
         }
         //显示表单页
@@ -65,7 +66,7 @@ class Admin extends AdminController {
         $jumpurl = '/admin.php/admin/edit/id-'.$id;
         $adminUser = $this->adminUserObj->get($id);
         if (empty($adminUser)) {
-            View::showErrorMessage('/admin.php/admin/lists', '该管理员不存在!');
+            View::showAdminErrorMessage('/admin.php/admin/lists', '该管理员不存在!');
         }
         //表单提交处理
         if (Request::getRequest('dosubmit', 'str')) {
@@ -73,18 +74,18 @@ class Admin extends AdminController {
             $password1 = Request::getRequest('password1', 'str');
             //验证提交信息
             if (empty($password) || empty($password1) ) {
-                View::showErrorMessage($jumpurl, '缺失参数!');
+                View::showAdminErrorMessage($jumpurl, '缺失参数!');
             }
             if ($password != $password1) {
-                View::showErrorMessage($jumpurl, '密码不正确!');
+                View::showAdminErrorMessage($jumpurl, '密码不正确!');
             }
             $fields = array();
             $fields['password'] = strtolower(md5($adminUser['username'].PASSWORD_INTERFERE.$password));
             $result = $this->adminUserObj->edit($id, $fields);
             if ($result) {
-                View::showMessage($jumpurl, '修改管理员成功!');
+                View::showAdminMessage($jumpurl, '修改管理员成功!');
             } else {
-                View::showErrorMessage($jumpurl, '修改管理员失败!');
+                View::showAdminErrorMessage($jumpurl, '修改管理员失败!');
             }
         }
         View::assign('adminUser', $adminUser);
@@ -98,12 +99,12 @@ class Admin extends AdminController {
         $jumpurl = '/admin.php/admin/lists';
         $id = $this->param['id'];
 		if (!$id) {
-			View::showErrorMessage($jumpurl, '管理员ID不能为空!');
+			View::showAdminErrorMessage($jumpurl, '管理员ID不能为空!');
 		}
 		if ($this->adminUserObj->del($id)) {
-			View::showMessage($jumpurl, "删除管理员成功!");
+			View::showAdminMessage($jumpurl, "删除管理员成功!");
 		} else {
-			View::showErrorMessage($jumpurl, "删除管理员失败!");
+			View::showAdminErrorMessage($jumpurl, "删除管理员失败!");
 		}
 	}
 
@@ -114,7 +115,7 @@ class Admin extends AdminController {
     public function login() {
         $loginInfo = Request::getSession($this->sessionId);
         if (!empty($loginInfo) && !empty($loginInfo['username']) && !empty($loginInfo['id'])) {
-            View::showMessage('/admin.php/index/main', '已经登录!');
+            View::showAdminMessage('/admin.php/index/main', '已经登录!');
         }
 
         //表单提交处理
@@ -131,7 +132,7 @@ class Admin extends AdminController {
                 Response::setSession($this->sessionId, $session);
                 View::jsJump('/admin.php/index/main');
             } else {
-                View::showErrorMessage('/admin.php/admin/login', '登录后台失败!');
+                View::showAdminErrorMessage('/admin.php/admin/login', '登录后台失败!');
             }
         }
         View::showAdminTpl('login');
@@ -142,7 +143,7 @@ class Admin extends AdminController {
      */
     public function loginout() {
         Response::delSession($this->sessionId);
-        View::showMessage('/admin.php/admin/login', "退出后台成功!");
+        View::showAdminMessage('/admin.php/admin/login', "退出后台成功!");
     }
 }
 ?>

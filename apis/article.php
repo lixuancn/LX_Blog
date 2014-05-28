@@ -8,6 +8,7 @@
  * @Mail lixuan868686@163.com
  * @Date: 14-1-10
  * @Time: 下午4:22
+ * Blog http://www.lanecn.com
  */
 class Article extends Controller{
 	/**
@@ -60,6 +61,9 @@ class Article extends Controller{
         $seo_description = $article['seo_description'];
         $seo_keywords = $article['seo_keywords'];
 
+        //文章的点击数+1
+        ArticleBusiness::clicks($articleId);
+
         View::assign('seo_title', $seo_title);
         View::assign('seo_description', $seo_description);
         View::assign('seo_keywords', $seo_keywords);
@@ -94,5 +98,26 @@ class Article extends Controller{
         $fields['content'] = $this->param['content'];
         CommentBusiness::setComment($fields);
         View::showMessage($jumpUrl, '成功！');
+    }
+
+    /**
+     * Description: 评分
+     */
+    public function score(){
+        $articleId = $this->param['article_id'];
+        $score = $this->param['score'];
+
+        if($score == 1){
+            $result = ArticleBusiness::goodNum($articleId);
+        }else if($score == 2){
+            $result = ArticleBusiness::badNum($articleId);
+        }else{
+            return MsgCommon::returnErrMsg(MsgConstant::ERROR_USER_ILLEGAL_OPERATION, '非法操作');
+        }
+        if($result){
+            View::showMessage('', '成功！');
+        }else{
+            View::showErrorMessage('', '失败！');
+        }
     }
 }

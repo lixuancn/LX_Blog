@@ -1,105 +1,167 @@
-body {
-    padding-top: 20px;
-}
+/*body {	*/
+  /*padding-top: 20px;*/
+/*}*/
 
-.center {
-    display: table;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
+/*.center {*/
+    /*display: table;*/
+	/*width: auto;*/
+	/*margin-left: auto;*/
+	/*margin-right: auto;*/
+/*}*/
 
-.blank-line {
-    height:20px;
-}
+/*.blank-line {*/
+	/*height:20px;*/
+/*}*/
 
-.div-margin {
-    margin-right: 27px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-}
+/*.div-margin {*/
+	/*margin-right: 27px;*/
+	/*margin-top: 12px;*/
+	/*margin-bottom: 12px;*/
+/*}*/
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-    margin-top: 12px;
-    margin-bottom: 12px;
-}
+/*h1,*/
+/*h2,*/
+/*h3,*/
+/*h4,*/
+/*h5 {*/
+	/*margin-top: 12px;*/
+	/*margin-bottom: 12px;*/
+/*}*/
 
-.index-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #6633FF;
-}
+/*.index-title {*/
+	/*font-size: 18px;*/
+	/*font-weight: bold;*/
+	/*color: #6633FF;*/
+/*}*/
 
-.align-center {
-    text-align: center;
-}
+/*.align-center {*/
+    /*text-align: center;*/
+/*}*/
 
 /* This is a LOGO Begin---------- */
 
-.logo {
-    position: relative;
-    text-align: center;
-}
-.logo h1 {
-    margin-bottom: 9px;
-    font-size: 70px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 1;
-}
-.logo p {
-    margin-bottom: 18px;
-    font-weight: 300;
-}
+/*.logo {*/
+  /*position: relative;*/
+  /*text-align: center;*/
+/*}*/
+/*.logo h1 {*/
+  /*margin-bottom: 9px;*/
+  /*font-size: 70px;*/
+  /*font-weight: bold;*/
+  /*letter-spacing: -1px;*/
+  /*line-height: 1;*/
+/*}*/
+/*.logo p {*/
+  /*margin-bottom: 18px;*/
+  /*font-weight: 300;*/
+/*}*/
 
-@media (max-width: 480px) {
-    .logo h1,
-    .logo p {
-        text-align: center;
-        margin-right: 0px;
-    }
-    .logo h1 {
-        font-size: 45px;
-        margin-right: 0px;
-    }
-    .logo p {
-        margin-right: 0px;
-        margin-left: 0px;
-        font-size: 18px;
-        line-height: 24px;
-    }
-}
+/*@media (max-width: 480px) {*/
+	/*.logo h1,*/
+	/*.logo p {*/
+   		/*text-align: center;*/
+    	/*margin-right: 0px;*/
+	/*}*/
+	/*.logo h1 {*/
+    	/*font-size: 45px;*/
+    	/*margin-right: 0px;*/
+  	/*}*/
+  	/*.logo p {*/
+	    /*margin-right: 0px;*/
+	    /*margin-left: 0px;*/
+	    /*font-size: 18px;*/
+	    /*line-height: 24px;*/
+  	/*}*/
+/*}*/
 
-@media (min-width: 480px) and (max-width: 768px) {
-    .logo h1 {
-        font-size: 54px;
-    }
-    .logo p {
-        margin-right: 0px;
-        margin-left: 0px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 980px) {
-    .logo h1 {
-        font-size: 72px;
-    }
-}
+/*@media (min-width: 480px) and (max-width: 768px) {*/
+	/*.logo h1 {*/
+    	/*font-size: 54px;*/
+	/*}*/
+	/*.logo p {*/
+	    /*margin-right: 0px;*/
+	    /*margin-left: 0px;*/
+	/*}*/
+/*}  */
+  /**/
+/*@media (min-width: 768px) and (max-width: 980px) {*/
+	/*.logo h1 {*/
+    	/*font-size: 72px;*/
+	/*}*/
+/*}*/
 
 /* This is a LOGO End----------*/
 
-.search {
-    margin: 3px;
-}
+/*.search {*/
+    /*margin: 3px;*/
+/*}*/
 
-.search input {
-    height: 25px;
-}
+/*.search input {*/
+    /*height: 25px;*/
+/*}*/
 
-blockquote p {
+/*blockquote p {*/
+    /*font-size: 13px;*/
+/*}*/
+
+
+.tags1{
+    color:#BDB7B6;
+    font-size: 12px;
+    float:left;
+}
+.tags2{
+    color:#B1A9A9;
     font-size: 13px;
+    float:left;
+}
+.tags3{
+    color:#9B9191;
+    font-size: 14px;
+    float:left;
+}
+.tags4{
+    color:#807474;
+    font-size: 15px;
+    float:left;
+}
+.tags5{
+    color:#6D6363;
+    font-size: 16px;
+    float:left;
+}
+.tags6{
+    color:#5D5554;
+    font-size: 17px;
+    float:left;
+}
+.tags7{
+    color:#504948;
+    font-size: 18px;
+    float:left;
+}
+.tags8{
+    color:#403A3A;
+    font-size: 19px;
+    float:left;
+}
+.tags9{
+    color:#353030;
+    font-size: 20px;
+    float:left;
+}
+.tags10{
+    color:#282424;
+    font-size: 21px;
+    float:left;
+}
+.tags11{
+    color:#181515;
+    font-size: 22px;
+    float:left;
+}
+.tags12{
+    color:#050404;
+    font-size: 12px;
+    float:left;
 }

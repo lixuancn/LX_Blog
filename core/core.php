@@ -191,7 +191,7 @@ class APP {
         if ("/admin.php/admin/login" != $scriptUrl && "/admin/admin/login" != $scriptUrl) {
             $loginInfo = Request::getSession('admin_user_login');
             if (empty($loginInfo) || empty($loginInfo['username']) || empty($loginInfo['id'])) {
-                View::showMessage('/admin.php/admin/login', '对不起，你还没有登录！', '_top');
+                View::showAdminErrorMessage('/admin.php/admin/login', '对不起，你还没有登录！', '_top');
             }
         }
 

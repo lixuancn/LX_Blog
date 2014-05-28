@@ -5,6 +5,7 @@
  * @Class Admin
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class Index extends AdminController {
     /**

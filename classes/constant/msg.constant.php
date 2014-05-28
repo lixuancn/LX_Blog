@@ -7,12 +7,14 @@
  * @Mail lixuan868686@163.com
  * @Date: 14-1-10
  * @Time: 下午4:22
+ * Blog http://www.lanecn.com
  */
 class MsgConstant{
 
     //-------系统错误相关--101 到200 ------
     const ERROR_SYSTEM = 101; //系统错误
     const ERROR_NEWS_ITEM_COUNT_MORE_TEN = 102; //图文消息的项数超过10
+    const ERROR_USER_ILLEGAL_OPERATION = 103; //非法操作
 
     //-------用户输入相关--1001到1100------
     const ERROR_INPUT_ERROR = 1001; //输入有误，请重新输入

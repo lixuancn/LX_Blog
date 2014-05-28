@@ -4,6 +4,7 @@
  * @Class AdminUserDbModel
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class AdminUserModel extends DbModel{
 

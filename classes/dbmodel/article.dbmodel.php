@@ -206,12 +206,56 @@ class ArticleDbModel extends DbModel{
         return $data;
     }
 
+    /**
+     * Description: 根据标题和关键词搜索文章
+     * @param $keyowrd
+     * @param int $page
+     * @return Ambigous
+     */
     public function search($keyowrd, $page=1){
         $where = "`title` LIKE '%" . $keyowrd . "%'";
         $fields = '*';
         $order = '`id` DESC';
         return $this->selectPageList($this->_tableName, $where, $page, ParamConstant::PARAM_PAGE_SIZE, $fields, $order);
 
+    }
+
+    /**
+     * Description: 点击数+1
+     * @param $keyowrd
+     * @param int $page
+     * @return Ambigous
+     */
+    public function clicks($articleId){
+        $where = "`id` = '".$articleId."'";
+        $sql = 'UPDATE `'.$this->_tableName.'` SET `clicks` = `clicks` + 1 WHERE ' . $where;
+        return $this->customQuery($sql);
+    }
+
+    /**
+     * Description: 同意数+1
+     * @return Ambigous
+     */
+    public function goodNum($articleId){
+        $where = "`id` = '".$articleId."'";
+        $sql = 'UPDATE `'.$this->_tableName.'` SET `good_num` = `good_num` + 1 WHERE ' . $where;
+        return $this->customQuery($sql);
+    }
+
+    /**
+     * Description: 反对数+1
+     * @return Ambigous
+     */
+    public function badNum($articleId){
+        $where = "`id` = '".$articleId."'";
+        $sql = 'UPDATE `'.$this->_tableName.'` SET `bad_num` = `bad_num` + 1 WHERE ' . $where;
+        return $this->customQuery($sql);
+    }
+
+    public function getAllList(){
+        $fields = '`id`, `ctime`';
+        $where = 1;
+        return $this->selectList($this->_tableName, $where, $fields, '`id` DESC');
     }
 
     /**

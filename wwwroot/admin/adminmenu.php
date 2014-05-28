@@ -5,6 +5,7 @@
  * @Class AdminMenu
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class AdminMenu extends AdminController{
 	/**
@@ -36,13 +37,13 @@ class AdminMenu extends AdminController{
             $fields['action'] = Request::getRequest('action', 'str');
             $fields['url'] = Request::getRequest('url', 'str');
             if(empty($fields['name'])){
-                View::showErrorMessage($jumpUrl, '未填写完成');
+                View::showAdminErrorMessage($jumpUrl, '未填写完成');
             }
             $result = $this->adminMenuObi->add($fields);
             if($result){
-                View::showMessage('/admin.php/adminmenu/lists', '添加成功');
+                View::showAdminMessage('/admin.php/adminmenu/lists', '添加成功');
             }else{
-                View::showErrorMessage($jumpUrl, '添加失败');
+                View::showAdminErrorMessage($jumpUrl, '添加失败');
             }
         }
         View::showAdminTpl('admin_menu_add');
@@ -62,14 +63,14 @@ class AdminMenu extends AdminController{
             $fields['action'] = Request::getRequest('action', 'str');
             $fields['url'] = Request::getRequest('url', 'str');
             if(empty($fields['name'])){
-                View::showErrorMessage($jumpUrl, '未填写完成');
+                View::showAdminErrorMessage($jumpUrl, '未填写完成');
             }
 
             $result = $this->adminMenuObi->edit($this->param['id'], $fields);
             if($result){
-                View::showMessage('/admin.php/adminmenu/lists', '修改成功');
+                View::showAdminMessage('/admin.php/adminmenu/lists', '修改成功');
             }else{
-                View::showErrorMessage($jumpUrl, '修改失败');
+                View::showAdminErrorMessage($jumpUrl, '修改失败');
             }
 
         }
@@ -82,6 +83,6 @@ class AdminMenu extends AdminController{
      */
     public function delete(){
         $this->adminMenuObi->del($this->param['id']);
-        View::showMessage('/admin.php/adminmenu/lists', "删除分类成功!");
+        View::showAdminMessage('/admin.php/adminmenu/lists', "删除分类成功!");
     }
 }

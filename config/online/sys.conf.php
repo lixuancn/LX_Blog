@@ -5,6 +5,7 @@
  * User: lane
  * Date: 14-1-5
  * Time: 下午4:44
+ * Blog http://www.lanecn.com
  */
 //后台访问域名
 define('ADMIN_URL', 'http://www.lanecn.com/admin.php/');
@@ -23,8 +24,4 @@ define('SAE_DOMEN_NAME', 'stor');
 
 //stor地址
 define('STOR_URL', '');
-
-//测试相关, 发布时修改
-define('TEST_KID', 10001);
-define('TEST_UID', 1061648560);
 ?>

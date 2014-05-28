@@ -1,98 +1,110 @@
 <?php
 include 'header.tpl.php';
 ?>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span8">
-            <div class="row-fluid">
-                <div class="span12">
-                    <blockquote>
-                        <p class="index-title"><a href="<?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
-                        <p>Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></p>
-                        <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo '<a href="'.GAME_URL.'search/main/keywords-'.$tag.'">'.$tag.'</a>';}?></p>
-                    </blockquote>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <p><a href="<?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
+                    <p>Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></p>
+                    <p>Clicks: <?php echo $article['clicks'];?>. Like: <?php echo $article['good_num']?>. Bad: <?php echo $article['bad_num']?></p>
+                    <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo '<a href="'.GAME_URL.'search/main/keywords-'.$tag.'">'.$tag.'</a>';}?></p>
 <pre style="background: #ffffff">
     <?php echo $article['content'];?>
 </pre>
                 </div>
         	</div>
-            <div class="blank-line"></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <p>
+                        <a href="<?php echo GAME_URL;?>article/score/score-1-article_id-<?php echo $article['id'];?>">点赞哦</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="<?php echo GAME_URL;?>article/score/score-2-article_id-<?php echo $article['id'];?>">请拍砖</a>
+                    </p>
+                </div>
+            </div>
             <?php foreach($commentList as $comment){?>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <blockquote>
-                            <p>Reply: <a rel="nofollow" href="<?php echo $comment['website'];?>"><?php echo $comment['nickname'];?></a> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
-                        </blockquote>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p>Reply: <?php echo $comment['nickname'];?> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
                         <p><?php echo $comment['content'];?></p>
                     </div>
                 </div>
+                <div class="page-header"></div>
             <?php }?>
-            <div class="blank-line"></div>
-        	<form class="form-horizontal" action="<?php echo GAME_URL?>article/addcomment/" method="post">
-        	    <fieldset>
-                    <legend>Add Comment</legend>
-                    <div class="control-group">
-		                <label class="control-label" for="input01">Name OR Nickname: </label>
-		                <div class="controls">
-		                    <input type="text" class="input-large search-query" name="nickname">
-		                </div>
-		            </div>
-                    <div class="control-group">
-		                <label class="control-label" for="input01">E-mail Address: </label>
-		                <div class="controls">
-		                    <input type="text" class="input-large search-query" name="email">
-		                </div>
-		            </div>
-		            <div class="control-group">
-		                <label class="control-label" for="input01">Website: </label>
-		                <div class="controls">
-		                    <input type="text" class="input-large search-query" name="website">
-		                </div>
-		            </div>
-		            <div class="control-group">
-		                <label class="control-label" for="input01">Comment: </label>
-		                <div class="controls">
-		                    <textarea class="input-large search-query" rows="3" name="content"></textarea>
-		                </div>
-		            </div>
-		            <div class="control-group">
-		                <label class="control-label" for="input01">Captcha: </label>
-		                <div class="controls">
-		                    <input type="text" class="input-small search-query" name="captcha"><img src="<?php echo GAME_URL?>extend/captcha" onclick="this.src='<?php echo GAME_URL?>extend/captcha/id-'+new Date().getTime()">
-		                </div>
-		            </div>
-                    <div class="form-actions">
+            <form class="form-horizontal" role="form" id="bindingForm" action="<?php echo GAME_URL?>article/addcomment/" method="post">
+                <legend>Add Comment</legend>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Name: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nickname" placeholder="Nickname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input01" class="col-sm-2 control-label">Email: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="email" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input01" class="col-sm-2 control-label">Website: </label>
+                    <div class="col-sm-10">
+                        <input type="url" class="form-control" name="website" placeholder="Website">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input01" class="col-sm-2 control-label">Comment: </label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" name="content"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input01" class="col-sm-2 control-label">Captcha: </label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <input type="text" class="form-control" name="captcha" placeholder="Captcha">
+                            </div>
+                            <img src="<?php echo GAME_URL?>extend/captcha" onclick="this.src='<?php echo GAME_URL?>extend/captcha/id-'+new Date().getTime()">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
                         <input type="hidden" name="aid" value="<?echo $article['id'];?>">
                         <input type="hidden" name="mid" value="<?echo $article['mid'];?>">
                         <button type="submit" class="btn btn-primary">提交</button>
                         <button type="reset" class="btn">取消</button>
                     </div>
-                </fieldset>
+                </div>
             </form>
         </div>
 
-        <div class="span4">
-            <div class="row-fluid">
-                <div class="span12">
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <h3>分类热门的文章</h3>
                     <?php foreach($articleHotList as $article){ ?>
                         <p><a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
                     <?php }?>
                 </div>
             </div>
-            <div class="row-fluid">
-                <div class="span12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <h3>分类最新的评论</h3>
                     <?php foreach($commentNewList as $comment){ ?>
-                        <p><a rel="nofollow" href="<?php echo $comment['website'];?>"><?php echo $comment['nickname'];?></a> On <a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $comment['aid'];?>"><?php echo $comment['content'];?></a></p>
+                        <p><?php echo $comment['nickname'];?> On <a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $comment['aid'];?>"><?php echo $comment['content'];?></a></p>
                     <?php }?>
                 </div>
             </div>
-            <div class="row-fluid">
-                <div class="span12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <h3>热门Tag</h3>
-                    <?php foreach($tags as $tag){ ?>
-                        <p><a href="<?php echo GAME_URL?>search/main/keywords-<?php echo $tag['tag']?>"><?php echo $tag['tag'];?></a></p>
+                    <?php foreach($tags as $key=>$tag){ ?>
+                        <ul class="list-unstyled list-inline">
+                            <li class="tags<?php echo rand(1, 12);?>"><a href="<?php echo GAME_URL?>search/main/keywords-<?php echo $tag['tag']?>"><?php echo $tag['tag'];?></a>&nbsp;&nbsp;</li>
+                        </ul>
                     <?php }?>
                 </div>
             </div>

@@ -5,6 +5,7 @@
  * @Class AdminMenuModel
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class AdminMenuModel extends DbModel{
 

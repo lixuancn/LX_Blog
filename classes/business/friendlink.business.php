@@ -7,8 +7,7 @@
  * @Class FriendLinkBusiness
  * @Author: lane
  * @Mail: lixuan868686@163.com
- * @Date: ${DATE}
- * @Time: ${TIME}
+ * Blog http://www.lanecn.com
  */
 class FriendLinkBusiness{
 

@@ -2,55 +2,69 @@
 if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title><?php echo isset($seo_title) ? $seo_title : SEO_TITLE; ?> - <?php echo WEB_NAME?></title>
-    <meta name="keywords" content="<?php echo isset($seo_keywords) ? $seo_keywords : SEO_KEYWORDS;?>">
-    <meta name="description" content="<?php echo isset($seo_description) ? $seo_description : SEO_DESCRIPTION;?>">
+    <title>管理后台 - <?php echo WEB_NAME?></title>
+    <meta name="keywords" content="管理后台">
+    <meta name="description" content="管理后台">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="<?php echo CSS_DIR?>bootstrap.css" rel="stylesheet">
-    <link href="<?php echo CSS_DIR?>bootstrap-responsive.css" rel="stylesheet">
-    <link href="<?php echo CSS_DIR?>style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?php echo IMAGE_DIR?>favicon.ico" rel="shortcut icon">
-    <script type="text/javascript" src="<?php echo JS_DIR?>bootstrap.js"></script>
+    <link href="<?php echo ADMIN_IMAGE_DIR?>favicon.ico" rel="shortcut icon">
+    <!-- 引入JQuery文件 -->
+    <script src="<?php echo ADMIN_JS_DIR?>jquery.min.js"></script>
+    <!-- 引入BootStrap的CSS文件 -->
+    <link href="<?php echo ADMIN_CSS_DIR?>bootstrap.min.css" rel="stylesheet">
+    <!-- 引入BootStrap的JS文件 -->
+    <script src="<?php echo ADMIN_JS_DIR?>bootstrap.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="<?php echo ADMIN_JS_DIR?>html5shiv.min.js"></script>
+    <script src="<?php echo ADMIN_JS_DIR?>respond.min.js"></script>
+    <![endif]-->
 </head>
-
 <body>
 
-<div class="logo">
-    <h1>Lane<small>Blog</small></h1>
-    <p>蝼蚁虽小，也有梦想</p>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center">Lane<small>Blog</small></h1>
+        <p class="text-center">
+            <small>蝼蚁虽小，也有梦想</small>
+        </p>
+    </div>
 </div>
 
-<div class="blank-line"></div>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="span6 offset4">
-            <form class="form-horizontal" action="<?php echo ADMIN_URL?>admin/login" method="post">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <form class="form-horizontal" role="form" id="bindingForm" action="<?php echo ADMIN_URL?>admin/login" method="post">
                 <fieldset>
                     <legend>Welcome to <?php echo WEB_NAME?> Administration Platform</legend>
-                    <div class="control-group">
-                        <label class="control-label" for="input01">Username</label>
-                        <div class="controls">
-                            <input type="text" class="input-large search-query" name="username">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input01">Username：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" placeholder="Username">
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="input01">Password</label>
-                        <div class="controls">
-                            <input type="password" class="input-large search-query" name="password">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input01">Password：</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
                     </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Login</button>
-                        <button type="reset" class="btn">Cancel</button>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Login</button>
+                            <button type="reset" class="btn">Cancel</button>
+                        </div>
                     </div>
                 </fieldset>
             </form>
         </div>
     </div>
 </div>
-<?php
-include 'footer.tpl.php';
-?>

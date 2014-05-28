@@ -9,6 +9,7 @@
  * @Mail: lixuan868686@163.com
  * @Date: 14-1-10
  * @Time: 下午4:22
+ * Blog http://www.lanecn.com
  */
 class ArticleBusiness{
 
@@ -111,6 +112,29 @@ class ArticleBusiness{
         return self::getInstance()->search($keyword, $page);
     }
 
+    /**
+     * Description: 点击数+1
+     */
+    public static function clicks($articleId){
+        return self::getInstance()->clicks($articleId);
+    }
 
+    /**
+     * Description: 同意数+1
+     */
+    public static function goodNum($articleId){
+        return self::getInstance()->goodNum($articleId);
+    }
+
+    /**
+     * Description: 反对数+1
+     */
+    public static function badNum($articleId){
+        return self::getInstance()->badNum($articleId);
+    }
+
+    public static function getAllList(){
+        return self::getInstance()->getAllList();
+    }
 
 }

@@ -5,6 +5,7 @@
  * User: lane
  * Date: 14-1-2
  * Time: 下午3:52
+ * Blog http://www.lanecn.com
  */
 // 定义入口名称
 define('ENTRY_NAME', 'admin');

@@ -104,6 +104,30 @@ class View {
 		include_once  TEMPLATE_PATH . 'show_error_message.tpl.php';
 		exit();
 	}
+
+    /**
+     * 管理后台 - 显示跳转信息页 ...
+     * @param string $jumpurl 跳转URL
+     * @param string $msg 显示信息
+     * @param string $target 跳转目标 _blank _self _parent
+     */
+    public static function showAdminMessage($jumpurl, $msg, $target="") {
+        $ms = 4000; //跳转间隔时间
+        include_once  ADMIN_TEMPLATE_PATH . 'show_message.tpl.php';
+        exit();
+    }
+
+    /**
+     * 管理后台 - 显示错误信息页...
+     * @param string $jumpurl 跳转URL
+     * @param string $msg 显示信息
+     * @param string $target 跳转目标 _blank _self _parent
+     */
+    public static function showAdminErrorMessage($jumpurl, $msg, $target="") {
+        $ms = 4000; //跳转间隔时间
+        include_once  ADMIN_TEMPLATE_PATH . 'show_error_message.tpl.php';
+        exit();
+    }
 	
 	/**
 	 * JS页面跳转 ...

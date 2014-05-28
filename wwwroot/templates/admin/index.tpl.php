@@ -1,9 +1,9 @@
 <?php
 include 'header.tpl.php';
 ?>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="span6 offset4">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="page-header">
                 <h1>Welcome to Administration Platform</h1>
             </div>
@@ -16,7 +16,7 @@ include 'header.tpl.php';
                 <tbody>
                 <tr>
                     <td width="17%" >当前版本</td>
-                    <td width="83%"><strong>v1.0.0</strong></td>
+                    <td width="83%"><strong>v1.1.0</strong></td>
                 </tr>
                 <tr>
                     <td >版权声明</td>
@@ -48,7 +48,7 @@ include 'header.tpl.php';
                 </tr>
                 <tr>
                     <td>BUG提交</td>
-                    <td><a href="#" target="_blank">http://www.lanecn.com/blog/bug</a> </td>
+                    <td><a href="#" target="_blank">http://www.lanecn.com/blog/bug</a></td>
                 </tr>
                 </tbody>
             </table>

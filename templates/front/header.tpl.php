@@ -8,51 +8,72 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
     <meta name="keywords" content="<?php echo isset($seo_keywords) ? $seo_keywords : SEO_KEYWORDS;?>">
     <meta name="description" content="<?php echo isset($seo_description) ? $seo_description : SEO_DESCRIPTION;?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="<?php echo CSS_DIR?>bootstrap.css" rel="stylesheet">
-    <link href="<?php echo CSS_DIR?>bootstrap-responsive.css" rel="stylesheet">
+
+
+
+    <!-- 引入BootStrap的CSS文件 -->
+    <link rel="stylesheet" href="<?php echo CSS_DIR?>bootstrap.min.css">
+    <!-- 引入BootStrap的JS文件 -->
+    <script src="<?php echo JS_DIR?>bootstrap.min.js"></script>
+    <!-- 引入JQuery文件 -->
+    <script src="<?php echo JS_DIR?>jquery.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="<?php echo JS_DIR?>html5shiv.min.js"></script>
+    <script src="<?php echo JS_DIR?>respond.min.js"></script>
+    <![endif]-->
+
+
     <link href="<?php echo CSS_DIR?>style.css" rel="stylesheet">
-    <link href="<?php echo CSS_DIR?>prettify.css" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo IMAGE_DIR?>favicon.ico" rel="shortcut icon">
-    <script type="text/javascript" src="<?php echo JS_DIR?>bootstrap.js"></script>
-    <script type="text/javascript" src="<?php echo JS_DIR?>prettify.js"></script>
 </head>
 
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="<?php echo GAME_URL?>" title="Lane PHP Blog">Lane</a>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li <?php if($actionMenuId == 0){echo ' class="active"';}?>>
-                        <a href="<?php echo GAME_URL?>" title="李轩PHP博客">首页</a>
-                    </li>
-                    <?php foreach($menuList as $menu){ ?>
+            </button>
+            <a href="<?php echo GAME_URL?>" class="navbar-brand" title="Lane PHP Blog">Lane</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li <?php if($actionMenuId == 0){echo ' class="active"';}?>>
+                    <a href="<?php echo GAME_URL?>" title="李轩PHP博客">首页</a>
+                </li>
+                <?php foreach($menuList as $menu){ ?>
                     <li <?php if($actionMenuId == $menu['id']){echo ' class="active"';}?>>
                         <a href="<?php echo GAME_URL?>menu/main/mid-<?php echo $menu['id'];?>"><?php echo $menu['name'];?></a>
                     </li>
-                    <?php } ?>
-                    <li class="divider-vertical"></li>
-                    <li>
-                    <form class="form-search search" action="<?php echo GAME_URL?>search/main/" method="get">
-                        <input type="text" class="input-large search-query" name="keywords" value="<?php if(isset($keywords)){echo $keywords;}?>">
+                <?php } ?>
+                <li class="divider-vertical"></li>
+                <li>
+                    <form class="form-inline" role="form" action="<?php echo GAME_URL?>search/main/" method="get">
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail2">Search PHP</label>
+                            <input type="text" class="form-control" name="keywords" placeholder="Search" value="<?php if(isset($keywords)){echo $keywords;}?>">
+                        </div>
                         <button type="submit" class="btn btn-primary">搜索</button>
                     </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                </li>
+            </ul>
+        </nav>
     </div>
-</div>
-<div class="blank-line"></div>
-<div class="logo">
-    <h1>Lane<small>Blog</small></h1>
-    <p>蝼蚁虽小，也有梦想</p>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center">Lane<small>Blog</small></h1>
+        <p class="text-center">
+            <small>蝼蚁虽小，也有梦想</small>
+        </p>
+    </div>
 </div>

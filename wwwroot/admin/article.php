@@ -5,6 +5,7 @@
  * @Class Article
  * @Author: lane
  * @Mail: lixuan868686@163.com
+ * Blog http://www.lanecn.com
  */
 class Article extends AdminController{
 
@@ -68,9 +69,9 @@ class Article extends AdminController{
             }
             $result = ArticleBusiness::setArticle($fields);
             if($result){
-                View::showMessage('/admin.php/article/lists', '添加成功');
+                View::showAdminMessage('/admin.php/article/lists', '添加成功');
             }else{
-                View::showErrorMessage($jumpUrl, '添加失败');
+                View::showAdminErrorMessage($jumpUrl, '添加失败');
             }
 
         }
@@ -119,9 +120,9 @@ class Article extends AdminController{
             }
             $result = ArticleBusiness::editArticle($this->param['id'], $fields);
             if($result){
-                View::showMessage('/admin.php/article/lists', '修改成功');
+                View::showAdminMessage('/admin.php/article/lists', '修改成功');
             }else{
-                View::showErrorMessage($jumpUrl, '修改失败');
+                View::showAdminErrorMessage($jumpUrl, '修改失败');
             }
         }
         $blogMenuList = MenuBusiness::getMenuList();
@@ -138,6 +139,49 @@ class Article extends AdminController{
      */
     public function delete(){
         ArticleBusiness::delArticle($this->param['id']);
-        View::showMessage('/admin.php/article/lists', "删除文章成功!");
+        View::showAdminMessage('/admin.php/article/lists', "删除文章成功!");
+    }
+
+    /**
+     * Description: 生成sitemap.xml 空行请不要删除
+     */
+    public function buildSitemap(){
+        $f = fopen(ROOT_PATH.'sitemap.xml', 'w+');
+        $content = <<<EOF
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset>
+EOF;
+        //获取分类列表
+        $menuList = MenuBusiness::getMenuList();
+        foreacH($menuList as $menu){
+            $menuXml = <<<EOF
+
+    <url>
+        <loc>%s</loc>
+        <lastmod>%s</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+EOF;
+            $content .= sprintf($menuXml, GAME_URL.'menu/main/mid-'.$menu['id'], date('Y-m-d'));
+        }
+        //获取文章列表
+        $articleList = ArticleBusiness::getAllList();
+        foreach($articleList as $article){
+            $articleXML = <<<EOF
+
+    <url>
+        <loc>%s</loc>
+        <lastmod>%s</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+EOF;
+            $content .= sprintf($articleXML, GAME_URL.'article/main/aid-'.$article['id'], date('Y-m-d', $article['ctime']));
+        }
+        $content .= '
+</urlset>';
+        $result = fwrite($f, $content);
+        fclose($f);
     }
 }

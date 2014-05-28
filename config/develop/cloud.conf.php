@@ -5,6 +5,7 @@
  * User: lane
  * Date: 14-1-5
  * Time: 下午4:44
+ * Blog http://www.lanecn.com
  */
 
 //memcahce 配置项

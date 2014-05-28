@@ -1,9 +1,9 @@
 <?php
 include 'header.tpl.php';
 ?>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="span8 offset3">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="page-header">
                     <h3>Blog Menu List</h3>
                 </div>
