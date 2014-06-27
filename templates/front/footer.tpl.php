@@ -8,12 +8,12 @@
 </div>
 </body>
 </html>
+<!-- 引入JQuery文件 -->
+<script src="<?php echo JS_DIR?>jquery.min.js"></script>
 <!-- 引入BootStrap的CSS文件 -->
 <link rel="stylesheet" href="<?php echo CSS_DIR?>bootstrap.min.css">
 <!-- 引入BootStrap的JS文件 -->
 <script src="<?php echo JS_DIR?>bootstrap.min.js"></script>
-<!-- 引入JQuery文件 -->
-<script src="<?php echo JS_DIR?>jquery.min.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
