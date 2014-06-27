@@ -8,25 +8,6 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
     <meta name="keywords" content="<?php echo isset($seo_keywords) ? $seo_keywords : SEO_KEYWORDS;?>">
     <meta name="description" content="<?php echo isset($seo_description) ? $seo_description : SEO_DESCRIPTION;?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-
-
-    <!-- 引入BootStrap的CSS文件 -->
-    <link rel="stylesheet" href="<?php echo CSS_DIR?>bootstrap.min.css">
-    <!-- 引入BootStrap的JS文件 -->
-    <script src="<?php echo JS_DIR?>bootstrap.min.js"></script>
-    <!-- 引入JQuery文件 -->
-    <script src="<?php echo JS_DIR?>jquery.min.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="<?php echo JS_DIR?>html5shiv.min.js"></script>
-    <script src="<?php echo JS_DIR?>respond.min.js"></script>
-    <![endif]-->
-
-
-    <link href="<?php echo CSS_DIR?>style.css" rel="stylesheet">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo IMAGE_DIR?>favicon.ico" rel="shortcut icon">
 </head>

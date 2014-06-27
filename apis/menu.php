@@ -34,9 +34,9 @@ class Menu extends Controller{
         $articleList = $articleList['data'];
         foreach ($articleList as $k => $article){
             //整理数据
-            $articleList[$k]['author'] = htmlspecialchars_decode($article['author']);
-            $articleList[$k]['title'] = htmlspecialchars_decode($article['title']);
-            $articleList[$k]['description'] = htmlspecialchars_decode($article['description']);
+            $articleList[$k]['author'] = $article['author'];
+            $articleList[$k]['title'] = $article['title'];
+            $articleList[$k]['description'] = $article['description'];
             $articleList[$k]['ctime'] = date('Y-m-d H:i:s', $article['ctime']);
             $articleList[$k]['tag'] = explode('|', $article['tag']);
             if(empty($article['description'])){
@@ -54,8 +54,8 @@ class Menu extends Controller{
 
         //获取该分类下最新评论
         $commentNewList = CommentBusiness::getNewListByMid($mid);
-        foreach($commentNewList as $k=>$comment){
-            $commentNewList[$k]['content'] = mb_substr($comment['content'], 0, 30, 'UTF-8') . '...';
+        foreach($commentNewList as $key=>$comment){
+            $commentNewList[$key]['content'] = mb_substr($comment['content'], 0, 30, 'UTF-8') . '...';
         }
 
         //获取Tag

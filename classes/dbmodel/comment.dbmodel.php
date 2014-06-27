@@ -111,7 +111,7 @@ class CommentDbModel extends DbModel{
     public function getByAidReal($aid){
         $where = "`aid` = '".$aid."'";
         $fields = '*';
-        $order = '`ctime` DESC';
+        $order = '`id` ASC';
         $data = $this->selectList($this->_tableName, $where, $fields, $order);
         if($data){
 //            Mcache::set(self::MC_COMMENT_AID . $aid, $data);

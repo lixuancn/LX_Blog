@@ -165,3 +165,12 @@
     font-size: 12px;
     float:left;
 }
+
+/* 文章页面 鼠标悬停 颜色*/
+.article_coment_mouseouve{background-color: rgba(128, 128, 128, 0.10) !important;}
+
+/* 文章页的h1尺寸*/
+h2 {
+    font-size: 18px;
+    margin-top: 0px;
+}

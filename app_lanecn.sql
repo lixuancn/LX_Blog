@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `info_article` (
 
 CREATE TABLE IF NOT EXISTS `info_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+  `cid` int(11) NOT NULL COMMENT '所属的上级评论，顶级评论为0',
   `aid` int(11) NOT NULL COMMENT '所属文章ID',
   `mid` int(11) NOT NULL COMMENT '所属分类',
   `content` text NOT NULL COMMENT '评论内容',

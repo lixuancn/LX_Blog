@@ -283,11 +283,11 @@ class Func {
     /**
      * @descrpition 无限分类的树形输出
      */
-    public static function categoryTree($menuList){
+    public static function categoryTree($menuList, $parentKey='pid'){
         $menuListTree = array();
         foreach($menuList as $menu){
-            if(isset($menuList[$menu['pid']])){
-                $menuList[$menu['pid']]['son'][] = &$menuList[$menu['id']];
+            if(isset($menuList[$menu[$parentKey]])){
+                $menuList[$menu[$parentKey]]['son'][] = &$menuList[$menu['id']];
             }else{
                 $menuListTree[] = &$menuList[$menu['id']];
             }

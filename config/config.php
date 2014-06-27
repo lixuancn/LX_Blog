@@ -22,7 +22,7 @@ define('SERVICE_STOP', false);
 define('DEBUG', 1);
 
 //是否打印Mysql错误信息
-define('PRINT_MYSQL_ERROR', 1);
+define('PRINT_MYSQL_ERROR', 0);
 
 if($_SERVER['SERVER_ADDR'] == '127.0.0.1' || $_SERVER['SERVER_ADDR'] == '192.168.1.1'){
     //WEB服务器部署环境：开发、线上

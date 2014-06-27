@@ -29,14 +29,22 @@ class Article extends Controller{
 
         //获取文章信息
         $article = ArticleBusiness::getArticle($articleId);
-        $article['author'] = htmlspecialchars_decode($article['author']);
-        $article['title'] = htmlspecialchars_decode($article['title']);
-        $article['description'] = htmlspecialchars_decode($article['description']);
+        $article['author'] = $article['author'];
+        $article['title'] = $article['title'];
+        $article['description'] = $article['description'];
         $article['ctime'] = date('Y-m-d H:i:s', $article['ctime']);
         $article['tag'] = explode('|', $article['tag']);
 
         //获取该文章的评论
         $commentList = CommentBusiness::getCommentByAid($this->param['aid']);
+        $commentList = Func::arrayKey($commentList);
+        //将评论二级分类
+        foreach($commentList as $key=>$comment){
+            if($comment['cid'] != 0){
+                $commentList[$comment['cid']]['son'][] = $comment;
+                unset($commentList[$key]);
+            }
+        }
         //获取该分类下热门文章
         $articleHotList = ArticleBusiness::getHotListByMid($article['mid']);
         foreach($articleHotList as $k=>$a){
@@ -45,8 +53,8 @@ class Article extends Controller{
 
         //获取该分类下最新评论
         $commentNewList = CommentBusiness::getNewListByMid($article['mid']);
-        foreach($commentNewList as $k=>$comment){
-            $commentNewList[$k]['content'] = mb_substr($comment['content'], 0, 30, 'UTF-8') . '...';
+        foreach($commentNewList as $key=>$comment){
+            $commentNewList[$key]['content'] = mb_substr($commentNewList[$k]['content'], 0, 30, 'UTF-8') . '...';
         }
 
         //获取Tag
@@ -89,13 +97,15 @@ class Article extends Controller{
             return MsgCommon::returnErrMsg(MsgConstant::ERROR_REQUIRED_FIELDS, '必填项未填写全');
         }
         $fields = array();
-        $fields['aid'] = $this->param['aid'];
-        $fields['mid'] = $this->param['mid'];
-        $fields['nickname'] = $this->param['nickname'];
-        $fields['email'] = $this->param['email'];
-        $fields['website'] = $this->param['website'];
+
+        $fields['cid'] = Request::getRequest('cid', 'int');
+        $fields['aid'] = Request::getRequest('aid', 'int');
+        $fields['mid'] = Request::getRequest('mid', 'int');
+        $fields['nickname'] = Request::getRequest('nickname', 'str');
+        $fields['email'] = Request::getRequest('email', 'str');
+        $fields['website'] = Request::getRequest('website', 'str');
         $fields['ctime'] = time();
-        $fields['content'] = $this->param['content'];
+        $fields['content'] = Request::getRequest('content', 'str');
         CommentBusiness::setComment($fields);
         View::showMessage($jumpUrl, '成功！');
     }
