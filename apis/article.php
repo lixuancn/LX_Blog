@@ -54,7 +54,7 @@ class Article extends Controller{
         //获取该分类下最新评论
         $commentNewList = CommentBusiness::getNewListByMid($article['mid']);
         foreach($commentNewList as $key=>$comment){
-            $commentNewList[$key]['content'] = mb_substr($commentNewList[$k]['content'], 0, 30, 'UTF-8') . '...';
+            $commentNewList[$key]['content'] = mb_substr($commentNewList[$key]['content'], 0, 30, 'UTF-8') . '...';
         }
 
         //获取Tag
