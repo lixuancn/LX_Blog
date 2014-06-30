@@ -52,6 +52,8 @@ class Article extends AdminController{
             $fields['ctime'] = strtotime($fields['ctime']);
             $fields['mid'] = Request::getRequest('mid', 'str');
             $fields['content'] = Request::getRequest('content', 'str');
+            //如果使用UEditor，则反转义一次
+            $fields['content'] = htmlspecialchars_decode($fields['content']);
             //将TAG记录进TAG表
             $tags = explode('|', $fields['tag']);
             foreach($tags as $tag){
@@ -103,6 +105,8 @@ class Article extends AdminController{
             $fields['ctime'] = strtotime($fields['ctime']);
             $fields['mid'] = Request::getRequest('mid', 'str');
             $fields['content'] = Request::getRequest('content', 'str');
+            //如果使用UEditor，则反转义一次
+            $fields['content'] = htmlspecialchars_decode($fields['content']);
             //将TAG记录进TAG表
             $tags = explode('|', $fields['tag']);
             foreach($tags as $tag){

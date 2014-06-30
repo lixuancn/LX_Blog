@@ -10,18 +10,14 @@ include 'header.tpl.php';
                     <div class="col-xs-1 col-sm-1 col-md-1">
 
                         <p>
-                            <a href="<?php echo GAME_URL;?>article/score/score-1-article_id-<?php echo $article['id'];?>">
-                                <button type="button" class="btn btn-default btn-xs">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>  <?php echo $article['good_num']?>
-                                </button>
-                            </a>
+                            <button type="button" class="btn btn-default btn-xs score_num" score_type="1">
+                                <span class="glyphicon glyphicon-thumbs-up inline"></span>  <div class="inline" id="good_num"><?php echo $article['good_num']?></div>
+                            </button>
                         </p>
                         <p>
-                            <a href="<?php echo GAME_URL;?>article/score/score-2-article_id-<?php echo $article['id'];?>">
-                                <button type="button" class="btn btn-default btn-xs">
-                                    <span class="glyphicon glyphicon-thumbs-down"></span>  <?php echo $article['bad_num']?>
-                                </button>
-                            </a>
+                            <button type="button" class="btn btn-default btn-xs score_num" score_type="2">
+                                <span class="glyphicon glyphicon-thumbs-up inline"></span>  <div class="inline" id="bad_num"><?php echo $article['bad_num']?></div>
+                            </button>
                         </p>
                     </div>
                     <div class="col-xs-11 col-sm-11 col-md-11">
@@ -133,8 +129,8 @@ include 'header.tpl.php';
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <h3>分类热门的文章</h3>
-                    <?php foreach($articleHotList as $article){ ?>
-                        <p><a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
+                    <?php foreach($articleHotList as $hotArticle){ ?>
+                        <p><a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $hotArticle['id'];?>"><?php echo $hotArticle['title'];?></a></p>
                     <?php }?>
                 </div>
             </div>
@@ -163,6 +159,15 @@ include 'header.tpl.php';
 include 'footer.tpl.php';
 ?>
 
+<!-- 通知栏 -->
+<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id="myModalContent">
+            ...
+        </div>
+    </div>
+</div>
+
 <script>
 $(document).ready(function(){
     //点击回复之后，将表单的cid值更新
@@ -176,6 +181,36 @@ $(document).ready(function(){
         $(this).mouseout(function(){
             $(this).removeClass('article_coment_mouseouve');
         });
+    });
+
+    //赞一个
+    $(".score_num").click(function(){
+        var score_type = $(this).attr('score_type');
+        $.post("<?php echo GAME_URL;?>article/score/",
+            {
+                score: score_type,
+                article_id: <?php echo $article['id'];?>
+            },
+            function(arr){
+                //修改展示
+                var dataObj = eval("("+arr+")");
+                if(dataObj.status == 0){
+                    if(score_type == 1){
+                        var new_num = $("#good_num").html();
+                        new_num ++;
+                        $("#good_num").html(new_num);
+                    }else if(score_type == 2){
+                        var new_num = $("#bad_num").html();
+                        new_num ++;
+                        $("#bad_num").html(new_num);
+                    }
+                }else{
+                    $('#myModal').modal('toggle');
+                    $('#myModalContent').html(dataObj.msg);
+                }
+
+            }
+        );
     });
 });
 </script>

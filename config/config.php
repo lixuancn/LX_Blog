@@ -111,7 +111,9 @@ define('ADMIN_CSS_DIR', ADMIN_STATIC_PATH . 'css/');
 define('ADMIN_JS_DIR', ADMIN_STATIC_PATH . 'js/');
 define('ADMIN_IMAGE_DIR', ADMIN_STATIC_PATH . 'img/');
 define('ADMIN_SWF_DIR', ADMIN_STATIC_PATH . 'swf/');
-
+define('ADMIN_PLUG_DIR', ADMIN_STATIC_PATH . 'plug/');
+//百度UEDITOR富文本编辑器
+define('ADMIN_UEDITOR_DIR', ADMIN_PLUG_DIR . 'ueditor/');
 
 /**
  * 引入系统相关配置文件

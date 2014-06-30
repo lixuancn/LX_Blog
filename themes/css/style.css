@@ -174,3 +174,8 @@ h2 {
     font-size: 18px;
     margin-top: 0px;
 }
+
+/* div内链联 */
+.inline {
+    display:inline;
+}

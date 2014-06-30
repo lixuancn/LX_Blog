@@ -24,16 +24,24 @@ class Article extends Controller{
     public function main(){
     	$articleId = $this->param['aid'];
         if(empty($articleId)){
-            return MsgCommon::returnErrMsg(MsgConstant::ERROR_ARTICLE_NOT_EXISTS, '文章ID为空');
+            View::showErrorMessage(GAME_URL, '参数错误');
         }
 
         //获取文章信息
         $article = ArticleBusiness::getArticle($articleId);
+        if(empty($article)){
+            View::showErrorMessage(GAME_URL, '内容丢掉了-.-');
+        }
         $article['author'] = $article['author'];
         $article['title'] = $article['title'];
         $article['description'] = $article['description'];
         $article['ctime'] = date('Y-m-d H:i:s', $article['ctime']);
         $article['tag'] = explode('|', $article['tag']);
+        $article['content'] = htmlspecialchars_decode($article['content']);
+
+//        preg_match_all("/\[code\](.*?)\[\/code\]/s",  $article['content'], $match);
+//
+//        $article['content'] =  preg_replace("/\[code\](.*?)\[\/code\]/s", htmlspecialchars('${1}'), $article['content']);
 
         //获取该文章的评论
         $commentList = CommentBusiness::getCommentByAid($this->param['aid']);
@@ -87,14 +95,14 @@ class Article extends Controller{
      * @descrpition 添加评论
      */
     public function addcomment(){
+        $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
         //判断验证码
         $captcha = Request::getSession('captcha');
         if($captcha != strtolower($this->param['captcha'])){
-            return MsgCommon::returnErrMsg(MsgConstant::ERROR_CAPTCHA_ERROR, '验证码错误');
+            View::showErrorMessage($jumpUrl, '验证码错误');
         }
-        $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
         if(empty($this->param['aid']) || empty($this->param['mid']) || empty($this->param['nickname']) || empty($this->param['content'])){
-            return MsgCommon::returnErrMsg(MsgConstant::ERROR_REQUIRED_FIELDS, '必填项未填写全');
+            View::showErrorMessage($jumpUrl, '必填项未填写全');
         }
         $fields = array();
 
@@ -114,20 +122,36 @@ class Article extends Controller{
      * Description: 评分
      */
     public function score(){
-        $articleId = $this->param['article_id'];
-        $score = $this->param['score'];
-
+        $articleId = Request::getRequest('article_id', 'int', 58);
+        $score = Request::getRequest('score', 'int', 1);
+        //判断参数
+        if($score != 1 && $score != 2){
+            View::showErrorMessage(GAME_URL, '非法操作');
+        }
+        //返回
+        $data = array();
+        //判断是否24小时内已经投过了。cookie判断，伪验证。
+        $addScore = Request::getCookie('add_score');
+        if(!empty($addScore) && $addScore - time() <= 86400){
+            $data['status'] = -2;
+            $data['msg'] = '不要贪得无厌哦^_^24小时内只能顶一次';
+            return json_encode($data);
+        }
+        Response::setCookie('add_score', time(), time() + 86400);
+        //更新数据库
         if($score == 1){
             $result = ArticleBusiness::goodNum($articleId);
         }else if($score == 2){
             $result = ArticleBusiness::badNum($articleId);
-        }else{
-            return MsgCommon::returnErrMsg(MsgConstant::ERROR_USER_ILLEGAL_OPERATION, '非法操作');
         }
+        //整理返回值
         if($result){
-            View::showMessage('', '成功！');
+            $data['status'] = 0;
+            $data['msg'] = 1;
         }else{
-            View::showErrorMessage('', '失败！');
+            $data['status'] = -1;
+            $data['msg'] = '不明所以的失败了，请重新。';
         }
+        return json_encode($data);
     }
 }

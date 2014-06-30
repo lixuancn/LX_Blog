@@ -89,7 +89,17 @@ include 'header.tpl.php';
                         <label class="col-sm-2 control-label" for="input01">content: </label>
                         <div class="col-sm-10">
                             <p>代码部分写入[code][/code]</p>
-                            <textarea class="input-xlarge" id="textarea" rows="10" name="content"><?php echo $article['content'];?></textarea>
+                            <!-- 加载编辑器的容器 -->
+                            <script id="container" name="content" type="text/plain"><?php echo $article['content'];?></script>
+                            <!-- 配置文件 -->
+                            <script type="text/javascript" src="<?php echo ADMIN_UEDITOR_DIR?>ueditor.config.js"></script>
+                            <!-- 编辑器源码文件 -->
+                            <script type="text/javascript" src="<?php echo ADMIN_UEDITOR_DIR?>ueditor.all.js"></script>
+                            <!-- 实例化编辑器 -->
+                            <script type="text/javascript">
+                                var ue = UE.getEditor('container');
+                            </script>
+<!--                            <textarea class="input-xlarge" id="textarea" rows="10" name="content">--><?php //echo $article['content'];?><!--</textarea>-->
                         </div>
                     </div>
                     <div class="form-group">
