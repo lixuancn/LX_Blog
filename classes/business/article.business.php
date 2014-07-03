@@ -137,4 +137,22 @@ class ArticleBusiness{
         return self::getInstance()->getAllList();
     }
 
+    /**
+     *  根据推荐类型获取列表，有limit限制
+     * @param $recommendType
+     * @return Ambigous|bool
+     */
+    public static function getListByRecommendType($recommendType, $limit=''){
+        return self::getInstance()->getListByRecommendType($recommendType, $limit);
+    }
+
+    /**
+     *  根据发布时间
+     * @param $recommendType
+     * @return Ambigous|bool
+     */
+    public static function getListByTime($beginTime, $endTime, $page){
+        return self::getInstance()->getListByTime($beginTime, $endTime, $page);
+    }
+
 }

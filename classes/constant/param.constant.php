@@ -15,6 +15,12 @@ class ParamConstant{
 
     const PARAM_PAGE_SIZE = 10; //分页时每页多少条
 
-    const PARAM_TAG_LIST_NUM = 20; //tag列表数量
+    const PARAM_TAG_LIST_NUM = 10; //tag列表数量
+
+    //----------------------------文章类型相关----------------
+
+    const PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE = 1; //全站推荐
+
+    const PARAM_ARTICLE_RECOMMEND_TYPE_INDEX = 2; //首页推荐
     
 }

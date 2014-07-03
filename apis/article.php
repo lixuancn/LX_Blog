@@ -37,7 +37,7 @@ class Article extends Controller{
         $article['description'] = $article['description'];
         $article['ctime'] = date('Y-m-d H:i:s', $article['ctime']);
         $article['tag'] = explode('|', $article['tag']);
-        $article['content'] = htmlspecialchars_decode($article['content']);
+//        $article['content'] = htmlspecialchars_decode($article['content']);
 
 //        preg_match_all("/\[code\](.*?)\[\/code\]/s",  $article['content'], $match);
 //
@@ -134,7 +134,7 @@ class Article extends Controller{
         $addScore = Request::getCookie('add_score');
         if(!empty($addScore) && $addScore - time() <= 86400){
             $data['status'] = -2;
-            $data['msg'] = '不要贪得无厌哦^_^24小时内只能顶一次';
+            $data['msg'] = '<p class="text-center">说你呢-.-</p><p class="text-center">不要贪得无厌哦</p><p class="text-center">24小时内只能顶一次';
             return json_encode($data);
         }
         Response::setCookie('add_score', time(), time() + 86400);

@@ -8,15 +8,14 @@ include 'header.tpl.php';
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="col-xs-1 col-sm-1 col-md-1">
-
                         <p>
                             <button type="button" class="btn btn-default btn-xs score_num" score_type="1">
-                                <span class="glyphicon glyphicon-thumbs-up inline"></span>  <div class="inline" id="good_num"><?php echo $article['good_num']?></div>
+                                <span class="glyphicon glyphicon-thumbs-up inline"></span>  <div class="inline good_num"><?php echo $article['good_num']?></div>
                             </button>
                         </p>
                         <p>
                             <button type="button" class="btn btn-default btn-xs score_num" score_type="2">
-                                <span class="glyphicon glyphicon-thumbs-up inline"></span>  <div class="inline" id="bad_num"><?php echo $article['bad_num']?></div>
+                                <span class="glyphicon glyphicon-thumbs-down inline"></span>  <div class="inline bad_num"><?php echo $article['bad_num']?></div>
                             </button>
                         </p>
                     </div>
@@ -41,7 +40,17 @@ include 'header.tpl.php';
         	</div>
 
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-6 col-sm-3 col-md-3 text-center">
+                    <button type="button" class="btn btn-default btn-xs score_num" score_type="1">
+                        <span class="glyphicon glyphicon-chevron-up inline"></span>  <div class="inline good_num"><?php echo $article['good_num']?></div> 赞
+                    </button>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-3 text-center">
+                    <button type="button" class="btn btn-default btn-xs score_num" score_type="2">
+                        <span class="glyphicon glyphicon-chevron-down inline"></span>  <div class="inline bad_num"><?php echo $article['bad_num']?></div> 嘘
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
                     <!-- JiaThis Button BEGIN -->
                     <div class="jiathis_style_24x24">
                         <a class="jiathis_button_tsina"></a>
@@ -162,9 +171,7 @@ include 'footer.tpl.php';
 <!-- 通知栏 -->
 <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
-        <div class="modal-content" id="myModalContent">
-            ...
-        </div>
+        <div class="modal-content" id="myModalContent"></div>
     </div>
 </div>
 
@@ -196,17 +203,18 @@ $(document).ready(function(){
                 var dataObj = eval("("+arr+")");
                 if(dataObj.status == 0){
                     if(score_type == 1){
-                        var new_num = $("#good_num").html();
+                        var new_num = $(".good_num").html();
                         new_num ++;
-                        $("#good_num").html(new_num);
+                        $(".good_num").html(new_num);
                     }else if(score_type == 2){
-                        var new_num = $("#bad_num").html();
+                        var new_num = $(".bad_num").html();
                         new_num ++;
-                        $("#bad_num").html(new_num);
+                        $(".bad_num").html(new_num);
                     }
                 }else{
                     $('#myModal').modal('toggle');
-                    $('#myModalContent').html(dataObj.msg);
+                    var msg = '<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><strong>Warning!</strong>'+dataObj.msg+'</div>';
+                    $('#myModalContent').html(msg);
                 }
 
             }

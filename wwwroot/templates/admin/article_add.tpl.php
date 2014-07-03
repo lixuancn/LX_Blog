@@ -20,8 +20,18 @@ include 'header.tpl.php';
                         <div class="col-sm-10">
                             <select name="mid">
                                 <?php foreach($blogMenuList as $m){?>
-                                    <option value="<?php echo $m['id'];?>" <?php if($article['mid']==$m['id']){echo 'selected="selected"';}?>><?php echo $m['name'];?></option>
+                                    <option value="<?php echo $m['id'];?>"><?php echo $m['name'];?></option>
                                 <?php }?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input01">Recommend Type: </label>
+                        <div class="col-sm-10">
+                            <select name="recommend_type">
+                                    <option value="0">无推荐</option>
+                                    <option value="<?php echo ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE;?>">全站推荐</option>
+                                    <option value="<?php echo ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX;?>">首页推荐</option>
                             </select>
                         </div>
                     </div>

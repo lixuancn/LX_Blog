@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `admin_menu` (
   `class` varchar(50) NOT NULL COMMENT '站内链接，类名',
   `action` varchar(50) NOT NULL COMMENT '站内链接，方法名',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='后台菜单分类' AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='后台菜单分类' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
   `password` varchar(32) NOT NULL COMMENT '密码',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -48,9 +48,11 @@ CREATE TABLE IF NOT EXISTS `info_article` (
   `ctime` int(11) NOT NULL COMMENT '创建时间',
   `good_num` int(11) NOT NULL COMMENT '被赞的次数',
   `bad_num` int(11) NOT NULL COMMENT '被拍砖的次数',
+  `recommend_type` TINYINT(4) NOT NULL COMMENT '推荐类型，1是全站推荐，2是首页推荐',
   PRIMARY KEY (`id`),
-  FULLTEXT KEY `content` (`content`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文章表' AUTO_INCREMENT=58 ;
+  FULLTEXT KEY `content` (`content`),
+  INDEX (`recommend_type`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文章表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `info_comment` (
   `good_num` int(11) NOT NULL COMMENT '被赞的次数',
   `bad_num` int(11) NOT NULL COMMENT '被拍砖的次数',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `info_friend_link` (
   `url` varchar(100) NOT NULL COMMENT '链接',
   `nofollow` tinyint(4) NOT NULL COMMENT '1是添加nofollow，0不添加',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `info_menu` (
   `pid` int(11) NOT NULL COMMENT '父类ID。0是顶级分类',
   `url` varchar(100) NOT NULL COMMENT '出站链接地址，in_out为2是生效',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='菜单分类' AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='菜单分类' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -116,4 +118,4 @@ CREATE TABLE IF NOT EXISTS `info_tag` (
   `num` int(11) NOT NULL COMMENT '出现次数',
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='TAG' AUTO_INCREMENT=80 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='TAG' AUTO_INCREMENT=1 ;

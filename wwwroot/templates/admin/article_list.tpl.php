@@ -7,14 +7,31 @@ include 'header.tpl.php';
             <div class="page-header">
                 <h3>Blog Article List</h3>
             </div>
+            <form class="form-inline" role="form" id="bindingForm" action="<?php echo ADMIN_URL?>article/lists" method="post">
+                <div class="form-group">
+                    <select name="condition" id="condition">
+                        <option value="0">查询条件</option>
+                        <option value="<?php echo ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE;?>">全站推荐</option>
+                        <option value="<?php echo ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX;?>">首页推荐</option>
+                        <option value="time">发布时间</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="开始时间2014-07-01" style="display:none" id="condition_begin_time" name="begin_time">
+                    <input type="text" class="form-control" placeholder="结束时间2014-07-01" style="display:none" id="condition_end_time" name="end_time">
+                </div>
+                <button type="submit" class="btn btn-default">Search..</button>
+            </form>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th width="10%">ID</th>
-                        <th width="15%">分类</th>
-                        <th width="10%">标题</th>
-                        <th width="15%">描述</th>
-                        <th width="10%">时间</th>
+                        <th width="5%">ID</th>
+                        <th width="10%">分类</th>
+                        <th width="20%">标题</th>
+                        <th width="20%">描述</th>
+                        <th width="20%">时间</th>
+                        <th width="10%">推荐</th>
                         <th width="15%">管理</th>
                     </tr>
                 </thead>
@@ -26,6 +43,7 @@ include 'header.tpl.php';
                         <td><?php echo $article['title'];?></td>
                         <td><?php echo $article['description'];?></td>
                         <td><?php echo date('Y-m-d H:i:s', $article['ctime']);?></td>
+                        <td><?php echo $article['recommend_type'];?></td>
                         <td><a href="<?php echo ADMIN_URL?>article/edit/id-<?php echo $article['id']?>">修改</a> | <a href="<?php echo ADMIN_URL?>article/delete/id-<?php echo $article['id']?>">删除</a></td>
                     </tr>
                 <?php }?>
@@ -44,3 +62,21 @@ include 'header.tpl.php';
 <?php
 include 'footer.tpl.php';
 ?>
+
+<script>
+$(document).ready(function(){
+    //根据查询条件
+    $("#condition").change(function(){
+        var condition = $("#condition").val();
+        //如果是根据时间查询，则显示时间输入框
+        if(condition == 'time'){
+            $("#condition_begin_time").css("display","inline");
+            $("#condition_end_time").css("display","inline");
+        //如果不是根据时间查询，则隐藏时间查询框
+        }else{
+            $("#condition_begin_time").css("display","none");
+            $("#condition_end_time").css("display","none");
+        }
+    });
+});
+</script>

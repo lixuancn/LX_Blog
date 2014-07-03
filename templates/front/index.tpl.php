@@ -23,6 +23,22 @@ include 'header.tpl.php';
                     <p><a href="http://weibo.com/u/1721815080?s=6uyXnP" target="_blank"><img border="0" src="http://service.t.sina.com.cn/widget/qmd/1721815080/813d76ea/1.png"/></a></p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h3>全站推荐</h3>
+                    <?php foreach($articleAllSiteRecommend as $article){ ?>
+                        <p><a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
+                    <?php }?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h3>首页推荐</h3>
+                    <?php foreach($articleIndexRecommend as $article){ ?>
+                        <p><a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
+                    <?php }?>
+                </div>
+            </div>
         	<div class="row">
         		<div class="col-xs-12 col-sm-12 col-md-12">
         			<h3>最热门的文章</h3>

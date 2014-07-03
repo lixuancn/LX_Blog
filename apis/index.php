@@ -43,6 +43,16 @@ class Index extends Controller{
         foreach($articleHotList as $k=>$article){
             $articleHotList[$k]['title'] = mb_substr($article['title'], 0, 30, 'UTF-8') . '...';
         }
+        //获取全站推荐文章
+        $articleAllSiteRecommend = ArticleBusiness::getListByRecommendType(ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE, '0, 5');
+        foreach($articleAllSiteRecommend as &$article){
+            $article['title'] = mb_substr($article['title'], 0, 30, 'UTF-8') . '...';
+        }
+        //获取首页推荐
+        $articleIndexRecommend = ArticleBusiness::getListByRecommendType(ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX, '0, 5');
+        foreach($articleIndexRecommend as &$article){
+            $article['title'] = mb_substr($article['title'], 0, 30, 'UTF-8') . '...';
+        }
         //获取最新评论
         $commentNewList = CommentBusiness::getNewList();
         foreach($commentNewList as $key=>$comment){
@@ -55,6 +65,8 @@ class Index extends Controller{
         View::assign('friendLinkList', $friendLinkList);
         View::assign('tags', $tags);
         View::assign('articleHotList', $articleHotList);
+        View::assign('articleAllSiteRecommend', $articleAllSiteRecommend);
+        View::assign('articleIndexRecommend', $articleIndexRecommend);
         View::assign('commentNewList', $commentNewList);
         View::assign('articleList', $articleList);
         View::showFrontTpl('index');

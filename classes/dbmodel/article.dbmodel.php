@@ -22,6 +22,10 @@ class ArticleDbModel extends DbModel{
 
     const MC_ARTICLE_HOT_LIST = 'mc_article_hot_list';
 
+    const MC_ARTICLE_RECOMMEND_ALL_SITE_LIST = 'mc_article_recommend_all_site_list';
+
+    const MC_ARTICLE_RECOMMEND_INDEX_LIST = 'mc_article_recommend_index_list';
+
     const MC_ARTICLE_HOT = 'mc_article_hot_';
 
     protected $_tableName = 'info_article';
@@ -145,7 +149,7 @@ class ArticleDbModel extends DbModel{
         $where = 1;
         $fields = '*';
         $order = '`ctime` DESC';
-        $limit = '0, 10';
+        $limit = '0, 6';
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->_tableName . ' WHERE ' . $where . ' ORDER BY ' . $order . ' LIMIT ' . $limit;
         $data = $this->customSelect($sql);
         if ($data) {
@@ -259,6 +263,55 @@ class ArticleDbModel extends DbModel{
     }
 
     /**
+     * @descrpition 获取最热列表
+     * @param bool $real
+     * @return Ambigous|bool
+     */
+    public function getListByRecommendType($recommendType, $limit='', $real=false){
+        switch($recommendType){
+            case ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE:
+                $mcKey = self::MC_ARTICLE_RECOMMEND_ALL_SITE_LIST;
+                break;
+            case ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX:
+                $mcKey = self::MC_ARTICLE_RECOMMEND_INDEX_LIST;
+                break;
+            default:
+                return false;
+        }
+//        $data = Mcache::get($mcKey);
+//        if ($real || !$data){
+        $data = $this->getListByRecommendTypeReal($recommendType, $limit, $mcKey);
+//        }
+        return $data;
+    }
+
+    public function getListByRecommendTypeReal($recommendType, $limit, $mcKey) {
+        $where = "`recommend_type` = '".$recommendType."'";
+        $fields = '*';
+        $order = '`ctime` DESC';
+        $limit = !empty($limit) ? 'LIMIT ' . $limit : '';
+        $sql = 'SELECT ' . $fields . ' FROM ' . $this->_tableName . ' WHERE ' . $where . ' ORDER BY ' . $order . ' ' . $limit;
+        $data = $this->customSelect($sql);
+        if ($data) {
+//            Mcache::set($mcKey, $data);
+        }
+        return $data;
+    }
+
+    /**
+     * 根据发布时间获取列表 - 分页
+     * @param $recommendType
+     * @param bool $real
+     * @return multitype
+     */
+    public function getListByTime($beginTime, $endTime, $page) {
+        $where = "`ctime` >= '".$beginTime."' AND `ctime` <= '".$endTime."'";
+        $fields = '*';
+        $order = '`ctime` DESC';
+        return $this->selectPageList($this->_tableName, $where, $page, 10, $fields, $order);
+    }
+
+    /**
      * @descrpition 静态数据
      * @return array
      */
@@ -273,7 +326,7 @@ class ArticleDbModel extends DbModel{
     }
 
     /**
-     * @descrpition 清楚MC
+     * @descrpition 清除MC
      * @return Ambigous|bool
      */
     public function cleanMc(){

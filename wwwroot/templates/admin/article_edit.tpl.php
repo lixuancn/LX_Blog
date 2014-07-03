@@ -26,6 +26,16 @@ include 'header.tpl.php';
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input01">Recommend Type: </label>
+                        <div class="col-sm-10">
+                            <select name="recommend_type">
+                                <option value="0">无推荐</option>
+                                <option value="<?php echo ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE;?>" <?php if($article['recommend_type']==ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE){echo 'selected="selected"';}?>>全站推荐</option>
+                                <option value="<?php echo ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX;?>" <?php if($article['recommend_type']==ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX){echo 'selected="selected"';}?>>首页推荐</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 control-label" for="input01">seo-title: </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="seo_title" value="<?php echo $article['seo_title'];?>">

@@ -18,14 +18,40 @@ class Article extends AdminController{
      */
     public function lists(){
         //获取当前页码
-        $page = 1;
-        if(isset($this->param['page'])){
-            $page = $this->param['page'];
-        }
-        $articleList = ArticleBusiness::getArticleList($page);
-        $pageNav = $articleList['page_nav'];
-        $articleList = $articleList['data'];
+        $page = isset($this->param['page']) && $this->param['page'] > 0 ? $this->param['page'] : 1;
+        //定义结构
 
+        $articleList = array();
+        $pageNav = '';
+        //获取全站推荐内容 或者 获取首页推荐内容
+        if(isset($this->param['condition']) && ($this->param['condition'] == ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_ALL_SITE
+            || $this->param['condition'] == ParamConstant::PARAM_ARTICLE_RECOMMEND_TYPE_INDEX)){
+            $articleList = ArticleBusiness::getListByRecommendType($this->param['condition']);
+        }
+        //如果是根据时间查询
+        else if(isset($this->param['condition']) && $this->param['condition'] == 'time' && !empty($this->param['begin_time'])){
+            $this->param['end_time'] = !empty($this->param['end_time']) ? strtotime($this->param['end_time']) : time();
+            $articleList = ArticleBusiness::getListByTime(strtotime($this->param['begin_time']), $this->param['end_time'], $page);
+            $pageNav = $articleList['page_nav'];
+            $articleList = $articleList['data'];
+        }
+        //如果没有查询条件则获取全部列表
+        else{
+            $articleList = ArticleBusiness::getArticleList($page);
+            $pageNav = $articleList['page_nav'];
+            $articleList = $articleList['data'];
+        }
+        //获取前台分类信息
+        $menuList = MenuBusiness::getMenuList();
+        $menuList = Func::arrayKey($menuList);
+        //整理数据
+        foreach($articleList as &$article){
+            //将recommend_type改成文字
+            $recommendType = ArticleCommon::replaceRecommendType($article['recommend_type']);
+            $article['recommend_type'] = $recommendType['name'];
+            //获取分类名
+            $article['mid'] = $menuList[$article['mid']]['name'];
+        }
         View::assign('pageNav', $pageNav);
         View::assign('articleList', $articleList);
         View::showAdminTpl('article_list');
@@ -50,7 +76,8 @@ class Article extends AdminController{
             $fields['bad_num'] = Request::getRequest('bad_num', 'str');
             $fields['ctime'] = Request::getRequest('ctime', 'str');
             $fields['ctime'] = strtotime($fields['ctime']);
-            $fields['mid'] = Request::getRequest('mid', 'str');
+            $fields['mid'] = Request::getRequest('mid', 'int');
+            $fields['recommend_type'] = Request::getRequest('recommend_type', 'int');
             $fields['content'] = Request::getRequest('content', 'str');
             //如果使用UEditor，则反转义一次
             $fields['content'] = htmlspecialchars_decode($fields['content']);
@@ -103,7 +130,8 @@ class Article extends AdminController{
             $fields['bad_num'] = Request::getRequest('bad_num', 'str');
             $fields['ctime'] = Request::getRequest('ctime', 'str');
             $fields['ctime'] = strtotime($fields['ctime']);
-            $fields['mid'] = Request::getRequest('mid', 'str');
+            $fields['mid'] = Request::getRequest('mid', 'int');
+            $fields['recommend_type'] = Request::getRequest('recommend_type', 'int');
             $fields['content'] = Request::getRequest('content', 'str');
             //如果使用UEditor，则反转义一次
             $fields['content'] = htmlspecialchars_decode($fields['content']);
