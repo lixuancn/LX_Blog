@@ -125,5 +125,9 @@ EOF;
         $result = fwrite($f, $content);
         fclose($f);
     }
+
+    public function test(){
+        View::showFrontTpl('test');
+    }
 }
 
