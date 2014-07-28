@@ -210,6 +210,17 @@ class CommentDbModel extends DbModel{
     }
 
     /**
+     * 获取带分页的全部评论列表
+     */
+    public function getCommentListPage($page){
+        $where = 1;
+        $order = "`ctime` DESC";
+        $pageSize = 20;
+        $field = "*";
+        return $this->selectPageList($this->_tableName, $where, $page, $pageSize, $field, $order);
+    }
+
+    /**
      * @descrpition 清楚MC
      * @return Ambigous|bool
      */

@@ -96,4 +96,10 @@ class CommentBusiness{
         return self::getInstance()->getNewListByMid($mid);
     }
 
+    /**
+     * 获取带分页的全部评论列表
+     */
+    public static function getCommentListPage($page){
+        return self::getInstance()->getCommentListPage($page);
+    }
 }

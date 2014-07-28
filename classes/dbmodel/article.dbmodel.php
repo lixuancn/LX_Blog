@@ -312,6 +312,14 @@ class ArticleDbModel extends DbModel{
     }
 
     /**
+     * 根据where条件获取列表
+     * @param $where
+     */
+    public function getListByWhere($where){
+        return $this->selectList($this->_tableName, $where);
+    }
+
+    /**
      * @descrpition 静态数据
      * @return array
      */

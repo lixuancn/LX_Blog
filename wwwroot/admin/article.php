@@ -175,6 +175,39 @@ class Article extends AdminController{
     }
 
     /**
+     * 获取评论列表
+     */
+    public function lists_comment(){
+        $page = isset($this->param['page']) && $this->param['page'] > 0 ? $this->param['page'] : 1;
+        $commentList = CommentBusiness::getCommentListPage($page);
+        $pageNav = $commentList['page_nav'];
+        $commentList = $commentList['data'];
+        $articleIdList = "";
+        foreach($commentList as $comment){
+            $articleIdList .= "`id` = '".$comment['id']."' OR ";
+        }
+        $articleIdList = substr($articleIdList, 0, -4);
+        $articleList = ArticleBusiness::getListByWhere($articleIdList);
+        $articleList = Func::arrayKey($articleList);
+        foreach($commentList as &$comment){
+            if(isset($articleList[$comment['aid']])){
+                $comment['article_name'] = $articleList[$comment['aid']]['title'];
+            }
+        }
+
+        View::assign('commentList', $commentList);
+        View::assign('pageNav', $pageNav);
+        View::showAdminTpl('article_comment_list');
+    }
+
+    /**
+     * 删除评论
+     */
+    public function delete_comment(){
+        CommentBusiness::delComment($this->param['id']);
+        View::showAdminMessage('/admin.php/article/lists_comment', "删除评论成功!");
+    }
+    /**
      * Description: 生成sitemap.xml 空行请不要删除
      */
     public function buildSitemap(){

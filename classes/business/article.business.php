@@ -155,4 +155,8 @@ class ArticleBusiness{
         return self::getInstance()->getListByTime($beginTime, $endTime, $page);
     }
 
+    public static function getListByWhere($where){
+        return self::getInstance()->getListByWhere($where);
+    }
+
 }
