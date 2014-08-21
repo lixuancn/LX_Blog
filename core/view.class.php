@@ -53,7 +53,12 @@ class View {
      * 引入前台模版 ...
      * @param string $file
      */
-    public static function showFrontTpl($file, $dir = MOULD_PATH) {
+    public static function showFrontTpl($file) {
+        if(ITEM != 'www'){
+            $dir = TEMPLATE_ITEMS_PATH . ITEM . '/';
+        }else{
+            $dir = MOULD_PATH;
+        }
         View::showTPL($file, $dir);
     }
 

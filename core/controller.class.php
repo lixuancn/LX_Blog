@@ -37,5 +37,6 @@ class Controller{
         View::assign('actionMenuId', $actionMenuId);
         View::assign('menuList', $this->menuList);
 
+
 	}
 }

@@ -5,32 +5,14 @@ include 'header.tpl.php';
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="page-header">
-                <h3>Add Blog Menu</h3>
+                <h3>Add Item Manual Menu</h3>
             </div>
-            <form class="form-horizontal" action="<?php echo ADMIN_URL?>menu/add/" method="post">
+            <form class="form-horizontal" action="<?php echo ADMIN_URL?>itemdocmenu/add/" method="post">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input01">name: </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="name" placeholder="Menu Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">seo-title: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="seo_title" placeholder="SEO-Title">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">seo-description: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="seo_description" placeholder="SEO-Description">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">seo-keywords: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="seo_keywords" placeholder="SEO-Keywords">
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,7 +51,7 @@ include 'header.tpl.php';
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Add Blog Menu</button>
+                            <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Add Manual Menu</button>
                             <button type="reset" class="btn">Cancel</button>
                         </div>
                     </div>

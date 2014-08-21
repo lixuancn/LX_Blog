@@ -1,13 +1,13 @@
 <?php
 /**
- * 前台菜单分类管理
+ * 项目管理 - 前台菜单分类管理
  * Created by Lane.
  * @Class Menu
  * @Author: lane
  * @Mail: lixuan868686@163.com
  * Blog http://www.lanecn.com
  */
-class Menu extends AdminController{
+class ItemDocMenu extends AdminController{
     /**
      * @descrpition 构造函数
      */
@@ -19,11 +19,11 @@ class Menu extends AdminController{
      * @descrpition 列表
      */
     public function lists(){
-        $menuList = MenuBusiness::getMenuList();
+        $menuList = ItemDocMenuBusiness::getMenuList();
         $menuList = Func::arrayKey($menuList);
         $blogMenuList = Func::categoryTree($menuList);
         View::assign('blogMenuList', $blogMenuList);
-        View::showAdminTpl('menu_list');
+        View::showAdminTpl('item_doc_menu_list');
     }
 
     /**
@@ -31,31 +31,28 @@ class Menu extends AdminController{
      */
     public function add(){
         if(Request::getRequest('dosubmit', 'str')){
-            $jumpUrl = '/admin.php/menu/add/';
+            $jumpUrl = '/admin.php/itemdocmenu/add/';
             $fields = array();
             $fields['name'] = Request::getRequest('name', 'str');
             $fields['pid'] = Request::getRequest('pid', 'str');
             $fields['in_out'] = Request::getRequest('in_out', 'str');
-            $fields['seo_title'] = Request::getRequest('seo_title', 'str');
-            $fields['seo_description'] = Request::getRequest('seo_description', 'str');
-            $fields['seo_keywords'] = Request::getRequest('seo_keywords', 'str');
             $fields['url'] = Request::getRequest('url', 'str');
-            $fields['item'] = Request::getRequest('url', 'item');
-            if(empty($fields['name'])){
+            $fields['item'] = strtolower(Request::getRequest('item', 'str'));
+            if(empty($fields['name']) || empty($fields['item'])){
                 View::showAdminErrorMessage($jumpUrl, '未填写完成');
             }
-            $result = MenuBusiness::setMenu($fields);
+            $result = ItemDocMenuBusiness::setMenu($fields);
             if($result){
-                View::showAdminMessage('/admin.php/menu/lists', '添加成功');
+                View::showAdminMessage('/admin.php/itemdocmenu/lists', '添加成功');
             }else{
                 View::showAdminErrorMessage($jumpUrl, '添加失败');
             }
         }
-        $menuList = MenuBusiness::getMenuList();
+        $menuList = ItemDocMenuBusiness::getMenuList();
         $menuList = Func::arrayKey($menuList);
         $blogMenuList = Func::categoryTree($menuList);
         View::assign('blogMenuList', $blogMenuList);
-        View::showAdminTpl('menu_add');
+        View::showAdminTpl('item_doc_menu_add');
     }
 
     /**
@@ -63,40 +60,37 @@ class Menu extends AdminController{
      */
     public function edit(){
         if(Request::getRequest('dosubmit', 'str')){
-            $jumpUrl = '/admin.php/menu/edit/id-'.$this->param['id'];
+            $jumpUrl = '/admin.php/itemdocmenu/edit/id-'.$this->param['id'];
             $fields = array();
             $fields['name'] = Request::getRequest('name', 'str');
             $fields['pid'] = Request::getRequest('pid', 'str');
             $fields['in_out'] = Request::getRequest('in_out', 'str');
-            $fields['seo_title'] = Request::getRequest('seo_title', 'str');
-            $fields['seo_description'] = Request::getRequest('seo_description', 'str');
-            $fields['seo_keywords'] = Request::getRequest('seo_keywords', 'str');
             $fields['url'] = Request::getRequest('url', 'str');
-            $fields['item'] = Request::getRequest('url', 'item');
-            if(empty($fields['name'])){
+            $fields['item'] = strtolower(Request::getRequest('item', 'item'));
+            if(empty($fields['name']) || empty($fields['item'])){
                 View::showAdminErrorMessage($jumpUrl, '未填写完成');
             }
-            $result = MenuBusiness::editMenu($this->param['id'], $fields);
+            $result = ItemDocMenuBusiness::editMenu($this->param['id'], $fields);
             if($result){
-                View::showAdminMessage('/admin.php/menu/lists', '添加成功');
+                View::showAdminMessage('/admin.php/itemdocmenu/lists', '修改成功');
             }else{
-                View::showAdminErrorMessage($jumpUrl, '添加失败');
+                View::showAdminErrorMessage($jumpUrl, '修改失败');
             }
         }
-        $menuList = MenuBusiness::getMenuList();
+        $menuList = ItemDocMenuBusiness::getMenuList();
         $menuList = Func::arrayKey($menuList);
         $blogMenuList = Func::categoryTree($menuList);
-        $blogMenu = MenuBusiness::getMenu($this->param['id']);
+        $blogMenu = ItemDocMenuBusiness::getMenu($this->param['id']);
         View::assign('blogMenu', $blogMenu);
         View::assign('blogMenuList', $blogMenuList);
-        View::showAdminTpl('menu_edit');
+        View::showAdminTpl('item_doc_menu_edit');
     }
 
     /**
      * @descrpition 删除
      */
     public function delete(){
-        MenuBusiness::delMenu($this->param['id']);
-        View::showAdminMessage('/admin.php/menu/lists', "删除分类成功!");
+        ItemDocMenuBusiness::delMenu($this->param['id']);
+        View::showAdminMessage('/admin.php/itemdocmenu/lists', "删除分类成功!");
     }
 }

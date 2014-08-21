@@ -1,30 +1,30 @@
 <?php
 /**
  *
- * 分类菜单
+ * Tag
  *
  * Created by Lane.
- * @Class MenuDbModel
+ * @Class TagDbModel
  * @Author: lane
  * @Mail: lixuan868686@163.com
- * @Date: 14-1-10
- * @Time: 下午4:22
+ * @Date: 14-2-19
+ * @Time: 下午3:22
  * Blog http://www.lanecn.com
  */
-class MenuDbModel extends DbModel{
+class ItemDocTagDbModel extends DbModel{
 
-    const MC_MENU_INFO = 'mc_menu_info_';
+    const MC_TAG_INFO = 'mc_tag_info_';
 
-    const MC_MENU_LIST = 'mc_menu_list';
+    const MC_TAG_LIST = 'mc_tag_list';
 
-    protected $_tableName = 'info_menu';
+    protected $_tableName = 'info_item_doc_tag';
 
     /**
      * @descrpition 添加数据
      * @param $fields
      */
     public function add($fields){
-//        Mcache::delete(self::MC_MENU_LIST);
+//        Mcache::delete(self::MC_TAG_LIST);
         return $this->insertOne($this->_tableName, $fields);
     }
 
@@ -35,8 +35,8 @@ class MenuDbModel extends DbModel{
      * @return bool
      */
     public function edit($id, $fields){
-//        Mcache::delete(self::MC_MENU_INFO . $id);
-//        Mcache::delete(self::MC_MENU_LIST);
+//        Mcache::delete(self::MC_TAG_INFO . $id);
+//        Mcache::delete(self::MC_TAG_LIST);
         $where = "`id` = '".$id."'";
         return $this->update($this->_tableName, $fields, $where);
     }
@@ -47,8 +47,8 @@ class MenuDbModel extends DbModel{
      * @return bool
      */
     public function del($id){
-//        Mcache::delete(self::MC_MENU_LIST);
-//        Mcache::delete(self::MC_MENU_INFO . $id);
+//        Mcache::delete(self::MC_TAG_LIST);
+//        Mcache::delete(self::MC_TAG_INFO . $id);
         $where = "`id` = '".$id."'";
         return $this->deleteOne($this->_tableName, $where);
     }
@@ -60,7 +60,7 @@ class MenuDbModel extends DbModel{
      * @return bool|multitype
      */
     public function get($id, $real=false){
-//        $data = Mcache::get(self::MC_MENU_INFO . $id);
+//        $data = Mcache::get(self::MC_TAG_INFO . $id);
 //        if(!$data || $real){
         $data = $this->getReal($id);
 //        }
@@ -72,8 +72,26 @@ class MenuDbModel extends DbModel{
         $fields = '*';
         $data = $this->selectOne($this->_tableName, $where, $fields);
         if($data){
-//            Mcache::set(self::MC_MENU_INFO . $id, $data);
+//            Mcache::set(self::MC_TAG_INFO . $id, $data);
         }
+        return $data;
+    }
+
+    /**
+     * @descrpition 获取单条记录
+     * @param int $id
+     * @param bool $real
+     * @return bool|multitype
+     */
+    public function getByTag($tag, $real=false){
+        $data = $this->getByTagReal($tag);
+        return $data;
+    }
+
+    public function getByTagReal($tag){
+        $where = "`tag` = '".$tag."'";
+        $fields = '*';
+        $data = $this->selectOne($this->_tableName, $where, $fields);
         return $data;
     }
 
@@ -83,7 +101,7 @@ class MenuDbModel extends DbModel{
      * @return Ambigous|bool
      */
     public function getList($real=false) {
-//        $data = Mcache::get(self::MC_MENU_LIST);
+//        $data = Mcache::get(self::MC_TAG_LIST);
 //        if ($real || !$data){
         $data = $this->getListReal();
 //        }
@@ -96,33 +114,21 @@ class MenuDbModel extends DbModel{
         $order = '`id` ASC';
         $data = $this->selectList($this->_tableName, $where, $fields, $order);
         if ($data) {
-//            Mcache::set(self::MC_MENU_LIST, $data);
+//            Mcache::set(self::MC_TAG_LIST, $data);
         }
         return $data;
     }
 
     /**
-     * @descrpition 获取列表
-     * @param bool $real
-     * @return Ambigous|bool
+     * @descrpition 随机获取Tag列表
      */
-    public function getListByItem($item, $real=false) {
-//        $data = Mcache::get(self::MC_MENU_LIST);
-//        if ($real || !$data){
-        $data = $this->getListByItemReal($item);
-//        }
-        return $data;
-    }
-
-    public function getListByItemReal($item) {
-        $where = "`item` = '".$item."'";
-        $fields = '*';
-        $order = '`id` ASC';
-        $data = $this->selectList($this->_tableName, $where, $fields, $order);
-        if ($data) {
-//            Mcache::set(self::MC_MENU_LIST, $data);
-        }
-        return $data;
+    public function getRandList($limit){
+        $sql = 'SELECT * FROM `'.$this->_tableName.'` AS t1
+        JOIN (SELECT ROUND(RAND() * ((SELECT MAX(`id`) FROM `'.$this->_tableName.'`) - (SELECT MIN(`id`) FROM `'.$this->_tableName.'`))+(SELECT MIN(`id`) FROM `'.$this->_tableName.'`)) AS rand_id) AS t2
+        WHERE t1.id >= t2.rand_id
+        ORDER BY t1.id
+        LIMIT 0, '.$limit;
+        return $this->customSelect($sql);
     }
 
     /**
@@ -146,10 +152,9 @@ class MenuDbModel extends DbModel{
     public function cleanMc(){
         $list = $this->getList(true);
         foreach( $list as $value ){
-//            Mcache::delete(self::MC_MENU_INFO . $value['id']);
-//            Mcache::delete(self::MC_MENU_KEY . $value['project_id']);
+//            Mcache::delete(self::MC_TAG_INFO . $value['id']);
         }
-//        Mcache::delete(self::MC_MENU_LIST);
+//        Mcache::delete(self::MC_TAG_LIST);
         return $list;
     }
 }

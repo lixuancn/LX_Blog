@@ -63,10 +63,12 @@ define('SEO_DESCRIPTION', '欢迎来到Lane的PHP博客。这是关于PHP博客�
 define('WEB_ROOT', '/'); //网站根目录
 define('ROOT_PATH', substr(dirname(__FILE__), 0, -6)); //网站绝对路径
 define('CONFIG_PATH', ROOT_PATH . 'config/'); //配置文件路径
+define('ITEMS_PATH', ROOT_PATH . 'items/');
 
 define('APIS_PATH', ROOT_PATH . 'apis/');
 define('SYSTEM_PATH', ROOT_PATH . 'core/'); //系统核心绝对路径
 define('TEMPLATE_PATH', ROOT_PATH . 'templates/'); //模版目录
+define('TEMPLATE_ITEMS_PATH', TEMPLATE_PATH . 'items/'); //模版目录
 define('STATIC_PATH', WEB_ROOT . 'themes/'); //皮肤目录
 define('CLASSES_PATH', ROOT_PATH . 'classes/'); //公用类目录
 

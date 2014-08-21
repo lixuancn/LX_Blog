@@ -95,10 +95,20 @@ class APP {
     public static function normalRequest() {
         $params = App::_initRoute();
         @extract($params);
-        $controlFile = ROOT_PATH . CONTROL_PATH . $file . '.php';
+        //判断二级域名是否存在
+        if($item != 'www' && file_exists((ITEMS_PATH . $item))){
+            $controlFile = ITEMS_PATH . $item . '/' . $file . '.php';
+        }else{
+            $controlFile = ROOT_PATH . CONTROL_PATH . $file . '.php';
+        }
+
         if (!file_exists($controlFile)) {
             exit("Controller File '$file.php' not exists!");
         }
+
+        define('ITEM', $item);
+        define('ITEM_DOMAIN', 'http://'.ITEM.'.'.GAME_DOMAIN_ROOT.'/');
+
         require_once $controlFile;
         $file = ucfirst($file);
         $object = new $file($param);
@@ -114,7 +124,13 @@ class APP {
      * 前台路由转发 ...
      */
     protected static function _initRoute() {
-        $params = array('file'=>'index', 'action'=>'main', 'param' =>'');
+        $host = Request::getHost();
+        $item = 'www';
+        $pattern = "/^([a-z]+)\.".GAME_DOMAIN_ROOT."/";
+        if(preg_match($pattern, strtolower($host), $matches)){
+            $item = $matches[1];
+        }
+        $params = array('file'=>'index', 'action'=>'main', 'param' =>'', 'item'=>$item);
         if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
             $params['file'] = $matches[1] ? $matches[1] : 'index';
             $params['action'] = $matches[3] ? $matches[3] : 'main';

@@ -5,32 +5,14 @@ include 'header.tpl.php';
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="page-header">
-                <h3>Edit Blog Menu</h3>
+                <h3>Edit Manual Menu</h3>
             </div>
-            <form class="form-horizontal" action="<?php echo ADMIN_URL?>menu/edit/" method="post">
+            <form class="form-horizontal" action="<?php echo ADMIN_URL?>itemdocmenu/edit/" method="post">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input01">name: </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="name" value="<?php echo $blogMenu['name'];?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">seo-title: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="seo_title" value="<?php echo $blogMenu['seo_title'];?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">seo-description: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="seo_description" value="<?php echo $blogMenu['seo_description'];?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">seo-keywords: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="seo_keywords" value="<?php echo $blogMenu['seo_keywords'];?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -70,7 +52,7 @@ include 'header.tpl.php';
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="id" value="<?php echo $blogMenu['id']?>">
-                            <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Edit Blog Menu</button>
+                            <button type="submit" class="btn btn-primary" name="dosubmit" value="dosubmit">Edit Manual Menu</button>
                             <button type="reset" class="btn">Cancel</button>
                         </div>
                     </div>

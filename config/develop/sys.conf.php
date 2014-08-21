@@ -13,6 +13,9 @@ define('ADMIN_URL', 'http://www.lane.com/admin.php/');
 //域名
 define('GAME_DOMAIN', 'www.lane.com');
 
+//域名
+define('GAME_DOMAIN_ROOT', 'lane.com');
+
 //游戏地址
 define('GAME_URL', 'http://' . GAME_DOMAIN . '/');
 

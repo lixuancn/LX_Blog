@@ -7,17 +7,17 @@
  * @Class MenuDbModel
  * @Author: lane
  * @Mail: lixuan868686@163.com
- * @Date: 14-1-10
- * @Time: 下午4:22
+ * @Date: 14-8-20
+ * @Time: 下午2:18
  * Blog http://www.lanecn.com
  */
-class MenuDbModel extends DbModel{
+class ItemDocMenuDbModel extends DbModel{
 
     const MC_MENU_INFO = 'mc_menu_info_';
 
     const MC_MENU_LIST = 'mc_menu_list';
 
-    protected $_tableName = 'info_menu';
+    protected $_tableName = 'info_item_doc_menu';
 
     /**
      * @descrpition 添加数据

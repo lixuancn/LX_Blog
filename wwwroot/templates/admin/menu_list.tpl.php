@@ -17,6 +17,7 @@ include 'header.tpl.php';
                             <th width="10%">SEO-TITLE</th>
                             <th width="15%">SEO-DESCRIPTION</th>
                             <th width="10%">SEO-KEYWORDS</th>
+                            <th width="10%">所属项目</th>
                             <th width="15%">管理</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@ include 'header.tpl.php';
                             <td><?php echo $m['seo_title'];?></td>
                             <td><?php echo $m['seo_description'];?></td>
                             <td><?php echo $m['seo_keywords'];?></td>
+                            <td><?php echo $m['item'];?></td>
                             <td><a href="<?php echo ADMIN_URL?>menu/edit/id-<?php echo $m['id']?>">修改</a> | <a href="<?php echo ADMIN_URL?>menu/delete/id-<?php echo $m['id']?>">删除</a></td>
                         </tr>
                         <?php foreach($m['son'] as $son){?>
@@ -41,6 +43,7 @@ include 'header.tpl.php';
                                 <td><?php echo $son['seo_title'];?></td>
                                 <td><?php echo $son['seo_description'];?></td>
                                 <td><?php echo $son['seo_keywords'];?></td>
+                                <td><?php echo $son['item'];?></td>
                                 <td><a href="<?php echo ADMIN_URL?>menu/edit/id-<?php echo $son['id']?>">修改</a> | <a href="<?php echo ADMIN_URL?>menu/delete/id-<?php echo $son['id']?>">删除</a></td>
                             </tr>
                         <?php }?>
