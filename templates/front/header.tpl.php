@@ -57,7 +57,7 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
             <small>蝼蚁虽小，也有梦想</small>
         </p>
         <p class="text-center">
-            <small><a href="http://www.lanecn.com/article/main/aid-65">PHP微信开发框架</a>  |  <a href="http://www.lanecn.com/article/main/aid-11">开源轻量博客系统</a></small>
+            <small><a href="http://lanewechat.lanecn.com/">PHP微信开发框架</a>  |  <a href="http://www.lanecn.com/article/main/aid-11">开源轻量博客系统</a></small>
         </p>
     </div>
 </div>
