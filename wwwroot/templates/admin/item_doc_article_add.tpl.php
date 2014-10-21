@@ -62,7 +62,7 @@ include 'header.tpl.php';
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input01">clicks: </label>
+                        <label class="col-sm-2 control-label" for="input01">Visits: </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="clicks" value="0">
                         </div>

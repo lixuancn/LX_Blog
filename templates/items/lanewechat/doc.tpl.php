@@ -41,7 +41,7 @@ include 'header.tpl.php';
                     </div>
                     <div class="col-xs-11 col-sm-11 col-md-11">
                         <h2><a href="<?php echo ITEM_DOMAIN?>doc/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></h2>
-                        <p><small>Clicks: <?php echo $article['clicks'];?> Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></small></p>
+                        <p><small>Visits: <?php echo $article['clicks'];?> Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></small></p>
                         <p>
                             <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-default btn-sm" disabled="disabled">Tag</button>

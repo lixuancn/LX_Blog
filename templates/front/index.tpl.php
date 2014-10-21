@@ -9,7 +9,7 @@ include 'header.tpl.php';
                     <?php foreach ($articleList as $article){?>
                         <p><a href="<?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?>"><?php echo $article['title'];?></a></p>
                         <p>Date: <?php echo $article['ctime'];?> Power By <?php echo $article['author']?></p>
-                        <p>Clicks: <?php echo $article['clicks'];?>. Like: <?php echo $article['good_num']?>. Bad: <?php echo $article['bad_num']?></p>
+                        <p>Visits: <?php echo $article['clicks'];?>. Like: <?php echo $article['good_num']?>. Bad: <?php echo $article['bad_num']?></p>
                         <p>Tag: <?php foreach($article['tag'] as $k=>$tag){if($k!=0){echo ' | ';}echo '<a href="'.GAME_URL.'search/main/keywords-'.$tag.'">'.$tag.'</a>';}?></p>
                         <p><?php echo $article['description'];?></p>
                     <div class="page-header"></div>

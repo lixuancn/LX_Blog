@@ -25,16 +25,16 @@ define('DEBUG', 1);
 define('PRINT_MYSQL_ERROR', 0);
 
 if($_SERVER['SERVER_ADDR'] == '127.0.0.1' || $_SERVER['SERVER_ADDR'] == '192.168.1.1'){
-    //WEB服务器部署环境：开发、线上
+    //WEB服务器部署环境：开发
     define('WEB_SERVER', 'develop'); //'develop', 'online'
 
-    //云计算开放平台：本地、新浪SAE
+    //云计算开放平台：本地
     define('CLOUD_PLATFORM', 'local'); //'local', 'sae'
 }else{
-    //WEB服务器部署环境：开发、线上
+    //WEB服务器部署环境：线上
     define('WEB_SERVER', 'online'); //'develop', 'online'
 
-    //云计算开放平台：本地、新浪SAE
+    //云计算开放平台：新浪SAE
     define('CLOUD_PLATFORM', 'sae'); //'local', 'sae'
 }
 
@@ -117,6 +117,10 @@ define('ADMIN_PLUG_DIR', ADMIN_STATIC_PATH . 'plug/');
 //百度UEDITOR富文本编辑器
 define('ADMIN_UEDITOR_DIR', ADMIN_PLUG_DIR . 'ueditor/');
 
+//邮箱服务
+define('EMAIL_SENT_FOR_REPLY', true);
+define('EMAIL_ADDRESS', '2069414574@qq.com');
+define('EMAIL_PASSWORD', '123456');
 /**
  * 引入系统相关配置文件
  */
