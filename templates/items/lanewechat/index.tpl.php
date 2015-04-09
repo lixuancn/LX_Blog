@@ -8,6 +8,8 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
     <meta name="keywords" content="微信框架,微信PHP开发框架,PHP微信框架">
     <meta name="description" content="微信框架LaneWechat，是微信PHP开发框架，帮助PHP开发者尽可能高效的开发微信应用。PHP微信框架对微信公众账号的功能进行了完美的封装，开发者只需要简单调用我们封装好的类即可。PHP微信开发框架LaneWeChat开源免费。">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- 引入BootStrap的CSS文件 -->
+    <link rel="stylesheet" href="<?php echo CSS_DIR?>bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo IMAGE_DIR?>favicon.ico" rel="shortcut icon">
 </head>
@@ -169,8 +171,6 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
 </html>
 <!-- 引入JQuery文件 -->
 <script src="<?php echo JS_DIR?>jquery.min.js"></script>
-<!-- 引入BootStrap的CSS文件 -->
-<link rel="stylesheet" href="<?php echo CSS_DIR?>bootstrap.min.css">
 <!-- 引入BootStrap的JS文件 -->
 <script src="<?php echo JS_DIR?>bootstrap.min.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

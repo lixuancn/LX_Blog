@@ -124,7 +124,7 @@ class Article extends Controller{
                 $title = '您的评论有了新回复【来自LaneBlog的系统邮件提醒】';
                 $content = "\n";
                 $content .= '<a href="'.$url.'">你的评论有了新的回复！请点击查看<a/>';
-                $content .= "\n\n".$url;
+                $content .= "\n\n连接无效请复制到浏览器地址栏访问：".$url;
                 $content .= "\n\nPs：系统发送，请勿直接回复！";
                 Mail::quickSent($comment['email'], $title, $content, EMAIL_ADDRESS, EMAIL_PASSWORD);
             }

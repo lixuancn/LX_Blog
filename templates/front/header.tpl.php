@@ -8,6 +8,8 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
     <meta name="keywords" content="<?php echo isset($seo_keywords) ? $seo_keywords : SEO_KEYWORDS;?>">
     <meta name="description" content="<?php echo isset($seo_description) ? $seo_description : SEO_DESCRIPTION;?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- 引入BootStrap的CSS文件 -->
+    <link rel="stylesheet" href="<?php echo CSS_DIR?>bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo IMAGE_DIR?>favicon.ico" rel="shortcut icon">
 </head>

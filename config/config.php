@@ -119,8 +119,10 @@ define('ADMIN_UEDITOR_DIR', ADMIN_PLUG_DIR . 'ueditor/');
 
 //邮箱服务
 define('EMAIL_SENT_FOR_REPLY', true);
-define('EMAIL_ADDRESS', '2069414574@qq.com');
-define('EMAIL_PASSWORD', '123456');
+//define('EMAIL_ADDRESS', '2069414574@qq.com');
+define('EMAIL_ADDRESS', '405011863@qq.com');
+define('EMAIL_PASSWORD', 'lxlx8823150');
+//define('EMAIL_PASSWORD', '888666444');
 /**
  * 引入系统相关配置文件
  */

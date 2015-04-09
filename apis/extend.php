@@ -13,9 +13,9 @@ class Extend {
      * @descrpition 验证码
      */
     public function captcha(){
-        $width = 90;
+        $width = 130;
         $height = 30;
-        $total = 4;
+        $total = 6;
         $font = 5;
         $str = '0123456789qazwsxedcrfvtgbyhnujmkpAZWSXEDCRFVTGBHNUJMKP';
         $im = imagecreatetruecolor($width, $height);
@@ -49,6 +49,11 @@ class Extend {
             imagesetpixel($im, rand(0, $width), rand(0, $height), $black);
             imagesetpixel($im, rand(0, $width), rand(0, $height), $red);
         }
+        //干扰线
+        $green = imagecolorallocate($im, 0, 255, 0);
+        $randColor = imagecolorallocate($im, rand(0,255), rand(0,255), rand(0,255));
+        imageline($im, 0, 0, 130, 30, $green);
+        imageline($im, 0, 10, rand(20, 130), 30, $randColor);
         Response::setSession('captcha', strtolower($text));
         header('Content-type: image/png');
         imagepng($im);
