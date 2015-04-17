@@ -99,6 +99,35 @@ class Doc extends Controller{
         $fields['ctime'] = time();
         $fields['content'] = Request::getRequest('content', 'str');
         ItemDocCommentBusiness::setComment($fields);
+
+        //如果是回复别人的回复，则发送邮件提醒
+        if(EMAIL_SENT_FOR_REPLY && $fields['cid'] > 0){
+            //根据CID查询评论的详细信息
+            $comment = CommentBusiness::getComment($fields['cid']);
+            if(!empty($comment['email'])){
+                $url = 'http://lanewechat.lanecn.com/doc/main/aid-'.$comment['aid'];
+                $title = '您的评论有了新回复【来自LaneBlog的系统邮件提醒】';
+                $content = "\n";
+                $content .= '<a href="'.$url.'">你的评论有了新的回复！请点击查看<a/>';
+                $content .= "\n\n连接无效请复制到浏览器地址栏访问：".$url;
+                $content .= "\n\nPs：系统发送，请勿直接回复！";
+
+                $config = array(
+                    "from" => EMAIL_ADDRESS,
+                    "to" => $comment['email'],
+                    "subject" => $title,
+                    "body" => $content,
+                    "username" => EMAIL_ADDRESS,
+                    "password" => EMAIL_PASSWORD,
+                    //"isHTML" => true
+                );
+                $mail = new MailSocket();
+                $mail->setServer(EMAIL_SMTP);
+                $mail->setMailInfo($config);
+//                $result = Mail::quickSent($comment['email'], $title, $content, EMAIL_ADDRESS, EMAIL_PASSWORD);
+            }
+        }
+
         View::showMessage($jumpUrl, '成功！');
     }
 
