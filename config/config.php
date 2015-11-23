@@ -120,8 +120,8 @@ define('ADMIN_UEDITOR_DIR', ADMIN_PLUG_DIR . 'ueditor/');
 //邮箱服务
 define('EMAIL_SENT_FOR_REPLY', true);
 //define('EMAIL_ADDRESS', '2069414574@qq.com');
-define('EMAIL_ADDRESS', '405011863@qq.com');
-define('EMAIL_PASSWORD', 'lxlx8823150');
+define('EMAIL_ADDRESS', 'a@b.com');
+define('EMAIL_PASSWORD', '123');
 //define('EMAIL_PASSWORD', '888666444');
 define('EMAIL_SMTP', 'smtp.163.com"');
 /**

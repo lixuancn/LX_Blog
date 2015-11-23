@@ -95,10 +95,17 @@ class Article extends Controller{
      * @descrpition 添加评论
      */
     public function addcomment(){
+        $userLog = array(
+            'param'=>array('request'=>$_REQUEST, 'id'=>Request::getClientIP()),
+            'method'=>__METHOD__,
+            'create_time'=>date('Y-m-d H:i:s'),
+        );
+        UserLogBusiness::set($userLog);
+
         $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
         //判断验证码
         $captcha = Request::getSession('captcha');
-        if($captcha != strtolower($this->param['captcha'])){
+        if(empty($captcha) || $captcha !== strtolower($this->param['captcha'])){
             View::showErrorMessage($jumpUrl, '验证码错误');
         }
         if(empty($this->param['aid']) || empty($this->param['mid']) || empty($this->param['nickname']) || empty($this->param['content'])){
@@ -142,6 +149,15 @@ class Article extends Controller{
 //                $result = Mail::quickSent($comment['email'], $title, $content, EMAIL_ADDRESS, EMAIL_PASSWORD);
             }
         }
+        $userLog = array(
+            'param'=>array('request'=>$_REQUEST, 'id'=>Request::getClientIP()),
+            'method'=>__METHOD__,
+            'create_time'=>date('Y-m-d H:i:s'),
+            'result' => $fields,
+        );
+        $userLog['param'] = json_encode($userLog['param']);
+        $userLog['result'] = json_encode($userLog['result']);
+        UserLogBusiness::set($userLog);
         View::showMessage($jumpUrl, '成功！');
     }
 
