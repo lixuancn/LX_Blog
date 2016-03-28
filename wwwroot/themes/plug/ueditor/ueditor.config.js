@@ -50,7 +50,7 @@
             'fullscreen', 'source', '|',
             'bold', 'italic', 'underline', 'fontborder', '|', 'forecolor', 'backcolor', '|',
             'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'insertcode',  '|',
             'link', 'unlink', '|',
             'simpleupload', 'emotion', '|',
             'preview', 'drafts'
