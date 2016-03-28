@@ -39,16 +39,14 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
                     </li>
                 <?php } ?>
                 <li class="divider-vertical"></li>
-                <li>
-                    <form class="form-inline" role="form" action="<?php echo GAME_URL?>search/main/" method="get">
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputEmail2">Search PHP</label>
-                            <input type="text" class="form-control" name="keywords" placeholder="Search" value="<?php if(isset($keywords)){echo $keywords;}?>">
-                        </div>
-                        <button type="submit" class="btn btn-primary">搜索</button>
-                    </form>
-                </li>
             </ul>
+            <form class="navbar-form navbar-left" role="form" action="<?php echo GAME_URL?>search/main/" method="get">
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail2">Search PHP</label>
+                    <input type="text" class="form-control" name="keywords" placeholder="Search" value="<?php if(isset($keywords)){echo $keywords;}?>">
+                </div>
+                <button type="submit" class="btn btn-primary">搜索</button>
+            </form>
         </nav>
     </div>
 </header>
