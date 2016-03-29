@@ -33,7 +33,7 @@ $DATABASE = array(
 		'master' => array(
             'host' => '127.0.0.1',
             'user' => 'root',
-            'password' => '8823150',
+            'password' => '123456',
 			'port' => 3306,
 			'db' => DEFAULT_DB,
 		),
@@ -41,7 +41,7 @@ $DATABASE = array(
 			array(
                 'host' => '127.0.0.1',
                 'user' => 'root',
-                'password' => '8823150',
+                'password' => '123456',
 				'port' => 3306,
 				'db' => DEFAULT_DB,
 			),
