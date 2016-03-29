@@ -98,7 +98,6 @@ include 'header.tpl.php';
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input01">content: </label>
                         <div class="col-sm-10">
-                            <p>代码部分写入[code][/code]</p>
                             <!-- 加载编辑器的容器 -->
                             <script id="container" name="content" type="text/plain"><?php echo $article['content'];?></script>
                             <!-- 配置文件 -->

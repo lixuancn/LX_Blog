@@ -1,7 +1,9 @@
 <?php
 include 'header.tpl.php';
 ?>
-
+<script type="text/javascript" src="<?php echo ADMIN_UEDITOR_DIR?>third-party/SyntaxHighlighter/shCore.js"></script>
+<link href="<?php echo ADMIN_UEDITOR_DIR?>third-party/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8">
