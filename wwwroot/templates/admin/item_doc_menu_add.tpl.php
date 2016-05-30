@@ -18,7 +18,7 @@ include 'header.tpl.php';
                     <div class="form-group">
                         <label id="in_out" class="col-sm-2 control-label" for="input01">Item Name: </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="item" placeholder="Item Name">
+                            <input type="text" class="form-control" name="item" placeholder="Item Name" value="meepops">
                         </div>
                     </div>
                     <div class="form-group">

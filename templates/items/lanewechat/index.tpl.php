@@ -52,7 +52,8 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
             <small>PHP微信开发框架，高效开发微信公众号应用。简洁而又轻量</small>
         </p>
         <p class="text-center">
-            <a class="btn btn-default btn-sm" href="https://github.com/lixuancn/LaneWeChat" target="_blank" role="button" style="font-weight: bold;background: #F5F5F5">GitHub下载</a>
+            <a class="btn btn-default btn-sm" href="https://github.com/lixuancn/LaneWeChat" target="_blank" role="button" style="font-weight: bold;background: #F5F5F5">GitHub</a>
+            <a class="btn btn-default btn-sm" href="https://github.com/lixuancn/LaneWeChat/archive/master.zip" target="_blank" role="button" style="font-weight: bold;background: #F5F5F5">下载</a>
             <a class="btn btn-default btn-sm" href="<?php echo ITEM_DOMAIN?>doc/main/" target="_blank" role="button" style="font-weight: bold;background: #F5F5F5">查看手册</a>
             <iframe src="https://ghbtns.com/github-btn.html?user=lixuancn&repo=LaneWeChat&type=star&count=true&size=large" frameborder="0" scrolling="0" width="135px" height="30px" style="vertical-align: middle"></iframe>
             <iframe src="https://ghbtns.com/github-btn.html?user=lixuancn&repo=LaneWeChat&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="135px" height="30px" style="vertical-align: middle"></iframe>

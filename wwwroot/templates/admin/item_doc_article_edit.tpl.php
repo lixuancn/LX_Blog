@@ -20,7 +20,7 @@ include 'header.tpl.php';
                         <div class="col-sm-10">
                             <select name="mid">
                                 <?php foreach($blogMenuList as $m){?>
-                                    <option value="<?php echo $m['id'];?>" <?php if($article['mid']==$m['id']){echo 'selected="selected"';}?>><?php echo $m['name'];?></option>
+                                    <option value="<?php echo $m['id'];?>" <?php if($article['mid']==$m['id']){echo 'selected="selected"';}?>><?php echo $m['item'] . '-' . $m['name'];?></option>
                                 <?php }?>
                             </select>
                         </div>

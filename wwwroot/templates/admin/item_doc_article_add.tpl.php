@@ -20,7 +20,7 @@ include 'header.tpl.php';
                         <div class="col-sm-10">
                             <select name="mid">
                                 <?php foreach($blogMenuList as $m){?>
-                                    <option value="<?php echo $m['id'];?>"><?php echo $m['name'];?></option>
+                                    <option value="<?php echo $m['id'];?>"><?php echo $m['item'] . '-' . $m['name'];?></option>
                                 <?php }?>
                             </select>
                         </div>
@@ -28,7 +28,7 @@ include 'header.tpl.php';
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input01">Item Name: </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="item" value="lanewechat">
+                            <input type="text" class="form-control" name="item" value="meepops">
                         </div>
                     </div>
                     <div class="form-group">
@@ -58,7 +58,7 @@ include 'header.tpl.php';
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input01">tags: </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tag" value="">
+                            <input type="text" class="form-control" name="tag" value="MeepoPS|PHP|Socket|即时通讯">
                         </div>
                     </div>
                     <div class="form-group">

@@ -125,7 +125,8 @@ class ItemDocArticleDbModel extends DbModel{
     public function getListByItemReal($item){
         $where = "`item` = '".$item."'";
         $fields = '*';
-        $data = $this->selectList($this->_tableName, $where, $fields);
+        $order = 'id ASC';
+        $data = $this->selectList($this->_tableName, $where, $fields, $order);
         if($data){
 //            Mcache::set(self::MC_ARTICLE_INFO . $id, $data);
         }
