@@ -9,13 +9,13 @@
  */
 
 class View {
-	
+
 	public static $showData = array();
-	
+
 	function __construct() {
-		
+
 	}
-	
+
 	/**
 	 * 为模版传递数据 ...
 	 * @param string $key
@@ -24,7 +24,7 @@ class View {
 	public static function assign($key, $value) {
 		self::$showData[$key] = $value;
 	}
-	
+
 	/**
 	 * 引入模版文件 ...
 	 * @param string $file
@@ -38,29 +38,29 @@ class View {
 		}
 		$data = self::$showData;
 		@extract($data);
-		
+
 		if (preg_match("/\/([^\/]+)\/([^\/]+)\/([^\/\?]+)/",REQUEST_URI,$matches)) {
 			$path = $matches[1];
 			$file = $matches[2];
 			$action = $matches['3'];
-		} 
+		}
 
 		include_once $filename;
 		exit();
 	}
 
-    /**
-     * 引入前台模版 ...
-     * @param string $file
-     */
-    public static function showFrontTpl($file) {
-        if(ITEM != 'www'){
-            $dir = TEMPLATE_ITEMS_PATH . ITEM . '/';
-        }else{
-            $dir = MOULD_PATH;
-        }
-        View::showTPL($file, $dir);
-    }
+	/**
+	 * 引入前台模版 ...
+	 * @param string $file
+	 */
+	public static function showFrontTpl($file) {
+		if(ITEM != 'www'){
+			$dir = TEMPLATE_ITEMS_PATH . ITEM . '/';
+		}else{
+			$dir = MOULD_PATH;
+		}
+		View::showTPL($file, $dir);
+	}
 
 	/**
 	 * 引入后台模版 ...
@@ -69,7 +69,7 @@ class View {
 	public static function showAdminTpl($file, $dir = ADMIN_MOULD_PATH) {
 		View::showTPL($file, $dir);
 	}
-	
+
 	/**
 	 * 返回API数据 ...
 	 * @param string $data JSON序列化串
@@ -85,7 +85,7 @@ class View {
 		//echo json_encode($results);
 		exit();
 	}
-	
+
 	/**
 	 * 显示跳转信息页 ...
 	 * @param string $jumpurl 跳转URL
@@ -97,7 +97,7 @@ class View {
 		include_once  TEMPLATE_PATH . 'show_message.tpl.php';
 		exit();
 	}
-	
+
 	/**
 	 * 显示错误信息页...
 	 * @param string $jumpurl 跳转URL
@@ -110,30 +110,30 @@ class View {
 		exit();
 	}
 
-    /**
-     * 管理后台 - 显示跳转信息页 ...
-     * @param string $jumpurl 跳转URL
-     * @param string $msg 显示信息
-     * @param string $target 跳转目标 _blank _self _parent
-     */
-    public static function showAdminMessage($jumpurl, $msg, $target="") {
-        $ms = 4000; //跳转间隔时间
-        include_once  ADMIN_TEMPLATE_PATH . 'show_message.tpl.php';
-        exit();
-    }
+	/**
+	 * 管理后台 - 显示跳转信息页 ...
+	 * @param string $jumpurl 跳转URL
+	 * @param string $msg 显示信息
+	 * @param string $target 跳转目标 _blank _self _parent
+	 */
+	public static function showAdminMessage($jumpurl, $msg, $target="") {
+		$ms = 4000; //跳转间隔时间
+		include_once  ADMIN_TEMPLATE_PATH . 'show_message.tpl.php';
+		exit();
+	}
 
-    /**
-     * 管理后台 - 显示错误信息页...
-     * @param string $jumpurl 跳转URL
-     * @param string $msg 显示信息
-     * @param string $target 跳转目标 _blank _self _parent
-     */
-    public static function showAdminErrorMessage($jumpurl, $msg, $target="") {
-        $ms = 4000; //跳转间隔时间
-        include_once  ADMIN_TEMPLATE_PATH . 'show_error_message.tpl.php';
-        exit();
-    }
-	
+	/**
+	 * 管理后台 - 显示错误信息页...
+	 * @param string $jumpurl 跳转URL
+	 * @param string $msg 显示信息
+	 * @param string $target 跳转目标 _blank _self _parent
+	 */
+	public static function showAdminErrorMessage($jumpurl, $msg, $target="") {
+		$ms = 4000; //跳转间隔时间
+		include_once  ADMIN_TEMPLATE_PATH . 'show_error_message.tpl.php';
+		exit();
+	}
+
 	/**
 	 * JS页面跳转 ...
 	 * @param string $url
