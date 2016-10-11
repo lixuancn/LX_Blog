@@ -46,7 +46,10 @@ class ItemDocCommentBusiness{
      * @descrpition 通过MID获取
      * @param $id
      */
-    public static function getCommentByAid($aid, $item=ITEM){
+    public static function getCommentByAid($aid, $item=''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         return self::getInstance()->getByAid($aid, $item);
     }
 

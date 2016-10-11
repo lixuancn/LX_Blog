@@ -17,7 +17,7 @@ class Kvdb{
 			// 初始化KVClient对象
 			$ret = self::$_kvdb->init();
 			if ($ret === false) {
-				exit('初始化对象失败！！');
+				\MeepoPS\Api\Http::end('初始化对象失败！！');
 			}	
 		}
 		

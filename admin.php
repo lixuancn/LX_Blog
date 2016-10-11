@@ -8,10 +8,10 @@
  * Blog http://www.lanecn.com
  */
 // 定义入口名称
-define('ENTRY_NAME', 'admin');
+!defined('ENTRY_NAME') ? define('ENTRY_NAME', 'admin') : null;
 
 // 定义控制器目录
-define('CONTROL_PATH', 'admin/');
+!defined('CONTROL_PATH') ? define('CONTROL_PATH', 'admin/') : null;
 
 // 载入初始化框架文件
 require_once 'core/init.php';

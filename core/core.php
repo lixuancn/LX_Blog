@@ -32,17 +32,17 @@ class APP {
 	 * 初始化配置 只可调用一次...
 	 */
 	protected static function _initConfig() {
-		//启用GZIP
-		if (GZIP_COMPRESS && function_exists('ob_gzhandler')) {
-			ob_start('ob_gzhandler');
-		} else {
-			ob_start();
-		}
-		//允许跨域房访问
-		header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
+//		//启用GZIP
+//		if (GZIP_COMPRESS && function_exists('ob_gzhandler')) {
+//			ob_start('ob_gzhandler');
+//		} else {
+//			ob_start();
+//		}
+//		//允许跨域房访问
+//		header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
 		
 		//开启Session
-		session_start();
+        \MeepoPS\Api\Http::sessionStart();
 
 		//开启PHP调试功能
 		DEBUG ? error_reporting(E_ALL & ~E_STRICT) : error_reporting(0);
@@ -79,13 +79,17 @@ class APP {
      */
     protected static function _initRequestParam() {
         //定义详细请求路径及参数
-        define('REQUEST_URI', Request::getFullPath());
+        $GLOBALS['BLOG']['REQUEST_URI'] = Request::getFullPath();
+//        !defined('REQUEST_URI') ? define('REQUEST_URI', Request::getFullPath()) : null;
         //定义客户端IP
-        define('CLINET_IP', Request::getClientIP());
+//        !defined('CLINET_IP') ? define('CLINET_IP', Request::getClientIP()) : null;
+        $GLOBALS['BLOG']['CLINET_IP'] = Request::getClientIP();
         //服务器名称
-        define('SERVER_NAME', Request::getServerName());
+//        !defined('SERVER_NAME') ? define('SERVER_NAME', Request::getServerName()) : null;
+        $GLOBALS['BLOG']['SERVER_NAME'] = Request::getServerName();
         //前一跳转地址
-        define('HTTP_REFERER', Request::getRefererUrl());
+//        !defined('HTTP_REFERER') ? define('HTTP_REFERER', Request::getFullPath()) : null;
+        $GLOBALS['BLOG']['HTTP_REFERER'] = Request::getFullPath();
     }
 
 
@@ -93,27 +97,30 @@ class APP {
      * 普通请求处理，不加（验证）的 ...
      */
     public static function normalRequest() {
-        $params = App::_initRoute();
+        $params = self::_initRoute();
         @extract($params);
         //判断二级域名是否存在
-        if($item != 'www' && file_exists((ITEMS_PATH . $item))){
-            $controlFile = ITEMS_PATH . $item . '/' . $file . '.php';
+        if(substr($file, -4) === '.php'){
+            $ext = '';
         }else{
-            $controlFile = ROOT_PATH . CONTROL_PATH . $file . '.php';
+            $ext = '.php';
         }
-
+        if($item != 'www' && file_exists((ITEMS_PATH . $item))){
+            $controlFile = ITEMS_PATH . $item . '/' . $file . $ext;
+        }else{
+            $controlFile = ROOT_PATH . CONTROL_PATH . $file . $ext;
+        }
         if (!file_exists($controlFile)) {
-            exit("Controller File '$file.php' not exists!");
+            \MeepoPS\Api\Http::end("Controller File '$file.php' not exists!");
         }
-
-        define('ITEM', $item);
-        define('ITEM_DOMAIN', 'http://'.ITEM.'.'.GAME_DOMAIN_ROOT.'/');
+        $GLOBALS['BLOG']['ITEM'] = $item;
+        !defined('ITEM_DOMAIN') ? define('ITEM_DOMAIN', 'http://'.$GLOBALS['BLOG']['ITEM'].'.'.GAME_DOMAIN_ROOT.'/') : null;
 
         require_once $controlFile;
         $file = ucfirst($file);
         $object = new $file($param);
         if (!method_exists($object, $action)) {
-            exit("Method '$file::$action' not exists!");
+            \MeepoPS\Api\Http::end("Method '$file::$action' not exists!");
         }
 
         $results = $object->$action();
@@ -131,7 +138,7 @@ class APP {
             $item = $matches[1];
         }
         $params = array('file'=>'index', 'action'=>'main', 'param' =>'', 'item'=>$item);
-        if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
+        if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", $GLOBALS['BLOG']['REQUEST_URI'], $matches)) {
             $params['file'] = $matches[1] ? $matches[1] : 'index';
             $params['action'] = $matches[3] ? $matches[3] : 'main';
             $params['param'] = $matches[5] ? $matches[5] : '';
@@ -164,7 +171,7 @@ class APP {
      */
     protected static function _initAdminRoute() {
         $params = array('entry'=>'admin.php', 'file'=>'index', 'action'=>'main', 'param' =>'');
-        if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)([^\/]*)(\/*)(.*)/", REQUEST_URI, $matches)) {
+        if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)([^\/]*)(\/*)(.*)/", $GLOBALS['BLOG']['REQUEST_URI'], $matches)) {
             $params['entry'] = $matches[1] ? $matches[1] : 'admin.php';
             $params['file'] = $matches[3] ? $matches[3] : 'index';
             $params['action'] = $matches[5] ? $matches[5] : 'main';
@@ -213,13 +220,13 @@ class APP {
 
         $controlFile = ADMIN_ROOT_PATH . CONTROL_PATH . $file . '.php';
         if (!file_exists($controlFile)) {
-            exit("AdminController File '$file.php' not exists!");
+            \MeepoPS\Api\Http::end("AdminController File '$file.php' not exists!");
         }
         //调用控制器
         require_once $controlFile;
         $object = new $file($param);
         if (!method_exists($object, $action)) {
-            exit("Method '$file::$action' not exists!");
+            \MeepoPS\Api\Http::end("Method '$file::$action' not exists!");
         }
 
         $object->$action();

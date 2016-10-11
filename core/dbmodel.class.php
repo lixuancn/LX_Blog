@@ -77,22 +77,6 @@ class DbModel {
 	}
 	
 	/**
-	 * 获取大数据结构集，用mysql_unbuffered_query,fix errno0的问题
-	 * @param unknown_type $table
-	 * @param unknown_type $where
-	 * @param unknown_type $fields
-	 */
-	function selectOneWithoutBuff($table, $where, $fields="*") {
-		$sql = sprintf(self::_SQL_SELECT_ONE, $fields, $table, $where);
-		$this->debug && print "sql = ".$sql."<br/>";
-
-		$res = $this->_dbObj->query($sql, $this->_useMaster, 'mysql_unbuffered_query');
-		$row = $this->_dbObj->fetch_array($res);
-
-		return $row;
-	}
-
-	/**
 	 * 获取分页列表 ...
 	 * @param string $table 表名
 	 * @param string $where 查询条件
@@ -147,24 +131,6 @@ class DbModel {
 		return $data;
 	}
 	
-	/**
-	 * 获取大数据list结构集
-	 */
-	function selectListWithoutBuff($table, $where, $fields="*", $order="", $limit="") {
-		$data = array();
-		//组织SQL
-		$order = $order ? "ORDER BY " . $order : '';
-		$limit = $limit ? "LIMIT " . $limit : '';
-		$sql = sprintf(self::_SQL_SELECT_LIST, $fields, $table, $where, $order, $limit);
-		$this->debug && print "sql = ".$sql."<br/>";
-		$res = $this->_dbObj->query($sql, $this->_useMaster, 'mysql_unbuffered_query');
-		while(($row=$this->_dbObj->fetch_array($res)) != false){
-			$data[] = $row;
-		}
-		
-		return $data;
-	}
-
 	/**
 	 * 获取查询总数，与getPageList()函数结合使用...
 	 * @param string $table 表名
@@ -250,7 +216,7 @@ class DbModel {
 		$valueStr = "";
 		$values = array_values($fields);
 		foreach ($values as $value) {
-			$valueStr .= "'".$this->escapeMysqlString($value)."',";			
+			$valueStr .= "'".$this->escapeMysqlString($value)."',";
 		}
 		$valueStr = substr($valueStr, 0, -1);
 		$sql = sprintf(self::_SQL_INSERT, $table, $fieldStr, $valueStr);
@@ -428,18 +394,8 @@ class DbModel {
 	}
 	
 	public function escapeMysqlString($sqlString) {
-		if (function_exists('mysql_escape_string')) {
-			return @mysql_escape_string($sqlString);
-		} else {
-			return @mysql_real_escape_string($sqlString);
-		} 
-//		if(WEB_SERVER=='develop' || WEB_SERVER=='test'){
-//			return $sqlString;
-//		}
-//		return mysql_escape_string($sqlString);
+		return $this->_dbObj->escapeMysqlString($sqlString);
 	}
-		
-	
 }
 
 ?>

@@ -66,7 +66,10 @@ class ItemDocArticleBusiness{
      * @descrpition 获取项目下的列表
      * @param $id
      */
-    public static function getListByItem($item=ITEM){
+    public static function getListByItem($item=''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         return self::getInstance()->getListByItem($item);
     }
 
@@ -81,21 +84,30 @@ class ItemDocArticleBusiness{
     /**
      * Description: 点击数+1
      */
-    public static function clicks($articleId, $item=ITEM){
+    public static function clicks($articleId, $item=''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         return self::getInstance()->clicks($articleId, $item);
     }
 
     /**
      * Description: 同意数+1
      */
-    public static function goodNum($articleId, $item=ITEM){
+    public static function goodNum($articleId, $item=''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         return self::getInstance()->goodNum($articleId, $item);
     }
 
     /**
      * Description: 反对数+1
      */
-    public static function badNum($articleId, $item=ITEM){
+    public static function badNum($articleId, $item=''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         return self::getInstance()->badNum($articleId, $item);
     }
 
@@ -106,7 +118,10 @@ class ItemDocArticleBusiness{
     /**
      * 获取最旧的一个
      */
-    public static function getOneMostOld($item = ITEM){
+    public static function getOneMostOld($item = ''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         $result = self::getInstance()->getOneMostOld($item);
         if($result){
             return $result[0];

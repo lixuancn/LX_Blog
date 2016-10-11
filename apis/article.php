@@ -96,12 +96,11 @@ class Article extends Controller{
      */
     public function addcomment(){
         $userLog = array(
-            'param'=>array('request'=>$_REQUEST, 'id'=>Request::getClientIP()),
+            'param'=> json_encode(array('request'=>$_REQUEST, 'id'=>Request::getClientIP())),
             'method'=>__METHOD__,
             'create_time'=>date('Y-m-d H:i:s'),
         );
         UserLogBusiness::set($userLog);
-
         $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
         //判断验证码
         $captcha = Request::getSession('captcha');

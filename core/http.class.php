@@ -45,7 +45,7 @@ class Request {
 	}
 	
 	public static function getFullPath() {
-		return isset($_SERVER['REQUEST_URI'])?$_SERVER['REQUEST_URI']:'';
+		return isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 	}
 	
 	public static function getScriptUrl() {
@@ -111,7 +111,7 @@ class Response {
 	}
 	
 	public static function httpRedirect($url) {
-		exit('<script>location.href="'.$url.'"</script>');
+		\MeepoPS\Api\Http::end('<script>location.href="'.$url.'"</script>');
 	}
 }
 ?>

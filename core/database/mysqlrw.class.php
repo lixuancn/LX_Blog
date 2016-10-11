@@ -31,12 +31,11 @@ class Mysqlrw{
 	function connect($host, $user, $password, $db='', $dbcharset = 'utf8', $pconnect=0) {
 		//长短连接区分
 		//$func = $pconnect == 1 ? 'mysql_pconnect' : 'mysql_connect';
-		$func = 'mysql_connect';
-		$this->conn = @$func($host, $user, $password, true);
+		$this->conn = mysqli_connect($host, $user, $password, $db);
 		
 		$times = 1;
 		while (!$this->conn && $times <= self::RETRY_TIMES){
-			$this->conn = @$func($host, $user, $password, true);
+			$this->conn = @mysqli_connect($host, $user, $password, $db);
 			$times++;
 		}
 		if (!$this->conn) {
@@ -44,11 +43,7 @@ class Mysqlrw{
 		}
 		
 		//设置字符集
-		@mysql_query("SET names " . $dbcharset, $this->conn);
-		//选择数据库
-		if(!empty($db)) {
-			$this->select_db($db);
-		}
+		@mysqli_query($this->conn, "SET names " . $dbcharset);
 	}
 	
 	/**
@@ -59,7 +54,7 @@ class Mysqlrw{
 		//链接主库
 		$master = $this->dsn['master'];
 		
-		$this->connect($master['host'].':'.$master['port'],$master['user'],$master['password'], $master['db']);		
+		$this->connect($master['host'].':'.$master['port'], $master['user'], $master['password'], $master['db']);
 		if ($this->conn) {
 			$this->connMaster = $this->conn;
 		}
@@ -78,17 +73,11 @@ class Mysqlrw{
 		}
 	}
 	
-	function select_db($dbName) {
-		if (!@mysql_select_db($dbName, $this->conn)) {
-			$this->halt('Cannot use database:'.$dbName);
-		}
-	}
-	
 	function close() {
-		@mysql_close($this->conn);
+		@mysqli_close($this->conn);
 	}
 	
-	function query($sql = '', &$useMaster = false, $func='mysql_query') {
+	function query($sql = '', &$useMaster = false, $func='mysqli_query') {
 		$orgUseMaster = $useMaster;
 		if ($useMaster || !preg_match ("/^(\s*)select/i", $sql)) {			
 			if (!$this->connMaster) {
@@ -96,8 +85,8 @@ class Mysqlrw{
 			} else {
 				$this->conn = $this->connMaster;
 			}	
-			if (!@mysql_ping ($this->conn)) {
-			   @mysql_close($this->conn);
+			if (!@mysqli_ping($this->conn)) {
+			   @mysqli_close($this->conn);
 			   $this->connMaster = null;
 			    
 			   $this->connect_master();
@@ -109,15 +98,15 @@ class Mysqlrw{
 			} else {
 				$this->conn = $this->connSlave;
 			}
-			if (!@mysql_ping ($this->conn)) {
-			   @mysql_close($this->conn);
+			if (!@mysqli_ping ($this->conn)) {
+			   @mysqli_close($this->conn);
 			   $this->connSlave = null;
 			    
 			   //$this->connect_slave();	
 			   $this->connect_master();	
 			}	
 		}
-		$query = @$func($sql, $this->conn);
+		$query = @$func($this->conn, $sql);
 		
 		$times = 1;
 		while(!$query && $times <= self::RETRY_TIMES) {
@@ -130,7 +119,7 @@ class Mysqlrw{
 				$this->connect_master(); //出错时尝试主库，fix 2006错误
 			}
 			/**************************重连end*********************/
-			$query = @$func($sql, $this->conn);
+			$query = @$func($this->conn, $sql);
 			$times++;
 		}
 		
@@ -138,7 +127,7 @@ class Mysqlrw{
 			if(PRINT_MYSQL_ERROR){
                 $errno = $this->errno();
                 if($errno == 0){//如果是error 0 再重试一次
-                    $query = @mysql_query($sql, $this->conn);
+                    $query = @mysqli_query($this->conn, $sql);
                     if(!$query){
                         $this->halt('Mysql query error:' . $sql);
                     }
@@ -155,39 +144,39 @@ class Mysqlrw{
 	}
 	
 	function errno() {
-		return mysql_errno();
+		return mysqli_errno($this->conn);
 	}
 	
 	function error() {
-		return mysql_error();
+		return mysqli_error($this->conn);
 	}
 	
 	function num_rows($query) {
-		return @mysql_num_rows($query);
+		return @mysqli_num_rows($query);
 	}
 	
 	function num_fields($query) {
-		return @mysql_num_rows($query);
+		return @mysqli_num_rows($query);
 	}
 	
 	function affected_rows() {
-		return @mysql_affected_rows($this->conn);
+		return @mysqli_affected_rows($this->conn);
 	}
 	
 	function fetch_row($query) {
-		return @mysql_fetch_row($query);
+		return @mysqli_fetch_row($query);
 	}
 	
 	function fetch_assoc($query) {
-		return @mysql_fetch_assoc($query);
+		return @mysqli_fetch_assoc($query);
 	}
 	
-	function fetch_array($query, $type= MYSQL_ASSOC) {
-		return @mysql_fetch_array($query, $type);
+	function fetch_array($query, $type= MYSQLI_ASSOC) {
+		return @mysqli_fetch_array($query, $type);
 	}
 	
 	function insert_id() {
-		return @mysql_insert_id($this->conn);
+		return @mysqli_insert_id($this->conn);
 	}
 	
 	function halt($msg) {
@@ -213,6 +202,18 @@ class Mysqlrw{
 				</div>";
 //		exit();
 		//throw new DBException($msg);
+	}
+
+	public function escapeMysqlString($sqlString) {
+		if (function_exists('mysqli_escape_string')) {
+			return @mysqli_escape_string($this->conn, $sqlString);
+		} else {
+			return @mysqli_real_escape_string($this->conn, $sqlString);
+		}
+//		if(WEB_SERVER=='develop' || WEB_SERVER=='test'){
+//			return $sqlString;
+//		}
+//		return mysql_escape_string($sqlString);
 	}
 }
 ?>

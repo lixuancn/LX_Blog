@@ -72,7 +72,10 @@ class ItemDocMenuBusiness{
      * @param string $item
      * @return Ambigous|bool
      */
-    public static function getMenuListByItem($item=ITEM){
+    public static function getMenuListByItem($item=''){
+        if(!$item){
+            $item = $GLOBALS['BLOG']['ITEM'];
+        }
         return self::getInstance()->getListByItem($item);
     }
 }

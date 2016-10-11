@@ -34,19 +34,19 @@ class View {
 		error_reporting(0);
 		$filename = $dir . $path . $file . '.tpl.php';
 		if (!file_exists($filename)) {
-			exit("Template file '$file.tpl.php' not Exists!<br/>");
+			\MeepoPS\Api\Http::end("Template file '$file.tpl.php' not Exists!<br/>");
 		}
 		$data = self::$showData;
 		@extract($data);
 
-		if (preg_match("/\/([^\/]+)\/([^\/]+)\/([^\/\?]+)/",REQUEST_URI,$matches)) {
+		if (preg_match("/\/([^\/]+)\/([^\/]+)\/([^\/\?]+)/", $GLOBALS['BLOG']['REQUEST_URI'], $matches)) {
 			$path = $matches[1];
 			$file = $matches[2];
 			$action = $matches['3'];
 		}
 
-		include_once $filename;
-		exit();
+		include $filename;
+		return;
 	}
 
 	/**
@@ -54,8 +54,8 @@ class View {
 	 * @param string $file
 	 */
 	public static function showFrontTpl($file) {
-		if(ITEM != 'www'){
-			$dir = TEMPLATE_ITEMS_PATH . ITEM . '/';
+		if($GLOBALS['BLOG']['ITEM'] != 'www'){
+			$dir = TEMPLATE_ITEMS_PATH . $GLOBALS['BLOG']['ITEM'] . '/';
 		}else{
 			$dir = MOULD_PATH;
 		}
@@ -83,7 +83,7 @@ class View {
 		//php 5.3.3 增加的JSON_NUMERIC_CHECK
 		echo json_encode($results,JSON_NUMERIC_CHECK);
 		//echo json_encode($results);
-		exit();
+		\MeepoPS\Api\Http::end();
 	}
 
 	/**
@@ -94,8 +94,8 @@ class View {
 	 */
 	public static function showMessage($jumpurl, $msg, $target="") {
 		$ms = 4000; //跳转间隔时间
-		include_once  TEMPLATE_PATH . 'show_message.tpl.php';
-		exit();
+		include  TEMPLATE_PATH . 'show_message.tpl.php';
+		\MeepoPS\Api\Http::end();
 	}
 
 	/**
@@ -106,8 +106,8 @@ class View {
 	 */
 	public static function showErrorMessage($jumpurl, $msg, $target="") {
 		$ms = 4000; //跳转间隔时间
-		include_once  TEMPLATE_PATH . 'show_error_message.tpl.php';
-		exit();
+		include  TEMPLATE_PATH . 'show_error_message.tpl.php';
+		\MeepoPS\Api\Http::end();
 	}
 
 	/**
@@ -118,8 +118,8 @@ class View {
 	 */
 	public static function showAdminMessage($jumpurl, $msg, $target="") {
 		$ms = 4000; //跳转间隔时间
-		include_once  ADMIN_TEMPLATE_PATH . 'show_message.tpl.php';
-		exit();
+		include  ADMIN_TEMPLATE_PATH . 'show_message.tpl.php';
+		\MeepoPS\Api\Http::end();
 	}
 
 	/**
@@ -130,8 +130,8 @@ class View {
 	 */
 	public static function showAdminErrorMessage($jumpurl, $msg, $target="") {
 		$ms = 4000; //跳转间隔时间
-		include_once  ADMIN_TEMPLATE_PATH . 'show_error_message.tpl.php';
-		exit();
+		include  ADMIN_TEMPLATE_PATH . 'show_error_message.tpl.php';
+		\MeepoPS\Api\Http::end();
 	}
 
 	/**
@@ -141,9 +141,9 @@ class View {
 	 */
 	public static function jsJump($url, $timeOut=0) {
 		if ($timeOut == 0) {
-			exit('<script>location.href="'.$url.'"</script>');
+			\MeepoPS\Api\Http::end('<script>location.href="'.$url.'"</script>');
 		} else {
-			exit('<script>setTimeout("location.href=\''.$url.'\'",'.$timeOut.')</script>');
+			\MeepoPS\Api\Http::end('<script>setTimeout("location.href=\''.$url.'\'",'.$timeOut.')</script>');
 		}
 	}
 }
