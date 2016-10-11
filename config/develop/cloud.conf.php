@@ -32,16 +32,16 @@ $DATABASE = array(
 	DEFAULT_DB => array(
 		'master' => array(
             'host' => '127.0.0.1',
-            'user' => 'root',
-            'password' => '8823150',
+            'user' => 'lane',
+            'password' => '123456',
 			'port' => 3306,
 			'db' => DEFAULT_DB,
 		),
 		'slave' => array(
 			array(
                 'host' => '127.0.0.1',
-                'user' => 'root',
-                'password' => '8823150',
+                'user' => 'lane',
+                'password' => '123456',
 				'port' => 3306,
 				'db' => DEFAULT_DB,
 			),
