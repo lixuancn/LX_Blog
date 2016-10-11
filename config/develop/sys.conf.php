@@ -8,13 +8,13 @@
  * Blog http://www.lanecn.com
  */
 //后台访问域名
-define('ADMIN_URL', 'http://localhost:8080/admin.php/');
+define('ADMIN_URL', 'http://www.lane.com/admin.php/');
 
-//域名
-define('GAME_DOMAIN', 'localhost:8080');
+//游戏域名
+define('GAME_DOMAIN', 'www.lane.com');
 
-//域名
-define('GAME_DOMAIN_ROOT', 'localhost:8080');
+//根域名
+define('GAME_DOMAIN_ROOT', 'lane.com');
 
 //游戏地址
 define('GAME_URL', 'http://' . GAME_DOMAIN . '/');
@@ -26,5 +26,5 @@ define('QUEUE_URL', 'http://' . GAME_DOMAIN . '/queue.php');
 define('SAE_DOMEN_NAME', 'stor');
 
 //stor地址
-define('STOR_URL', 'http://192.168.100.41:8080/stor/');
+define('STOR_URL', '');
 ?>
