@@ -135,7 +135,9 @@ class APP {
         $item = 'www';
         $pattern = "/^([a-z]+)\.".GAME_DOMAIN_ROOT."/";
         if(preg_match($pattern, strtolower($host), $matches)){
-            $item = $matches[1];
+            if(file_exists((ITEMS_PATH . $matches[1]))){
+                $item = $matches[1];
+            }
         }
         $params = array('file'=>'index', 'action'=>'main', 'param' =>'', 'item'=>$item);
         if (preg_match("/\/([^\/]+)(\/*)([^\/]*)(\/*)(.*)/", $GLOBALS['BLOG']['REQUEST_URI'], $matches)) {
