@@ -19,7 +19,7 @@ define('LANE_BLOG_VERSION', 'v1.2.0');
 define('SERVICE_STOP', false);
 
 //启用调试信息，1是开启
-define('DEBUG', 1);
+define('DEBUG', 0);
 
 //是否打印Mysql错误信息
 define('PRINT_MYSQL_ERROR', 0);
