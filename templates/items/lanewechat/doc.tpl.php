@@ -14,7 +14,7 @@ include 'header.tpl.php';
                         <ul>
                             <?php foreach($itemMenu['article_list'] as $itemArticle){?>
                                 <li>
-                                    <a href="<?php echo ITEM_DOMAIN.'doc/main/aid-'.$itemArticle['id']?>"><?php echo $itemArticle['title'];?></a>
+                                    <a href="<?php echo 'http://lanewechat.lanecn.com/doc/main/aid-'.$itemArticle['id']?>"><?php echo $itemArticle['title'];?></a>
                                 </li>
                             <?php }?>
                         </ul>
