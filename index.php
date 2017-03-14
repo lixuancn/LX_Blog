@@ -7,17 +7,27 @@
  * Time: 下午15:07
  * Blog http://www.lanecn.com
  */
-// 定义入口名称
-!defined('ENTRY_NAME') ? define('ENTRY_NAME', 'index') : null;
 
-// 定义控制器目录
-!defined('CONTROL_PATH') ? define('CONTROL_PATH', 'apis/') : null;
+//管理员
+if(preg_match('#/admin.php/#', $_SERVER['REQUEST_URI'])){
+    // 定义控制器目录
+    $GLOBALS['CONTROL_PATH'] = 'admin/';
+    // 载入初始化框架文件
+    require_once 'core/init.php';
+    // 初始化应用程序
+    APP::init();
+    // 处理当前HTTP请求
+    APP::adminRequest();
+//普通用户
+}else{
+    // 定义控制器目录
+    $GLOBALS['CONTROL_PATH'] = 'apis/';
+    // 载入初始化框架文件
+    require_once 'core/init.php';
+    // 初始化应用程序
+    APP::init();
+    // 处理当前HTTP请求
+    APP::normalRequest();
+}
+?>
 
-// 载入初始化框架文件
-require_once 'core/init.php';
-
-// 初始化应用程序
-APP::init();
-
-// 处理当前HTTP请求
-APP::normalRequest();

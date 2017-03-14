@@ -1,6 +1,3 @@
-<?php
-if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

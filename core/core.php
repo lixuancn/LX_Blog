@@ -108,7 +108,7 @@ class APP {
         if($item != 'www' && file_exists((ITEMS_PATH . $item))){
             $controlFile = ITEMS_PATH . $item . '/' . $file . $ext;
         }else{
-            $controlFile = ROOT_PATH . CONTROL_PATH . $file . $ext;
+            $controlFile = ROOT_PATH . $GLOBALS['CONTROL_PATH'] . $file . $ext;
         }
         if (!file_exists($controlFile)) {
             \MeepoPS\Api\Http::end("Controller File '$file.php' not exists!");
@@ -207,7 +207,7 @@ class APP {
      * www目录下，处理网页需求
 	 */
     public static function adminRequest() {
-        $params = App::_initAdminRoute();
+        $params = self::_initAdminRoute();
         @extract($params);
 
         $scriptUrl = "/$entry/$file/$action";
@@ -220,7 +220,7 @@ class APP {
             }
         }
 
-        $controlFile = ADMIN_ROOT_PATH . CONTROL_PATH . $file . '.php';
+        $controlFile = ADMIN_ROOT_PATH . $GLOBALS['CONTROL_PATH'] . $file . '.php';
         if (!file_exists($controlFile)) {
             \MeepoPS\Api\Http::end("AdminController File '$file.php' not exists!");
         }

@@ -11,7 +11,7 @@
 !defined('ENTRY_NAME') ? define('ENTRY_NAME', 'admin') : null;
 
 // 定义控制器目录
-!defined('CONTROL_PATH') ? define('CONTROL_PATH', 'admin/') : null;
+$GLOBALS['CONTROL_PATH'] = 'admin/';
 
 // 载入初始化框架文件
 require_once 'core/init.php';
