@@ -81,7 +81,13 @@ class Request {
 	public static function getSession($key, $default = '') {
 		return isset($_SESSION[SESSION_PRE.$key]) ? $_SESSION[SESSION_PRE.$key] : $default;
 	}
-	
+
+	public static function delSession($key) {
+		if(isset($_SESSION[SESSION_PRE.$key])){
+			$_SESSION[SESSION_PRE.$key] = null;
+		}
+	}
+
 	public static function getSessionId(){
 		return session_id();
 	}

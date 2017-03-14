@@ -121,6 +121,7 @@ class Article extends Controller{
         $fields['ctime'] = time();
         $fields['content'] = Request::getRequest('content', 'str');
         CommentBusiness::setComment($fields);
+        Request::delSession('captcha');
         //如果是回复别人的回复，则发送邮件提醒
         if(EMAIL_SENT_FOR_REPLY && $fields['cid'] > 0){
             //根据CID查询评论的详细信息
