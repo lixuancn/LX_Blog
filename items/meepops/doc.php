@@ -81,7 +81,7 @@ class Doc extends Controller{
         $jumpUrl = ITEM_DOMAIN . 'doc/main/aid-'.$this->param['aid'];
         //判断验证码
         $captcha = Request::getSession('captcha');
-        if(empty($captcha) || $captcha !== strtolower($this->param['captcha'])){
+        if(empty($captcha) || strlen($captcha) <= 3 || $captcha !== strtolower($this->param['captcha'])){
             View::showErrorMessage($jumpUrl, '验证码错误');
         }
         if(empty($this->param['aid']) || empty($this->param['item']) || empty($this->param['mid']) || empty($this->param['nickname']) || empty($this->param['content'])){

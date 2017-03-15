@@ -96,15 +96,9 @@ class Article extends Controller{
      */
     public function addcomment(){
         $captcha = Request::getSession('captcha');
-        $userLog = array(
-            'param'=> json_encode(array('request'=>$_REQUEST, 'id'=>Request::getClientIP(), 'captcha'=>$captcha)),
-            'method'=>__METHOD__,
-            'create_time'=>date('Y-m-d H:i:s'),
-        );
-        UserLogBusiness::set($userLog);
         $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
         //判断验证码
-        if(empty($captcha) || $captcha !== strtolower($this->param['captcha'])){
+        if(empty($captcha) || strlen($captcha) <= 3 || $captcha !== strtolower($this->param['captcha'])){
             View::showErrorMessage($jumpUrl, '验证码错误');
         }
         if(empty($this->param['aid']) || empty($this->param['mid']) || empty($this->param['nickname']) || empty($this->param['content'])){
@@ -121,6 +115,15 @@ class Article extends Controller{
         $fields['ctime'] = time();
         $fields['content'] = Request::getRequest('content', 'str');
         CommentBusiness::setComment($fields);
+
+        $userLog = array(
+            'param'=> json_encode(array('request'=>$_REQUEST, 'id'=>Request::getClientIP(), 'captcha'=>$captcha)),
+            'method'=>__METHOD__,
+            'create_time'=>date('Y-m-d H:i:s'),
+        );
+        UserLogBusiness::set($userLog);
+
+
         Request::delSession('captcha');
         //如果是回复别人的回复，则发送邮件提醒
         if(EMAIL_SENT_FOR_REPLY && $fields['cid'] > 0){
