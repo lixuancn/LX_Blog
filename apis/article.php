@@ -95,15 +95,15 @@ class Article extends Controller{
      * @descrpition 添加评论
      */
     public function addcomment(){
+        $captcha = Request::getSession('captcha');
         $userLog = array(
-            'param'=> json_encode(array('request'=>$_REQUEST, 'id'=>Request::getClientIP())),
+            'param'=> json_encode(array('request'=>$_REQUEST, 'id'=>Request::getClientIP(), 'captcha'=>$captcha)),
             'method'=>__METHOD__,
             'create_time'=>date('Y-m-d H:i:s'),
         );
         UserLogBusiness::set($userLog);
         $jumpUrl = GAME_URL . 'article/main/aid-'.$this->param['aid'];
         //判断验证码
-        $captcha = Request::getSession('captcha');
         if(empty($captcha) || $captcha !== strtolower($this->param['captcha'])){
             View::showErrorMessage($jumpUrl, '验证码错误');
         }
