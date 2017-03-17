@@ -23,19 +23,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="<?php echo 'http://'.ITEM.'.'.GAME_DOMAIN_ROOT?>" class="navbar-brand" title="LaneWeChat 微信PHP开发框架">LaneWeChat</a>
+            <a href="http://lanewechat.lanecn.com/" class="navbar-brand" title="LaneWeChat 微信PHP开发框架">LaneWeChat</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo ITEM_DOMAIN?>" title="PHP微信开发框架">微信PHP开发框架</a>
+                    <a href="http://lanewechat.lanecn.com/" title="PHP微信开发框架">微信PHP开发框架</a>
                 </li>
                 <li>
-                    <a href="<?php echo ITEM_DOMAIN?>doc/main/">查看手册</a>
+                    <a href="http://lanewechat.lanecn.com/doc/main/">查看手册</a>
                 </li>
                 <li class="divider-vertical"></li>
                 <li>
-                    <a href="<?php echo GAME_URL?>" title="李轩PHP博客">Lane Blog</a>
+                    <a href="http://www.lanecn.com/" title="李轩PHP博客">Lane Blog</a>
                 </li>
             </ul>
         </nav>
@@ -50,7 +50,7 @@
         </p>
         <p class="text-center">
             <a class="btn btn-primary" href="https://github.com/lixuancn/LaneWeChat" target="_blank" role="button">GitHub下载</a>
-            <a class="btn btn-primary" href="<?php echo ITEM_DOMAIN?>doc/main/" target="_blank" role="button">查看手册</a>
+            <a class="btn btn-primary" href="http://lanewechat.lanecn.com/doc/main/" target="_blank" role="button">查看手册</a>
         </p>
     </div>
 </div>
