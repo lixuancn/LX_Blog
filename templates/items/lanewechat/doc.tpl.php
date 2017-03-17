@@ -71,88 +71,27 @@ include 'header.tpl.php';
                     </button>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                    <!-- JiaThis Button BEGIN -->
-                    <div class="jiathis_style_24x24">
-                        <a class="jiathis_button_tsina"></a>
-                        <a class="jiathis_button_weixin"></a>
-                        <a class="jiathis_button_renren"></a>
-                        <a class="jiathis_button_google"></a>
-                        <a class="jiathis_button_douban"></a>
-                        <a class="jiathis_button_fav"></a>
-                        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-                        <a class="jiathis_counter_style"></a>
-                    </div>
-                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-                    <!-- JiaThis Button END -->
                 </div>
             </div>
             <div class="page-header"></div>
-            <?php foreach($commentList as $comment){?>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 comment_content">
-                        <p>Reply: <?php echo $comment['nickname'];?> On <?php echo date('Y-m-d H:i:s', $comment['ctime']);?></p>
-                        <p><?php echo $comment['content'];?></p>
-                        <p class="text-right"><a href="#add_comment" class="reply_comment" cid="<?php echo $comment['id'];?>">回复</a></p>
-                    </div>
-                    <?php if(isset($comment['son'])){
-                        foreach($comment['son'] as $son){?>
-                            <div class="col-xs-offset-1 col-xs-12 col-sm-12 col-md-12 comment_content">
-                                <p>Reply: <?php echo $son['nickname'];?> On <?php echo date('Y-m-d H:i:s', $son['ctime']);?></p>
-                                <p><?php echo $son['content'];?></p>
-                                <p class="text-right"><a href="#add_comment" class="reply_comment" cid="<?php echo $son['cid'];?>">回复</a></p>
-                            </div>
-                    <?php }}?>
-                </div>
-                <div class="page-header"></div>
-            <?php }?>
-            <form class="form-horizontal" role="form" id="bindingForm" action="<?php echo ITEM_DOMAIN?>doc/addcomment" method="post">
-                <legend  id="add_comment">Add Comment</legend>
-                <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">Name: </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nickname" placeholder="Nickname">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="input01" class="col-sm-2 control-label">Email: </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="email" placeholder="E-mail">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="input01" class="col-sm-2 control-label">Website: </label>
-                    <div class="col-sm-10">
-                        <input type="url" class="form-control" name="website" placeholder="Website">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="input01" class="col-sm-2 control-label">Comment: </label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="3" name="content"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="input01" class="col-sm-2 control-label">Captcha: </label>
-                    <div class="col-sm-10">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <input type="text" class="form-control" name="captcha" placeholder="Captcha">
-                            </div>
-                            <img src="<?php echo ITEM_DOMAIN?>extend/captcha" onclick="this.src='<?php echo ITEM_DOMAIN?>extend/captcha/id-'+new Date().getTime()">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <input type="hidden" name="cid" value="0" id="cid">
-                        <input type="hidden" name="aid" value="<?php echo $article['id'];?>">
-                        <input type="hidden" name="mid" value="<?php echo $article['mid'];?>">
-                        <input type="hidden" name="item" value="<?php echo $article['item'];?>">
-                        <button type="submit" class="btn btn-primary">提交</button>
-                        <button type="reset" class="btn">取消</button>
-                    </div>
-                </div>
-            </form>
+
+            <!-- 多说评论框 start -->
+            <div class="ds-thread" data-thread-key="<?php echo $article['item']?>-<?php echo $article['id']?>" data-title="<?php echo $article['title'];?>" data-url="<?php echo 'http://lanewechat.lanecn.com/doc/main/aid-'.$article['id']?>"></div>
+            <!-- 多说评论框 end -->
+            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"lanecn"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- 多说公共JS代码 end -->
+
         </div>
     </div>
 </div>
@@ -166,52 +105,3 @@ include 'footer.tpl.php';
         <div class="modal-content" id="myModalContent"></div>
     </div>
 </div>
-
-<script>
-$(document).ready(function(){
-    //点击回复之后，将表单的cid值更新
-    $(".reply_comment").click(function(){
-        var cid = $(this).attr('cid');
-        $('#cid').attr('value', cid);
-    });
-    //鼠标悬停的地方改变颜色
-    $(".comment_content").mouseover(function(){
-        $(this).addClass('article_coment_mouseouve');
-        $(this).mouseout(function(){
-            $(this).removeClass('article_coment_mouseouve');
-        });
-    });
-
-    //赞一个
-    $(".score_num").click(function(){
-        var score_type = $(this).attr('score_type');
-        $.post("<?php echo ITEM_DOMAIN;?>doc/score/",
-            {
-                score: score_type,
-                item: '<?php echo $article['item']?>',
-                article_id: <?php echo $article['id'];?>
-            },
-            function(arr){
-                //修改展示
-                var dataObj = eval("("+arr+")");
-                if(dataObj.status == 0){
-                    if(score_type == 1){
-                        var new_num = $(".good_num").html();
-                        new_num ++;
-                        $(".good_num").html(new_num);
-                    }else if(score_type == 2){
-                        var new_num = $(".bad_num").html();
-                        new_num ++;
-                        $(".bad_num").html(new_num);
-                    }
-                }else{
-                    $('#myModal').modal('toggle');
-                    var msg = '<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><strong>Warning!</strong>'+dataObj.msg+'</div>';
-                    $('#myModalContent').html(msg);
-                }
-
-            }
-        );
-    });
-});
-</script>

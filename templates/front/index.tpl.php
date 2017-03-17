@@ -106,14 +106,14 @@
                     <?php }?>
         		</div>
         	</div>
-        	<div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-					<h3>最新的评论</h3>
-                    <?php foreach($commentNewList as $comment){ ?>
-                    <p><?php echo $comment['nickname'];?> On <a href="<?php echo GAME_URL;?>article/main/aid-<?php echo $comment['aid'];?>"><?php echo $comment['content'];?></a></p>
-                    <?php }?>
-				</div>
-        	</div>
+<!--        	<div class="row">-->
+<!--                <div class="col-xs-12 col-sm-12 col-md-12">-->
+<!--					<h3>最新的评论</h3>-->
+<!--                    --><?php //foreach($commentNewList as $comment){ ?>
+<!--                    <p>--><?php //echo $comment['nickname'];?><!-- On <a href="--><?php //echo GAME_URL;?><!--article/main/aid---><?php //echo $comment['aid'];?><!--">--><?php //echo $comment['content'];?><!--</a></p>-->
+<!--                    --><?php //}?>
+<!--				</div>-->
+<!--        	</div>-->
         	<div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
 					<h3>热门Tag</h3>
