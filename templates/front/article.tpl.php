@@ -57,8 +57,6 @@ include 'header.tpl.php';
             </div>
             <div class="page-header"></div>
             <!-- 搜狐畅言评论框 start -->
-
-
             <!--高速版-->
             <div id="SOHUCS" sid="<?php echo $article['id']?>"></div>
             <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
