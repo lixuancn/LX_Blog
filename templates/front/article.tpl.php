@@ -56,22 +56,21 @@ include 'header.tpl.php';
                 </div>
             </div>
             <div class="page-header"></div>
-            <!-- 多说评论框 start -->
-            <div class="ds-thread" data-thread-key="<?php echo $article['id']?>" data-title="<?php echo $article['title'];?>" data-url="<?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?>"></div>
-            <!-- 多说评论框 end -->
-            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <!-- 搜狐畅言评论框 start -->
+
+
+            <!--高速版-->
+            <div id="SOHUCS" sid="<?php echo $article['id']?>"></div>
+            <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
             <script type="text/javascript">
-                var duoshuoQuery = {short_name:"lanecn"};
-                (function() {
-                    var ds = document.createElement('script');
-                    ds.type = 'text/javascript';ds.async = true;
-                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                    ds.charset = 'UTF-8';
-                    (document.getElementsByTagName('head')[0]
-                    || document.getElementsByTagName('body')[0]).appendChild(ds);
-                })();
+                window.changyan.api.config({
+                    appid: 'cyt3e2ujP',
+                    conf: 'prod_b7977404d58ecadbf2438bb8712adf06'
+                });
             </script>
-            <!-- 多说公共JS代码 end -->
+            <!--其他参数先留着待用-->
+            <!-- <?php echo $article['title'];?> -->
+            <!-- <?php echo GAME_URL?>article/main/aid-<?php echo $article['id'];?> -->
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-4">
