@@ -105,7 +105,7 @@ class Mysqlrw{
 			   $this->connect_master();	
 			}	
 		}
-		$query = @$func($sql, $this->conn);
+		$query = @$func($this->conn, $sql);
 		
 		$times = 1;
 		while(!$query && $times <= self::RETRY_TIMES) {
@@ -118,7 +118,7 @@ class Mysqlrw{
 				$this->connect_master(); //出错时尝试主库，fix 2006错误
 			}
 			/**************************重连end*********************/
-			$query = @$func($sql, $this->conn);
+			$query = @$func($this->conn, $sql);
 			$times++;
 		}
 		
