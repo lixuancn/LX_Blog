@@ -133,7 +133,8 @@
                 <p>使用MeepoPS的同学可发LOGO和简要描述到lixuan868686#163.com.</p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <img class="img-responsive" src="<?php echo STATIC_PATH?>items/meepops/img/user-case-360.png" alt="使用MeepoPS实时监控服务器的CPU内存使用情况.">
+                        <img class="img-responsive" src="<?php echo STATIC_PATH?>items/meepops/img/user-case-360.png" alt="">
+                        <img class="img-responsive" width="100px" src="<?php echo STATIC_PATH?>items/meepops/img/user-case-changba.jpg" alt="使用MeepoPS作为唱吧异步队列Worker，QPS10000+">
                     </li>
                 </ul>
             </div>
