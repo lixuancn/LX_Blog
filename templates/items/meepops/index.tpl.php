@@ -134,6 +134,8 @@
                 <ul class="list-inline banner-social-buttons">
                     <li>
                         <img class="img-responsive" src="<?php echo STATIC_PATH?>items/meepops/img/user-case-360.png" alt="">
+                    </li>
+                    <li>
                         <img class="img-responsive" width="100px" src="<?php echo STATIC_PATH?>items/meepops/img/user-case-changba.jpg" alt="使用MeepoPS作为唱吧异步队列Worker，QPS10000+">
                     </li>
                 </ul>
