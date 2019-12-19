@@ -428,18 +428,8 @@ class DbModel {
 	}
 	
 	public function escapeMysqlString($sqlString) {
-		if (function_exists('mysql_escape_string')) {
-			return @mysql_escape_string($sqlString);
-		} else {
-			return @mysql_real_escape_string($sqlString);
-		} 
-//		if(WEB_SERVER=='develop' || WEB_SERVER=='test'){
-//			return $sqlString;
-//		}
-//		return mysql_escape_string($sqlString);
+		return $this->_dbObj->escapeMysqlString($sqlString);
 	}
-		
-	
 }
 
 ?>
