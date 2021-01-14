@@ -152,7 +152,7 @@
             </p>
         </div>
         <div style="display: none">
-            <a rel="nofollow" href="http://www.miitbeian.gov.cn/">京ICP备14005030号</a>
+            <a rel="nofollow" href="https://beian.miit.gov.cn">京ICP备14005030号-1</a>
             <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5824445'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5824445' type='text/javascript'%3E%3C/script%3E"));</script>
         </div>
     </footer>

@@ -174,7 +174,7 @@ if (!defined('ENTRY_NAME')) exit("Not Allowed to request this file!");
 
 <div class="container">
     <div class="row">
-        <div class="text-center">©2014 <a href="http://www.lanecn.com">www.lanecn.com</a> , All rights reserved. Power By <a href="http://www.lanecn.com">Li Xuan</a>.&nbsp;&nbsp;<a rel="nofollow" href="http://www.miitbeian.gov.cn/">京ICP备14005030号</a></div>
+        <div class="text-center">©2014 <a href="http://www.lanecn.com">www.lanecn.com</a> , All rights reserved. Power By <a href="http://www.lanecn.com">Li Xuan</a>.&nbsp;&nbsp;<a rel="nofollow" href="https://beian.miit.gov.cn">京ICP备14005030号-1</a></div>
     </div>
 </div>
 </body>
